@@ -1,0 +1,732 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C9D54722C5F2B1D0075AC6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54712C5F2B1D0075AC6D /* AppDelegate.swift */; };
+		0C9D54742C5F2B1D0075AC6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54732C5F2B1D0075AC6D /* SceneDelegate.swift */; };
+		0C9D54762C5F2B1D0075AC6D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54752C5F2B1D0075AC6D /* HomeViewController.swift */; };
+		0C9D54792C5F2B1D0075AC6D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D54782C5F2B1D0075AC6D /* Base */; };
+		0C9D547B2C5F2B1E0075AC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D547A2C5F2B1E0075AC6D /* Assets.xcassets */; };
+		0C9D547E2C5F2B1E0075AC6D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D547D2C5F2B1E0075AC6D /* Base */; };
+		0C9D54892C5F2B1F0075AC6D /* Raven_RewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54882C5F2B1F0075AC6D /* Raven_RewardsTests.swift */; };
+		0C9D54932C5F2B1F0075AC6D /* Raven_RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54922C5F2B1F0075AC6D /* Raven_RewardsUITests.swift */; };
+		0C9D54952C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54942C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift */; };
+		0C9D54A72C5F2F740075AC6D /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54A62C5F2F740075AC6D /* ExploreViewController.swift */; };
+		0C9D54A92C5F2F970075AC6D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54A82C5F2F970075AC6D /* CameraViewController.swift */; };
+		0C9D54AB2C5F2FA70075AC6D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54AA2C5F2FA70075AC6D /* NotificationsViewController.swift */; };
+		0C9D54AD2C5F2FB90075AC6D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54AC2C5F2FB90075AC6D /* ProfileViewController.swift */; };
+		0C9D54B32C5F39CA0075AC6D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54B22C5F39CA0075AC6D /* LoginViewController.swift */; };
+		0C9D54B52C5F39D50075AC6D /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54B42C5F39D50075AC6D /* RegistrationViewController.swift */; };
+		0C9D54B72C5F39F40075AC6D /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54B62C5F39F40075AC6D /* PostViewController.swift */; };
+		0C9D54B92C5F3A1E0075AC6D /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */; };
+		0C9D54BB2C5F3A2E0075AC6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */; };
+		0C9D54BD2C5F3A3B0075AC6D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54BC2C5F3A3B0075AC6D /* ListViewController.swift */; };
+		0C9D54BF2C5F3A480075AC6D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54BE2C5F3A480075AC6D /* SearchViewController.swift */; };
+		0C9D54C12C5F3A690075AC6D /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */; };
+		0C9D54C32C5F3AC90075AC6D /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */; };
+		0C9D54C52C5F3AD80075AC6D /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0C9D54852C5F2B1F0075AC6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C9D54662C5F2B1D0075AC6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C9D546D2C5F2B1D0075AC6D;
+			remoteInfo = "Raven Rewards";
+		};
+		0C9D548F2C5F2B1F0075AC6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C9D54662C5F2B1D0075AC6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C9D546D2C5F2B1D0075AC6D;
+			remoteInfo = "Raven Rewards";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C9D546E2C5F2B1D0075AC6D /* Raven Rewards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Raven Rewards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C9D54712C5F2B1D0075AC6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0C9D54732C5F2B1D0075AC6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0C9D54752C5F2B1D0075AC6D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0C9D54782C5F2B1D0075AC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0C9D547A2C5F2B1E0075AC6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C9D547D2C5F2B1E0075AC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0C9D547F2C5F2B1E0075AC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C9D54842C5F2B1F0075AC6D /* Raven RewardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Raven RewardsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C9D54882C5F2B1F0075AC6D /* Raven_RewardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raven_RewardsTests.swift; sourceTree = "<group>"; };
+		0C9D548E2C5F2B1F0075AC6D /* Raven RewardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Raven RewardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C9D54922C5F2B1F0075AC6D /* Raven_RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raven_RewardsUITests.swift; sourceTree = "<group>"; };
+		0C9D54942C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raven_RewardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0C9D54A62C5F2F740075AC6D /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		0C9D54A82C5F2F970075AC6D /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		0C9D54AA2C5F2FA70075AC6D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		0C9D54AC2C5F2FB90075AC6D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0C9D54B22C5F39CA0075AC6D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0C9D54B42C5F39D50075AC6D /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		0C9D54B62C5F39F40075AC6D /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0C9D54BC2C5F3A3B0075AC6D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		0C9D54BE2C5F3A480075AC6D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
+		0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0C9D546B2C5F2B1D0075AC6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C9D54812C5F2B1F0075AC6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C9D548B2C5F2B1F0075AC6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C9D54652C5F2B1D0075AC6D = {
+			isa = PBXGroup;
+			children = (
+				0C9D54702C5F2B1D0075AC6D /* Raven Rewards */,
+				0C9D54872C5F2B1F0075AC6D /* Raven RewardsTests */,
+				0C9D54912C5F2B1F0075AC6D /* Raven RewardsUITests */,
+				0C9D546F2C5F2B1D0075AC6D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0C9D546F2C5F2B1D0075AC6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D546E2C5F2B1D0075AC6D /* Raven Rewards.app */,
+				0C9D54842C5F2B1F0075AC6D /* Raven RewardsTests.xctest */,
+				0C9D548E2C5F2B1F0075AC6D /* Raven RewardsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0C9D54702C5F2B1D0075AC6D /* Raven Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54A42C5F2D7F0075AC6D /* Resources */,
+				0C9D54A32C5F2D770075AC6D /* Models */,
+				0C9D54A22C5F2D690075AC6D /* Views */,
+				0C9D54A12C5F2D5F0075AC6D /* Controllers */,
+				0C9D547F2C5F2B1E0075AC6D /* Info.plist */,
+			);
+			path = "Raven Rewards";
+			sourceTree = "<group>";
+		};
+		0C9D54872C5F2B1F0075AC6D /* Raven RewardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54882C5F2B1F0075AC6D /* Raven_RewardsTests.swift */,
+			);
+			path = "Raven RewardsTests";
+			sourceTree = "<group>";
+		};
+		0C9D54912C5F2B1F0075AC6D /* Raven RewardsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54922C5F2B1F0075AC6D /* Raven_RewardsUITests.swift */,
+				0C9D54942C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift */,
+			);
+			path = "Raven RewardsUITests";
+			sourceTree = "<group>";
+		};
+		0C9D54A12C5F2D5F0075AC6D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54AF2C5F39870075AC6D /* Other */,
+				0C9D54AE2C5F37D60075AC6D /* Core Tabs */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0C9D54A22C5F2D690075AC6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54A52C5F2E030075AC6D /* Storyboards */,
+				0C9D547A2C5F2B1E0075AC6D /* Assets.xcassets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0C9D54A32C5F2D770075AC6D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C9D54A42C5F2D7F0075AC6D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54732C5F2B1D0075AC6D /* SceneDelegate.swift */,
+				0C9D54712C5F2B1D0075AC6D /* AppDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0C9D54A52C5F2E030075AC6D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54772C5F2B1D0075AC6D /* Main.storyboard */,
+				0C9D547C2C5F2B1E0075AC6D /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0C9D54AE2C5F37D60075AC6D /* Core Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54752C5F2B1D0075AC6D /* HomeViewController.swift */,
+				0C9D54A62C5F2F740075AC6D /* ExploreViewController.swift */,
+				0C9D54A82C5F2F970075AC6D /* CameraViewController.swift */,
+				0C9D54AA2C5F2FA70075AC6D /* NotificationsViewController.swift */,
+				0C9D54AC2C5F2FB90075AC6D /* ProfileViewController.swift */,
+			);
+			path = "Core Tabs";
+			sourceTree = "<group>";
+		};
+		0C9D54AF2C5F39870075AC6D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54B02C5F398F0075AC6D /* Onboarding */,
+				0C9D54B62C5F39F40075AC6D /* PostViewController.swift */,
+				0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */,
+				0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */,
+				0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */,
+				0C9D54BC2C5F3A3B0075AC6D /* ListViewController.swift */,
+				0C9D54BE2C5F3A480075AC6D /* SearchViewController.swift */,
+				0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */,
+				0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		0C9D54B02C5F398F0075AC6D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54B22C5F39CA0075AC6D /* LoginViewController.swift */,
+				0C9D54B42C5F39D50075AC6D /* RegistrationViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0C9D546D2C5F2B1D0075AC6D /* Raven Rewards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C9D54982C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven Rewards" */;
+			buildPhases = (
+				0C9D546A2C5F2B1D0075AC6D /* Sources */,
+				0C9D546B2C5F2B1D0075AC6D /* Frameworks */,
+				0C9D546C2C5F2B1D0075AC6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Raven Rewards";
+			productName = "Raven Rewards";
+			productReference = 0C9D546E2C5F2B1D0075AC6D /* Raven Rewards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0C9D54832C5F2B1F0075AC6D /* Raven RewardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C9D549B2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsTests" */;
+			buildPhases = (
+				0C9D54802C5F2B1F0075AC6D /* Sources */,
+				0C9D54812C5F2B1F0075AC6D /* Frameworks */,
+				0C9D54822C5F2B1F0075AC6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C9D54862C5F2B1F0075AC6D /* PBXTargetDependency */,
+			);
+			name = "Raven RewardsTests";
+			productName = "Raven RewardsTests";
+			productReference = 0C9D54842C5F2B1F0075AC6D /* Raven RewardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0C9D548D2C5F2B1F0075AC6D /* Raven RewardsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C9D549E2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsUITests" */;
+			buildPhases = (
+				0C9D548A2C5F2B1F0075AC6D /* Sources */,
+				0C9D548B2C5F2B1F0075AC6D /* Frameworks */,
+				0C9D548C2C5F2B1F0075AC6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C9D54902C5F2B1F0075AC6D /* PBXTargetDependency */,
+			);
+			name = "Raven RewardsUITests";
+			productName = "Raven RewardsUITests";
+			productReference = 0C9D548E2C5F2B1F0075AC6D /* Raven RewardsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0C9D54662C5F2B1D0075AC6D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					0C9D546D2C5F2B1D0075AC6D = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					0C9D54832C5F2B1F0075AC6D = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 0C9D546D2C5F2B1D0075AC6D;
+					};
+					0C9D548D2C5F2B1F0075AC6D = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 0C9D546D2C5F2B1D0075AC6D;
+					};
+				};
+			};
+			buildConfigurationList = 0C9D54692C5F2B1D0075AC6D /* Build configuration list for PBXProject "Raven Rewards" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0C9D54652C5F2B1D0075AC6D;
+			productRefGroup = 0C9D546F2C5F2B1D0075AC6D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0C9D546D2C5F2B1D0075AC6D /* Raven Rewards */,
+				0C9D54832C5F2B1F0075AC6D /* Raven RewardsTests */,
+				0C9D548D2C5F2B1F0075AC6D /* Raven RewardsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0C9D546C2C5F2B1D0075AC6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C9D547B2C5F2B1E0075AC6D /* Assets.xcassets in Resources */,
+				0C9D547E2C5F2B1E0075AC6D /* Base in Resources */,
+				0C9D54792C5F2B1D0075AC6D /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C9D54822C5F2B1F0075AC6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C9D548C2C5F2B1F0075AC6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0C9D546A2C5F2B1D0075AC6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C9D54B92C5F3A1E0075AC6D /* EditProfileViewController.swift in Sources */,
+				0C9D54A72C5F2F740075AC6D /* ExploreViewController.swift in Sources */,
+				0C9D54C52C5F3AD80075AC6D /* PublishPostViewController.swift in Sources */,
+				0C9D54A92C5F2F970075AC6D /* CameraViewController.swift in Sources */,
+				0C9D54762C5F2B1D0075AC6D /* HomeViewController.swift in Sources */,
+				0C9D54B52C5F39D50075AC6D /* RegistrationViewController.swift in Sources */,
+				0C9D54C32C5F3AC90075AC6D /* PostEditorViewController.swift in Sources */,
+				0C9D54B72C5F39F40075AC6D /* PostViewController.swift in Sources */,
+				0C9D54AB2C5F2FA70075AC6D /* NotificationsViewController.swift in Sources */,
+				0C9D54C12C5F3A690075AC6D /* SearchResultViewController.swift in Sources */,
+				0C9D54B32C5F39CA0075AC6D /* LoginViewController.swift in Sources */,
+				0C9D54BF2C5F3A480075AC6D /* SearchViewController.swift in Sources */,
+				0C9D54AD2C5F2FB90075AC6D /* ProfileViewController.swift in Sources */,
+				0C9D54722C5F2B1D0075AC6D /* AppDelegate.swift in Sources */,
+				0C9D54742C5F2B1D0075AC6D /* SceneDelegate.swift in Sources */,
+				0C9D54BD2C5F3A3B0075AC6D /* ListViewController.swift in Sources */,
+				0C9D54BB2C5F3A2E0075AC6D /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C9D54802C5F2B1F0075AC6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C9D54892C5F2B1F0075AC6D /* Raven_RewardsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C9D548A2C5F2B1F0075AC6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C9D54952C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift in Sources */,
+				0C9D54932C5F2B1F0075AC6D /* Raven_RewardsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0C9D54862C5F2B1F0075AC6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C9D546D2C5F2B1D0075AC6D /* Raven Rewards */;
+			targetProxy = 0C9D54852C5F2B1F0075AC6D /* PBXContainerItemProxy */;
+		};
+		0C9D54902C5F2B1F0075AC6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C9D546D2C5F2B1D0075AC6D /* Raven Rewards */;
+			targetProxy = 0C9D548F2C5F2B1F0075AC6D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0C9D54772C5F2B1D0075AC6D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C9D54782C5F2B1D0075AC6D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0C9D547C2C5F2B1E0075AC6D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C9D547D2C5F2B1E0075AC6D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0C9D54962C5F2B1F0075AC6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0C9D54972C5F2B1F0075AC6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0C9D54992C5F2B1F0075AC6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3S6N2R2GZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Raven Rewards/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ABoldt.Raven-Rewards";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0C9D549A2C5F2B1F0075AC6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3S6N2R2GZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Raven Rewards/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ABoldt.Raven-Rewards";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0C9D549C2C5F2B1F0075AC6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3S6N2R2GZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ABoldt.Raven-RewardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Raven Rewards.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Raven Rewards";
+			};
+			name = Debug;
+		};
+		0C9D549D2C5F2B1F0075AC6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3S6N2R2GZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ABoldt.Raven-RewardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Raven Rewards.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Raven Rewards";
+			};
+			name = Release;
+		};
+		0C9D549F2C5F2B1F0075AC6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3S6N2R2GZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ABoldt.Raven-RewardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Raven Rewards";
+			};
+			name = Debug;
+		};
+		0C9D54A02C5F2B1F0075AC6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3S6N2R2GZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ABoldt.Raven-RewardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Raven Rewards";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0C9D54692C5F2B1D0075AC6D /* Build configuration list for PBXProject "Raven Rewards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C9D54962C5F2B1F0075AC6D /* Debug */,
+				0C9D54972C5F2B1F0075AC6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C9D54982C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven Rewards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C9D54992C5F2B1F0075AC6D /* Debug */,
+				0C9D549A2C5F2B1F0075AC6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C9D549B2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C9D549C2C5F2B1F0075AC6D /* Debug */,
+				0C9D549D2C5F2B1F0075AC6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C9D549E2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C9D549F2C5F2B1F0075AC6D /* Debug */,
+				0C9D54A02C5F2B1F0075AC6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0C9D54662C5F2B1D0075AC6D /* Project object */;
+}

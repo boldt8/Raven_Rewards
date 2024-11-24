@@ -7,6 +7,17 @@ target 'Raven Rewards' do
 
   # Pods for Raven Rewards
 
+pod 'Appirater'
+pod 'SDWebImage'
+
+# Firebase
+
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Firebase/Analytics'
+pod 'Firebase/Crashlytics'
+pod 'Firebase/Storage'
   target 'Raven RewardsTests' do
     inherit! :search_paths
     # Pods for testing

@@ -3,19 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2A428B2C60940E003C0D37 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A428A2C60940E003C0D37 /* DatabaseManager.swift */; };
+		0C2A428D2C6094AC003C0D37 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A428C2C6094AC003C0D37 /* AuthManager.swift */; };
+		0C2A428F2C60954F003C0D37 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A428E2C60954F003C0D37 /* StorageManager.swift */; };
+		0C6C6C7E2C6032A30048FB6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */; };
+		0C6C6C7F2C6032A30048FB6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */; };
+		0C6C6C802C6032A30048FB6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */; };
+		0C8CB62A2C656C1300488833 /* IGFeedPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6292C656C1300488833 /* IGFeedPostTableViewCell.swift */; };
+		0C8CB62D2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB62C2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift */; };
+		0C8CB62F2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB62E2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift */; };
+		0C8CB6312C656E3600488833 /* IGFeedPostGeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6302C656E3600488833 /* IGFeedPostGeneralTableViewCell.swift */; };
+		0C8CB6332C658B1200488833 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6322C658B1200488833 /* FormTableViewCell.swift */; };
+		0C8CB6362C6595E000488833 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6352C6595E000488833 /* PhotoCollectionViewCell.swift */; };
+		0C8CB6382C65965800488833 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6372C65965800488833 /* ProfileInfoHeaderCollectionReusableView.swift */; };
+		0C8CB63A2C65974F00488833 /* ProfileTabsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6392C65974F00488833 /* ProfileTabsCollectionReusableView.swift */; };
+		0C8CB63C2C66DAB800488833 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB63B2C66DAB800488833 /* Models.swift */; };
+		0C8CB63E2C6AD6E400488833 /* UserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB63D2C6AD6E400488833 /* UserFollowTableViewCell.swift */; };
+		0C8CB6402C6D829B00488833 /* NoNotificaitonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB63F2C6D829B00488833 /* NoNotificaitonsView.swift */; };
+		0C8CB6432C73005200488833 /* NotificationFollowEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6422C73005200488833 /* NotificationFollowEventTableViewCell.swift */; };
+		0C8CB6452C73007200488833 /* NotificationLikeEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6442C73007200488833 /* NotificationLikeEventTableViewCell.swift */; };
 		0C9D54722C5F2B1D0075AC6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54712C5F2B1D0075AC6D /* AppDelegate.swift */; };
 		0C9D54742C5F2B1D0075AC6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54732C5F2B1D0075AC6D /* SceneDelegate.swift */; };
 		0C9D54762C5F2B1D0075AC6D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54752C5F2B1D0075AC6D /* HomeViewController.swift */; };
 		0C9D54792C5F2B1D0075AC6D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D54782C5F2B1D0075AC6D /* Base */; };
 		0C9D547B2C5F2B1E0075AC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D547A2C5F2B1E0075AC6D /* Assets.xcassets */; };
 		0C9D547E2C5F2B1E0075AC6D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D547D2C5F2B1E0075AC6D /* Base */; };
-		0C9D54892C5F2B1F0075AC6D /* Raven_RewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54882C5F2B1F0075AC6D /* Raven_RewardsTests.swift */; };
-		0C9D54932C5F2B1F0075AC6D /* Raven_RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54922C5F2B1F0075AC6D /* Raven_RewardsUITests.swift */; };
-		0C9D54952C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54942C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift */; };
 		0C9D54A72C5F2F740075AC6D /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54A62C5F2F740075AC6D /* ExploreViewController.swift */; };
 		0C9D54A92C5F2F970075AC6D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54A82C5F2F970075AC6D /* CameraViewController.swift */; };
 		0C9D54AB2C5F2FA70075AC6D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54AA2C5F2FA70075AC6D /* NotificationsViewController.swift */; };
@@ -30,6 +46,10 @@
 		0C9D54C12C5F3A690075AC6D /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */; };
 		0C9D54C32C5F3AC90075AC6D /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */; };
 		0C9D54C52C5F3AD80075AC6D /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */; };
+		0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE36B5F2C60A19B00BECC60 /* Extensions.swift */; };
+		2A7AD7EC594CA33202637A7A /* Pods_Raven_Rewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3500B71B8A576048E97018 /* Pods_Raven_Rewards.framework */; };
+		982D5C1DEA665B099FDA34B2 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2745A983DD38AEF69577A597 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework */; };
+		A0DA2AA995F69B49CF87F767 /* Pods_Raven_RewardsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8564685F6EDB20C0D60A9A37 /* Pods_Raven_RewardsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +70,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C2A428A2C60940E003C0D37 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		0C2A428C2C6094AC003C0D37 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		0C2A428E2C60954F003C0D37 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C8CB6292C656C1300488833 /* IGFeedPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CB62C2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CB62E2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostActionsTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CB6302C656E3600488833 /* IGFeedPostGeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostGeneralTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CB6322C658B1200488833 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CB6352C6595E000488833 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C8CB6372C65965800488833 /* ProfileInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		0C8CB6392C65974F00488833 /* ProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
+		0C8CB63B2C66DAB800488833 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0C8CB63D2C6AD6E400488833 /* UserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CB63F2C6D829B00488833 /* NoNotificaitonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNotificaitonsView.swift; sourceTree = "<group>"; };
+		0C8CB6422C73005200488833 /* NotificationFollowEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFollowEventTableViewCell.swift; sourceTree = "<group>"; };
+		0C8CB6442C73007200488833 /* NotificationLikeEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLikeEventTableViewCell.swift; sourceTree = "<group>"; };
 		0C9D546E2C5F2B1D0075AC6D /* Raven Rewards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Raven Rewards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9D54712C5F2B1D0075AC6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C9D54732C5F2B1D0075AC6D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,10 +96,7 @@
 		0C9D547D2C5F2B1E0075AC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C9D547F2C5F2B1E0075AC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C9D54842C5F2B1F0075AC6D /* Raven RewardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Raven RewardsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C9D54882C5F2B1F0075AC6D /* Raven_RewardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raven_RewardsTests.swift; sourceTree = "<group>"; };
 		0C9D548E2C5F2B1F0075AC6D /* Raven RewardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Raven RewardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C9D54922C5F2B1F0075AC6D /* Raven_RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raven_RewardsUITests.swift; sourceTree = "<group>"; };
-		0C9D54942C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raven_RewardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0C9D54A62C5F2F740075AC6D /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		0C9D54A82C5F2F970075AC6D /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0C9D54AA2C5F2FA70075AC6D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +111,16 @@
 		0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
+		0CE36B5F2C60A19B00BECC60 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		156C2810E1B2AB36E123B6AB /* Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig"; path = "Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1A20CA90BF6423395436CDA5 /* Pods-Raven Rewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.release.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.release.xcconfig"; sourceTree = "<group>"; };
+		1FFA08BA53A1867304635221 /* Pods-Raven Rewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.debug.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.debug.xcconfig"; sourceTree = "<group>"; };
+		2745A983DD38AEF69577A597 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_Rewards_Raven_RewardsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C3500B71B8A576048E97018 /* Pods_Raven_Rewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_Rewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8564685F6EDB20C0D60A9A37 /* Pods_Raven_RewardsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_RewardsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB69E23050658B4CC19F20F1 /* Pods-Raven RewardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven RewardsTests.release.xcconfig"; path = "Target Support Files/Pods-Raven RewardsTests/Pods-Raven RewardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		ED35853AA3B2D78FA26D39A1 /* Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F4229C43AD37D664FE711FE7 /* Pods-Raven RewardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven RewardsTests.debug.xcconfig"; path = "Target Support Files/Pods-Raven RewardsTests/Pods-Raven RewardsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7AD7EC594CA33202637A7A /* Pods_Raven_Rewards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0DA2AA995F69B49CF87F767 /* Pods_Raven_RewardsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,19 +144,77 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				982D5C1DEA665B099FDA34B2 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C589D1B2C6053B700A1E088 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */,
+				0C9D54B62C5F39F40075AC6D /* PostViewController.swift */,
+				0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */,
+				0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */,
+				0C9D54BC2C5F3A3B0075AC6D /* ListViewController.swift */,
+				0C9D54BE2C5F3A480075AC6D /* SearchViewController.swift */,
+				0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */,
+				0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		0C8CB6282C656BB300488833 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0C8CB6412C72FE8F00488833 /* Notifications */,
+				0C8CB62B2C656DC000488833 /* Home Feed & Post */,
+				0C8CB6322C658B1200488833 /* FormTableViewCell.swift */,
+				0C8CB6352C6595E000488833 /* PhotoCollectionViewCell.swift */,
+				0C8CB63D2C6AD6E400488833 /* UserFollowTableViewCell.swift */,
+				0C9D547A2C5F2B1E0075AC6D /* Assets.xcassets */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0C8CB62B2C656DC000488833 /* Home Feed & Post */ = {
+			isa = PBXGroup;
+			children = (
+				0C8CB6292C656C1300488833 /* IGFeedPostTableViewCell.swift */,
+				0C8CB62C2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift */,
+				0C8CB62E2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift */,
+				0C8CB6302C656E3600488833 /* IGFeedPostGeneralTableViewCell.swift */,
+			);
+			path = "Home Feed & Post";
+			sourceTree = "<group>";
+		};
+		0C8CB6342C65959300488833 /* CollectionView Headers */ = {
+			isa = PBXGroup;
+			children = (
+				0C8CB6372C65965800488833 /* ProfileInfoHeaderCollectionReusableView.swift */,
+				0C8CB6392C65974F00488833 /* ProfileTabsCollectionReusableView.swift */,
+			);
+			path = "CollectionView Headers";
+			sourceTree = "<group>";
+		};
+		0C8CB6412C72FE8F00488833 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				0C8CB6422C73005200488833 /* NotificationFollowEventTableViewCell.swift */,
+				0C8CB6442C73007200488833 /* NotificationLikeEventTableViewCell.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		0C9D54652C5F2B1D0075AC6D = {
 			isa = PBXGroup;
 			children = (
 				0C9D54702C5F2B1D0075AC6D /* Raven Rewards */,
-				0C9D54872C5F2B1F0075AC6D /* Raven RewardsTests */,
-				0C9D54912C5F2B1F0075AC6D /* Raven RewardsUITests */,
 				0C9D546F2C5F2B1D0075AC6D /* Products */,
+				B9E576E1C861214E5486DBE0 /* Pods */,
+				713785F2E0376150DA035EB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,23 +240,6 @@
 			path = "Raven Rewards";
 			sourceTree = "<group>";
 		};
-		0C9D54872C5F2B1F0075AC6D /* Raven RewardsTests */ = {
-			isa = PBXGroup;
-			children = (
-				0C9D54882C5F2B1F0075AC6D /* Raven_RewardsTests.swift */,
-			);
-			path = "Raven RewardsTests";
-			sourceTree = "<group>";
-		};
-		0C9D54912C5F2B1F0075AC6D /* Raven RewardsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0C9D54922C5F2B1F0075AC6D /* Raven_RewardsUITests.swift */,
-				0C9D54942C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift */,
-			);
-			path = "Raven RewardsUITests";
-			sourceTree = "<group>";
-		};
 		0C9D54A12C5F2D5F0075AC6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,8 +252,10 @@
 		0C9D54A22C5F2D690075AC6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C8CB6342C65959300488833 /* CollectionView Headers */,
+				0C8CB6282C656BB300488833 /* Cells */,
 				0C9D54A52C5F2E030075AC6D /* Storyboards */,
-				0C9D547A2C5F2B1E0075AC6D /* Assets.xcassets */,
+				0C8CB63F2C6D829B00488833 /* NoNotificaitonsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +263,7 @@
 		0C9D54A32C5F2D770075AC6D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0C8CB63B2C66DAB800488833 /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,8 +271,13 @@
 		0C9D54A42C5F2D7F0075AC6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */,
 				0C9D54732C5F2B1D0075AC6D /* SceneDelegate.swift */,
 				0C9D54712C5F2B1D0075AC6D /* AppDelegate.swift */,
+				0C2A428A2C60940E003C0D37 /* DatabaseManager.swift */,
+				0C2A428C2C6094AC003C0D37 /* AuthManager.swift */,
+				0C2A428E2C60954F003C0D37 /* StorageManager.swift */,
+				0CE36B5F2C60A19B00BECC60 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -212,14 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				0C9D54B02C5F398F0075AC6D /* Onboarding */,
-				0C9D54B62C5F39F40075AC6D /* PostViewController.swift */,
-				0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */,
-				0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */,
-				0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */,
-				0C9D54BC2C5F3A3B0075AC6D /* ListViewController.swift */,
-				0C9D54BE2C5F3A480075AC6D /* SearchViewController.swift */,
-				0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */,
-				0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */,
+				0C589D1B2C6053B700A1E088 /* General */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -233,6 +321,29 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		713785F2E0376150DA035EB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C3500B71B8A576048E97018 /* Pods_Raven_Rewards.framework */,
+				2745A983DD38AEF69577A597 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework */,
+				8564685F6EDB20C0D60A9A37 /* Pods_Raven_RewardsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9E576E1C861214E5486DBE0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA08BA53A1867304635221 /* Pods-Raven Rewards.debug.xcconfig */,
+				1A20CA90BF6423395436CDA5 /* Pods-Raven Rewards.release.xcconfig */,
+				ED35853AA3B2D78FA26D39A1 /* Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig */,
+				156C2810E1B2AB36E123B6AB /* Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig */,
+				F4229C43AD37D664FE711FE7 /* Pods-Raven RewardsTests.debug.xcconfig */,
+				EB69E23050658B4CC19F20F1 /* Pods-Raven RewardsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,9 +351,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C9D54982C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven Rewards" */;
 			buildPhases = (
+				5543760FE8F8066FA4FE96CB /* [CP] Check Pods Manifest.lock */,
 				0C9D546A2C5F2B1D0075AC6D /* Sources */,
 				0C9D546B2C5F2B1D0075AC6D /* Frameworks */,
 				0C9D546C2C5F2B1D0075AC6D /* Resources */,
+				DD543A0B4BE4CEEE1B406D7A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,6 +370,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C9D549B2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsTests" */;
 			buildPhases = (
+				9A380ED7574E0B412B02DA1F /* [CP] Check Pods Manifest.lock */,
 				0C9D54802C5F2B1F0075AC6D /* Sources */,
 				0C9D54812C5F2B1F0075AC6D /* Frameworks */,
 				0C9D54822C5F2B1F0075AC6D /* Resources */,
@@ -275,9 +389,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C9D549E2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsUITests" */;
 			buildPhases = (
+				0545D0145F7B597861F36A1A /* [CP] Check Pods Manifest.lock */,
 				0C9D548A2C5F2B1F0075AC6D /* Sources */,
 				0C9D548B2C5F2B1F0075AC6D /* Frameworks */,
 				0C9D548C2C5F2B1F0075AC6D /* Resources */,
+				EB245B20D73B9486BF2DEE8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,7 +429,7 @@
 				};
 			};
 			buildConfigurationList = 0C9D54692C5F2B1D0075AC6D /* Build configuration list for PBXProject "Raven Rewards" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -321,6 +437,9 @@
 				Base,
 			);
 			mainGroup = 0C9D54652C5F2B1D0075AC6D;
+			packageReferences = (
+				0CF0C73F2C602E85001209F0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 0C9D546F2C5F2B1D0075AC6D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -338,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C9D547B2C5F2B1E0075AC6D /* Assets.xcassets in Resources */,
+				0C6C6C7E2C6032A30048FB6D /* GoogleService-Info.plist in Resources */,
 				0C9D547E2C5F2B1E0075AC6D /* Base in Resources */,
 				0C9D54792C5F2B1D0075AC6D /* Base in Resources */,
 			);
@@ -347,6 +467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6C6C7F2C6032A30048FB6D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,10 +475,114 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6C6C802C6032A30048FB6D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0545D0145F7B597861F36A1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Raven Rewards-Raven RewardsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5543760FE8F8066FA4FE96CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Raven Rewards-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A380ED7574E0B412B02DA1F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Raven RewardsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD543A0B4BE4CEEE1B406D7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB245B20D73B9486BF2DEE8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0C9D546A2C5F2B1D0075AC6D /* Sources */ = {
@@ -370,15 +595,32 @@
 				0C9D54A92C5F2F970075AC6D /* CameraViewController.swift in Sources */,
 				0C9D54762C5F2B1D0075AC6D /* HomeViewController.swift in Sources */,
 				0C9D54B52C5F39D50075AC6D /* RegistrationViewController.swift in Sources */,
+				0C8CB6402C6D829B00488833 /* NoNotificaitonsView.swift in Sources */,
+				0C8CB62D2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift in Sources */,
+				0C8CB6432C73005200488833 /* NotificationFollowEventTableViewCell.swift in Sources */,
 				0C9D54C32C5F3AC90075AC6D /* PostEditorViewController.swift in Sources */,
+				0C2A428F2C60954F003C0D37 /* StorageManager.swift in Sources */,
+				0C8CB63E2C6AD6E400488833 /* UserFollowTableViewCell.swift in Sources */,
+				0C8CB63C2C66DAB800488833 /* Models.swift in Sources */,
+				0C8CB6332C658B1200488833 /* FormTableViewCell.swift in Sources */,
 				0C9D54B72C5F39F40075AC6D /* PostViewController.swift in Sources */,
+				0C8CB63A2C65974F00488833 /* ProfileTabsCollectionReusableView.swift in Sources */,
+				0C2A428B2C60940E003C0D37 /* DatabaseManager.swift in Sources */,
 				0C9D54AB2C5F2FA70075AC6D /* NotificationsViewController.swift in Sources */,
+				0C8CB62A2C656C1300488833 /* IGFeedPostTableViewCell.swift in Sources */,
+				0C8CB6362C6595E000488833 /* PhotoCollectionViewCell.swift in Sources */,
 				0C9D54C12C5F3A690075AC6D /* SearchResultViewController.swift in Sources */,
 				0C9D54B32C5F39CA0075AC6D /* LoginViewController.swift in Sources */,
+				0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */,
+				0C8CB6312C656E3600488833 /* IGFeedPostGeneralTableViewCell.swift in Sources */,
+				0C8CB6452C73007200488833 /* NotificationLikeEventTableViewCell.swift in Sources */,
 				0C9D54BF2C5F3A480075AC6D /* SearchViewController.swift in Sources */,
+				0C8CB6382C65965800488833 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
 				0C9D54AD2C5F2FB90075AC6D /* ProfileViewController.swift in Sources */,
+				0C2A428D2C6094AC003C0D37 /* AuthManager.swift in Sources */,
 				0C9D54722C5F2B1D0075AC6D /* AppDelegate.swift in Sources */,
 				0C9D54742C5F2B1D0075AC6D /* SceneDelegate.swift in Sources */,
+				0C8CB62F2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift in Sources */,
 				0C9D54BD2C5F3A3B0075AC6D /* ListViewController.swift in Sources */,
 				0C9D54BB2C5F3A2E0075AC6D /* SettingsViewController.swift in Sources */,
 			);
@@ -388,7 +630,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C9D54892C5F2B1F0075AC6D /* Raven_RewardsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,8 +637,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C9D54952C5F2B1F0075AC6D /* Raven_RewardsUITestsLaunchTests.swift in Sources */,
-				0C9D54932C5F2B1F0075AC6D /* Raven_RewardsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +701,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -473,7 +712,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -525,7 +764,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -536,7 +775,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -557,6 +796,7 @@
 		};
 		0C9D54992C5F2B1F0075AC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FFA08BA53A1867304635221 /* Pods-Raven Rewards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -568,8 +808,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -585,6 +825,7 @@
 		};
 		0C9D549A2C5F2B1F0075AC6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A20CA90BF6423395436CDA5 /* Pods-Raven Rewards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -596,8 +837,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,6 +854,7 @@
 		};
 		0C9D549C2C5F2B1F0075AC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4229C43AD37D664FE711FE7 /* Pods-Raven RewardsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -633,6 +875,7 @@
 		};
 		0C9D549D2C5F2B1F0075AC6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB69E23050658B4CC19F20F1 /* Pods-Raven RewardsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -653,6 +896,7 @@
 		};
 		0C9D549F2C5F2B1F0075AC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED35853AA3B2D78FA26D39A1 /* Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -671,6 +915,7 @@
 		};
 		0C9D54A02C5F2B1F0075AC6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 156C2810E1B2AB36E123B6AB /* Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -727,6 +972,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0CF0C73F2C602E85001209F0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 0C9D54662C5F2B1D0075AC6D /* Project object */;
 }

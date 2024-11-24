@@ -1,0 +1,6 @@
+framework module Pods_Raven_RewardsTests {
+  umbrella header "Pods-Raven RewardsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

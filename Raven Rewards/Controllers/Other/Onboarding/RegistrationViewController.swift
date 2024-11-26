@@ -104,18 +104,44 @@ class RegistrationViewController: UIViewController {
         passwordField.resignFirstResponder()
         
         guard let email = emailField.text, !email.isEmpty,
-              let password = passwordField.text, !password.isEmpty, password.count >= 8,
+              let password = passwordField.text, !password.isEmpty,
               let username = usernameField.text, !username.isEmpty else {
-                  return
+              return
+        }
+        if (password.count < 8 ){
+            let alert = UIAlertController(title: "Failed",
+                                          message: "password must be 8 characters or more",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss",
+                                          style: .cancel,
+                                          handler: nil))
+            self.present(alert, animated: true)
+            return
         }
         
         AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
             DispatchQueue.main.async{
                 if registered {
                     // good to go
+                    
+                    let alert = UIAlertController(title: "Success",
+                                                  message: "we successfully created an account",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss",
+                                                  style: .cancel,
+                                                  handler: nil))
+                    self.present(alert, animated: true)
+                    
                 }
                 else {
                     // failed
+                    let alert = UIAlertController(title: "Log In Error",
+                                                  message: "we were unable to create an account (This account may have already been created)",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss",
+                                                  style: .cancel,
+                                                  handler: nil))
+                    self.present(alert, animated: true)
                 }
             }
         }

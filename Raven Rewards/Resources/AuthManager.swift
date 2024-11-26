@@ -13,6 +13,12 @@ public class AuthManager{
     
     // Mark: -Public
     
+    public static func getUserName() -> String {
+        let user = Auth.auth().currentUser
+        guard let name = user?.email else { return "" }
+        return name
+    }
+    
     public func registerNewUser(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
         /*
          - Check is username is avaliable

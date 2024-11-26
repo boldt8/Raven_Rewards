@@ -19,6 +19,7 @@ struct QRScanner: View {
                 if case let .success(code) = result {
                     self.scannedCode = code.string
                     self.isPresentingScanner = false
+                    DatabaseManager.shared.incrPoints(uid: self.scannedCode)
                 }
                 
             }
@@ -27,7 +28,7 @@ struct QRScanner: View {
     var body: some View {
         VStack(spacing: 10){
             Text(scannedCode)
-            
+
             Button("Scan QR Code") {
                 self.isPresentingScanner = true
             }
@@ -41,6 +42,3 @@ struct QRScanner: View {
 
 }
 
-#Preview {
-    QRScanner()
-}

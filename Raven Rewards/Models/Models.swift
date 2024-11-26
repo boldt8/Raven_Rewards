@@ -7,6 +7,23 @@
 
 import Foundation
 
+
+class RealUser: Encodable, Decodable {
+    var points: Int = 0
+    var username: String = ""
+   
+}
+
+extension Encodable{
+    var toDictionay: [String: Any]?{
+        guard let data = try? JSONEncoder().encode(self) else {
+            return nil
+        }
+        
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+    }
+}
+
 enum Gender {
     case male, female, other
 }

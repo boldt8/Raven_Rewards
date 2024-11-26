@@ -13,14 +13,20 @@ import SwiftUI
 
 
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, UITextViewDelegate {
+    private let ravenPoints: UITextView = {
+        let body = UITextView()
+        body.text = "Current Raven Points: "
+        body.font = UIFont(name: "GillSans-Bold", size: CGFloat(30))
+        return body
+    }()
+    
     private let QR: UIImageView = {
         let qrCode: UIImage = {
             let contex = CIContext()
             let filter = CIFilter.qrCodeGenerator()
             var url: String
-            
-            let view = imageGenerate("\(AuthManager.getUserName())")
+            let view = imageGenerate("\(AuthManager.shared.getUserID())")
             func imageGenerate(_ url: String) -> UIImage {
                 let data = Data(url.utf8)
                 filter.setValue(data, forKey: "inputMessage")
@@ -39,12 +45,14 @@ class CameraViewController: UIViewController {
     
     let scanButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchUserName()
         navigationController?.setNavigationBarHidden(true, animated: false)
         // Do any additional setup after loading the view.
-        
+        self.ravenPoints.text = "Current Raven Points: \(DatabaseManager.shared.getPoints(uid: AuthManager.shared.getUserID()))"
+        view.addSubview(ravenPoints)
         view.addSubview(QR)
         // Check to see if admin user
         if (true){
@@ -56,6 +64,8 @@ class CameraViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        ravenPoints.frame = CGRect(x: 0, y: 0, width: view.width/2, height: view.width/2)
+        ravenPoints.center = CGPoint(x: view.width/2, y: view.height*1/4)
         QR.frame = CGRect(x: 0, y: 0, width: view.width/2, height: view.width/2)
         QR.center = view.center
         scanButton.center = CGPoint(x: view.width/2, y: view.height*3/4)
@@ -63,17 +73,6 @@ class CameraViewController: UIViewController {
         scanButton.backgroundColor = .systemPink
         scanButton.addTarget(self, action: #selector(didTapScanButton), for: .touchUpInside)
         
-    }
-    
-    private func fetchUserName() {
-        let user = User(username: "Joe",
-                        bio: "",
-                        name: (first: "", last: ""),
-                        profilePhoto: URL(string: "https://www.google.com")!,
-                        birthDate: Date(),
-                        gender: .male,
-                        counts: UserCount(followers: 1, following: 1, posts: 1),
-                        joinDate: Date())
     }
     
     @objc func didTapScanButton() {

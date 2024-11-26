@@ -13,13 +13,13 @@ public class AuthManager{
     
     // Mark: -Public
     
-    public static func getUserName() -> String {
+    public func getUserID() -> String {
         let user = Auth.auth().currentUser
-        guard let name = user?.email else { return "" }
+        guard let name = user?.email?.safeDatabaseKey() else { return "" }
         return name
     }
     
-    public func registerNewUser(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
+    public func registerNewUser(username: String, email: String, password: String, points: Int, completion: @escaping (Bool) -> Void) {
         /*
          - Check is username is avaliable
          - Check if email is avaliable
@@ -38,7 +38,7 @@ public class AuthManager{
                     }
                     
                     // Insert into database
-                    DatabaseManager.shared.insertNewUser(with: email, username: username) { inserted in
+                    DatabaseManager.shared.insertNewUser(with: email, username: username, points: points) { inserted in
                         if inserted {
                             completion(true)
                             return

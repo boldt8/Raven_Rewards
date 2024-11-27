@@ -36,9 +36,8 @@ public class DatabaseManager{
                     print("Can't convert to RealUser type")
                 }
         
-        guard let output = self.userObject else { return RealUser()}
-        print(output)
-        return output
+        guard let currUser = self.userObject else { return RealUser()}
+        return currUser
     }
     
     public func incrPoints(uid: String){
@@ -52,9 +51,8 @@ public class DatabaseManager{
                 
                 
             }
-        guard let oldPoints = self.userObject?.points else { return }
-        guard let username = self.userObject?.username else { return }
-        database.child(uid).setValue(["username": username, "points": oldPoints + 1])
+        guard let currUser = self.userObject else { return }
+        database.child(uid).setValue(["username": currUser.username, "points" : currUser.points + 1, "bio" : currUser.bio, "profilePhoto" : currUser.profilePhoto, "isAdmin": currUser.isAdmin])
     }
     
     /// Inserts new user data to database
@@ -62,6 +60,9 @@ public class DatabaseManager{
     ///     - email: String representing email
     ///     - username: String representing username
     ///     - points: An Int representing this users points
+    ///     - bio: A String representing a user's bio
+    ///     - profilePhoto: A String representing the URL of a photo
+    ///     - isAdmin: A bool representing Admin perms
     ///     - completion: Async callback for result if database entry succeded
     public func insertNewUser(with email: String, username: String, points: Int, bio: String, profilePhoto: String, isAdmin: Bool, completion: @escaping (Bool) -> Void) {
         database.child(email.safeDatabaseKey()).setValue(["username": username, "points" : points, "bio" : bio, "profilePhoto" : profilePhoto, "isAdmin": isAdmin]) { error, _ in

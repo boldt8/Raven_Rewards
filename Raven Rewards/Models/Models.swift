@@ -11,6 +11,9 @@ import Foundation
 class RealUser: Encodable, Decodable {
     var points: Int = 0
     var username: String = ""
+    var bio: String = ""
+    var profilePhoto: String = "https://www.google.com"
+    var isAdmin: Bool = false
    
 }
 

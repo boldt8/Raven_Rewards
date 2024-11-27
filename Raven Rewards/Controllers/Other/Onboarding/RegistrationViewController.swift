@@ -119,7 +119,7 @@ class RegistrationViewController: UIViewController {
             return
         }
         
-        AuthManager.shared.registerNewUser(username: username, email: email, password: password, points: 0) { registered in
+        AuthManager.shared.registerNewUser(username: username, email: email, password: password, points: 0, bio: "No bio yet...", profilePhoto: "https://www.google.com", isAdmin: false) { registered in
             DispatchQueue.main.async{
                 if registered {
                     // good to go

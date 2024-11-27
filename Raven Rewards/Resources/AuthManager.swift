@@ -19,7 +19,7 @@ public class AuthManager{
         return name
     }
     
-    public func registerNewUser(username: String, email: String, password: String, points: Int, completion: @escaping (Bool) -> Void) {
+    public func registerNewUser(username: String, email: String, password: String, points: Int, bio: String, profilePhoto: String, isAdmin: Bool,  completion: @escaping (Bool) -> Void) {
         /*
          - Check is username is avaliable
          - Check if email is avaliable
@@ -38,7 +38,7 @@ public class AuthManager{
                     }
                     
                     // Insert into database
-                    DatabaseManager.shared.insertNewUser(with: email, username: username, points: points) { inserted in
+                    DatabaseManager.shared.insertNewUser(with: email, username: username, points: points, bio: bio, profilePhoto: profilePhoto, isAdmin: isAdmin) { inserted in
                         if inserted {
                             completion(true)
                             return

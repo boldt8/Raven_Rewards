@@ -63,8 +63,8 @@ public class DatabaseManager{
     ///     - username: String representing username
     ///     - points: An Int representing this users points
     ///     - completion: Async callback for result if database entry succeded
-    public func insertNewUser(with email: String, username: String, points: Int, completion: @escaping (Bool) -> Void) {
-        database.child(email.safeDatabaseKey()).setValue(["username": username, "points" : points]) { error, _ in
+    public func insertNewUser(with email: String, username: String, points: Int, bio: String, profilePhoto: String, isAdmin: Bool, completion: @escaping (Bool) -> Void) {
+        database.child(email.safeDatabaseKey()).setValue(["username": username, "points" : points, "bio" : bio, "profilePhoto" : profilePhoto, "isAdmin": isAdmin]) { error, _ in
             if error == nil {
                 // succeded
                 completion(true)

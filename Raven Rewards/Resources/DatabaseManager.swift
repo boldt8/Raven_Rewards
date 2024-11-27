@@ -6,6 +6,7 @@
 //
 
 import FirebaseDatabase
+//import Combine
 
 public class DatabaseManager{
     
@@ -13,7 +14,6 @@ public class DatabaseManager{
     
     private let database = Database.database().reference()
     
-    @Published
     var userObject: RealUser? = nil
     
     // Mark: -Public
@@ -26,18 +26,18 @@ public class DatabaseManager{
         completion(true)
     }
     
-    public func getPoints(uid: String) -> Int {
-        database.child(uid)
-            .observe(.value) { snapshot in
+    
+    
+    func getUser(uid: String) async throws -> RealUser {
                 do{
-                    self.userObject = try snapshot.data(as: RealUser.self)
+                    let snapShot = try await database.child(uid).getData()
+                    self.userObject = try snapShot.data(as: RealUser.self)
                 } catch {
                     print("Can't convert to RealUser type")
                 }
-                
-                
-            }
-        guard let output = self.userObject?.points else { return 0 }
+        
+        guard let output = self.userObject else { return RealUser()}
+        print(output)
         return output
     }
     

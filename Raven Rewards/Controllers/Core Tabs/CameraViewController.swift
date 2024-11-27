@@ -45,13 +45,20 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     
     let scanButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
     
-    
+    private func fetchUser() {
+        Task {
+            let currUser = try await DatabaseManager.shared.getUser(uid: AuthManager.shared.getUserID())
+            await MainActor.run(body: {
+                self.ravenPoints.text = "Current Raven Points: \(currUser.points)"
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         // Do any additional setup after loading the view.
-        self.ravenPoints.text = "Current Raven Points: \(DatabaseManager.shared.getPoints(uid: AuthManager.shared.getUserID()))"
+        fetchUser()
         view.addSubview(ravenPoints)
         view.addSubview(QR)
         // Check to see if admin user

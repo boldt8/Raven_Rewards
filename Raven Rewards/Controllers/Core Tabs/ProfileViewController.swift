@@ -16,9 +16,9 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .systemBackground
         configureNavigationBar()
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 1
@@ -26,6 +26,7 @@ final class ProfileViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
         let size = (view.width - 4)/3
         layout.itemSize = CGSize(width: size, height: size)
+        
         collectionView = UICollectionView(frame: .zero,
                                           collectionViewLayout: layout)
         
@@ -157,31 +158,31 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 //MARK: - ProfileInfoHeaderCollectionReusableViewDelegate
 
 extension ProfileViewController: ProfileInfoHeaderCollectionReusableViewDelegate {
-    func profileHeaderDidTapPostsButton(_ header: ProfileInfoHeaderCollectionReusableView) {
-        // scroll to the posts
-        collectionView?.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: true)
-    }
+//    func profileHeaderDidTapPostsButton(_ header: ProfileInfoHeaderCollectionReusableView) {
+//        // scroll to the posts
+//        collectionView?.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: true)
+//    }
     
-    func profileHeaderDidTapFollowersButton(_ header: ProfileInfoHeaderCollectionReusableView) {
-        var mockData = [UserRelationship]()
-        for x in 0..<10 {
-            mockData.append(UserRelationship(username: "@Joe", name: "Joe Smith", type: x % 2 == 0 ? .following : .not_following))
-        }
-        let vc = ListViewController(data: mockData)
-        vc.title = "Followers"
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func profileHeaderDidTapFollowingButton(_ header: ProfileInfoHeaderCollectionReusableView) {
-        var mockData = [UserRelationship]()
-        for x in 0..<10 {
-            mockData.append(UserRelationship(username: "@Joe", name: "Joe Smith", type: x % 2 == 0 ? .following : .not_following))
-        }
-        let vc = ListViewController(data: mockData)
-        vc.title = "Following"
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
+//    func profileHeaderDidTapFollowersButton(_ header: ProfileInfoHeaderCollectionReusableView) {
+//        var mockData = [UserRelationship]()
+//        for x in 0..<10 {
+//            mockData.append(UserRelationship(username: "@Joe", name: "Joe Smith", type: x % 2 == 0 ? .following : .not_following))
+//        }
+//        let vc = ListViewController(data: mockData)
+//        vc.title = "Followers"
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    func profileHeaderDidTapFollowingButton(_ header: ProfileInfoHeaderCollectionReusableView) {
+//        var mockData = [UserRelationship]()
+//        for x in 0..<10 {
+//            mockData.append(UserRelationship(username: "@Joe", name: "Joe Smith", type: x % 2 == 0 ? .following : .not_following))
+//        }
+//        let vc = ListViewController(data: mockData)
+//        vc.title = "Following"
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
     func profileHeaderDidTapEditProfileButton(_ header: ProfileInfoHeaderCollectionReusableView) {
         let vc = EditProfileViewController()
         vc.title = "Edit Profile"

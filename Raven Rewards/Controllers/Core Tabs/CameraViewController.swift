@@ -50,6 +50,9 @@ class CameraViewController: UIViewController, UITextViewDelegate {
             let currUser = try await DatabaseManager.shared.getUser(uid: AuthManager.shared.getUserID())
             await MainActor.run(body: {
                 self.ravenPoints.text = "Current Raven Points: \(currUser.points)"
+                if(currUser.isAdmin){
+                    self.scanButton.isHidden = false
+                }
             })
         }
     }
@@ -62,9 +65,8 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         view.addSubview(ravenPoints)
         view.addSubview(QR)
         // Check to see if admin user
-        if (true){
-            view.addSubview(scanButton)
-        }
+        view.addSubview(scanButton)
+        self.scanButton.isHidden = true
         
         
     }

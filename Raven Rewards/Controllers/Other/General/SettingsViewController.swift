@@ -47,12 +47,6 @@ final class SettingsViewController: UIViewController {
             SettingsCellModel(title: "Edit Profile") { [weak self] in
                 self?.didTapEditProfile()
             },
-            SettingsCellModel(title: "Invite Friends") { [weak self] in
-                self?.didTapInviteFriends()
-            },
-            SettingsCellModel(title: "Save Original Posts") { [weak self] in
-                self?.didTapSaveOriginalPosts()
-            }
         ])
         
         data.append([
@@ -93,14 +87,6 @@ final class SettingsViewController: UIViewController {
         
         let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
-    }
-    
-    private func didTapSaveOriginalPosts() {
-        
-    }
-    
-    private func didTapInviteFriends() {
-        // Show share sheet to invite friends
     }
     
     private func didTapEditProfile() {

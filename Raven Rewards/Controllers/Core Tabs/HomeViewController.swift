@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
     }
     
     private func createMockModels() {
-        let user = User(username: "@kanye_west",
+        let user = User(username: "@CCA_ASB",
                         bio: "",
                         name: (first: "", last: ""),
                         profilePhoto: URL(string: "https://www.google.com")!,

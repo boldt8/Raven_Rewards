@@ -23,30 +23,12 @@
                         <segue destination="qSs-h3-Pcp" kind="relationship" relationship="viewControllers" id="rYu-Ab-CNz"/>
                         <segue destination="h6J-cR-aSH" kind="relationship" relationship="viewControllers" id="AEV-TP-JMs"/>
                         <segue destination="D9P-Ba-ig3" kind="relationship" relationship="viewControllers" id="oLn-GZ-5tF"/>
-                        <segue destination="ypX-gF-sD9" kind="relationship" relationship="viewControllers" id="OiG-p3-eqz"/>
                         <segue destination="8zh-70-Odk" kind="relationship" relationship="viewControllers" id="m63-pB-x1b"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCF-vO-SQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1396" y="-439"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8r5-LS-fnh">
-            <objects>
-                <navigationController id="ypX-gF-sD9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="bell" catalog="system" id="c99-gm-PUX"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8em-Jo-OM2">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="dld-Jp-mya" kind="relationship" relationship="rootViewController" id="IlZ-ti-yGb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1fN-BC-0za" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-659" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xLv-ZK-ltL">
@@ -80,7 +62,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AOv-we-HPI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2123" y="336"/>
+            <point key="canvasLocation" x="-1956" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S1N-m2-gcK">
@@ -114,7 +96,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Od-tn-vLB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1396" y="336"/>
+            <point key="canvasLocation" x="-1068" y="349"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="UN7-3l-Rez">
@@ -130,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xK9-UQ-PNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2086" y="1073"/>
+            <point key="canvasLocation" x="-1956" y="1073"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="khp-zn-vBg">
@@ -148,22 +130,6 @@
             </objects>
             <point key="canvasLocation" x="79" y="1073"/>
         </scene>
-        <!--Notifications View Controller-->
-        <scene sceneID="1R4-45-dd7">
-            <objects>
-                <viewController id="dld-Jp-mya" customClass="NotificationsViewController" customModule="Raven_Rewards" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="P0r-Tl-huM">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="yfR-p5-wra"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="rq7-ck-RAi"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FPY-H9-Sbm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-618" y="1073"/>
-        </scene>
         <!--Camera View Controller-->
         <scene sceneID="RcQ-0P-b6n">
             <objects>
@@ -178,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWj-xk-aVf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1338" y="1073"/>
+            <point key="canvasLocation" x="-1069" y="1073"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="fza-q9-SdY">
@@ -198,7 +164,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bell" catalog="system" width="125" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person" catalog="system" width="128" height="121"/>

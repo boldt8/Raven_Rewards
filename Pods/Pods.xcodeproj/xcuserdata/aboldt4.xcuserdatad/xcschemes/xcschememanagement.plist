@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BoringSSL-GRPC-openssl_grpc.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BoringSSL-GRPC.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -74,17 +84,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FirebaseCrashlytics-FirebaseCrashlytics_Privacy.xcscheme</key>
+		<key>FirebaseFirestore-FirebaseFirestore_Privacy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FirebaseCrashlytics.xcscheme</key>
+		<key>FirebaseFirestore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FirebaseDatabase.xcscheme</key>
+		<key>FirebaseFirestoreInternal-FirebaseFirestoreInternal_Privacy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FirebaseFirestoreInternal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -95,16 +110,6 @@
 			<false/>
 		</dict>
 		<key>FirebaseInstallations.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FirebaseRemoteConfigInterop.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FirebaseSessions.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -134,16 +139,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GoogleDataTransport-GoogleDataTransport_Privacy.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>GoogleDataTransport.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>GoogleUtilities-GoogleUtilities_Privacy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -154,17 +149,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Raven Rewards-Raven RewardsUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Raven Rewards.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Raven RewardsTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -175,16 +160,6 @@
 			<false/>
 		</dict>
 		<key>PromisesObjC.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PromisesSwift-Promises_Privacy.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PromisesSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -200,6 +175,41 @@
 			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>abseil-xcprivacy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>abseil.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>gRPC-C++-gRPCCertificates-Cpp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>gRPC-C++-grpcpp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>gRPC-C++.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>gRPC-Core-grpc.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>gRPC-Core.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

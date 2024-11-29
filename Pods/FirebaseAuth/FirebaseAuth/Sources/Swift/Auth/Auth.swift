@@ -252,8 +252,6 @@ extension Auth: AuthInterop {
 
   /// Sets the `currentUser` on the receiver to the provided user object.
   /// - Parameter user: The user object to be set as the current user of the calling Auth instance.
-  /// - Parameter completion: Optionally; a block invoked after the user of the calling Auth
-  /// instance has been updated or an error was encountered.
   @available(iOS 13, tvOS 13, macOS 10.15, macCatalyst 13, watchOS 7, *)
   open func updateCurrentUser(_ user: User) async throws {
     return try await withCheckedThrowingContinuation { continuation in
@@ -290,7 +288,7 @@ extension Auth: AuthInterop {
                                      completion: (([String]?, Error?) -> Void)? = nil) {
     kAuthGlobalWorkQueue.async {
       let request = CreateAuthURIRequest(identifier: email,
-                                         continueURI: "http:www.google.com",
+                                         continueURI: "http://www.google.com/",
                                          requestConfiguration: self.requestConfiguration)
       Task {
         do {
@@ -1430,6 +1428,7 @@ extension Auth: AuthInterop {
   }
 
   /// Revoke the users token with authorization code.
+  /// - Parameter authorizationCode: The authorization code used to perform the revocation.
   /// - Parameter completion: (Optional) the block invoked when the request to revoke the token is
   /// complete, or fails. Invoked asynchronously on the main thread in the future.
   @objc open func revokeToken(withAuthorizationCode authorizationCode: String,
@@ -1450,8 +1449,7 @@ extension Auth: AuthInterop {
   }
 
   /// Revoke the users token with authorization code.
-  /// - Parameter completion: (Optional) the block invoked when the request to revoke the token is
-  /// complete, or fails. Invoked asynchronously on the main thread in the future.
+  /// - Parameter authorizationCode: The authorization code used to perform the revocation.
   @available(iOS 13, tvOS 13, macOS 10.15, macCatalyst 13, watchOS 7, *)
   open func revokeToken(withAuthorizationCode authorizationCode: String) async throws {
     return try await withCheckedThrowingContinuation { continuation in
@@ -1667,9 +1665,11 @@ extension Auth: AuthInterop {
           try self.internalUseUserAccessGroup(storedUserAccessGroup)
         } else {
           let user = try self.getUser()
-          try self.updateCurrentUser(user, byForce: false, savingToDisk: false)
           if let user {
             self.tenantID = user.tenantID
+          }
+          try self.updateCurrentUser(user, byForce: false, savingToDisk: false)
+          if let user {
             self.lastNotifiedUserToken = user.rawAccessToken()
           }
         }
@@ -1941,8 +1941,7 @@ extension Auth: AuthInterop {
     }
     if let user {
       if user.tenantID != nil || tenantID != nil, tenantID != user.tenantID {
-        let error = AuthErrorUtils.tenantIDMismatchError()
-        throw error
+        throw AuthErrorUtils.tenantIDMismatchError()
       }
     }
     var throwError: Error?
@@ -2320,8 +2319,12 @@ extension Auth: AuthInterop {
 
   // MARK: Internal properties
 
-  /// Allow tests to swap in an alternate mainBundle.
-  var mainBundleUrlTypes: [[String: Any]]!
+  /// Allow tests to swap in an alternate mainBundle, including ObjC unit tests via CocoaPods.
+  #if FIREBASE_CI
+    @objc public var mainBundleUrlTypes: [[String: Any]]!
+  #else
+    var mainBundleUrlTypes: [[String: Any]]!
+  #endif
 
   /// The configuration object comprising of parameters needed to make a request to Firebase
   ///   Auth's backend.

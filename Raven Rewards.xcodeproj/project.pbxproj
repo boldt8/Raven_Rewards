@@ -45,9 +45,7 @@
 		0C9D54C32C5F3AC90075AC6D /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */; };
 		0C9D54C52C5F3AD80075AC6D /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */; };
 		0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE36B5F2C60A19B00BECC60 /* Extensions.swift */; };
-		2A7AD7EC594CA33202637A7A /* Pods_Raven_Rewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3500B71B8A576048E97018 /* Pods_Raven_Rewards.framework */; };
-		982D5C1DEA665B099FDA34B2 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2745A983DD38AEF69577A597 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework */; };
-		A0DA2AA995F69B49CF87F767 /* Pods_Raven_RewardsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8564685F6EDB20C0D60A9A37 /* Pods_Raven_RewardsTests.framework */; };
+		160E9C5F33769478BBAEDBF5 /* Pods_Raven_Rewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42A433F8EB395E9B582BB16 /* Pods_Raven_Rewards.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,15 +105,9 @@
 		0C9D54C22C5F3AC90075AC6D /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
 		0CE36B5F2C60A19B00BECC60 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		156C2810E1B2AB36E123B6AB /* Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig"; path = "Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig"; sourceTree = "<group>"; };
-		1A20CA90BF6423395436CDA5 /* Pods-Raven Rewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.release.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.release.xcconfig"; sourceTree = "<group>"; };
-		1FFA08BA53A1867304635221 /* Pods-Raven Rewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.debug.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.debug.xcconfig"; sourceTree = "<group>"; };
-		2745A983DD38AEF69577A597 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_Rewards_Raven_RewardsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C3500B71B8A576048E97018 /* Pods_Raven_Rewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_Rewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8564685F6EDB20C0D60A9A37 /* Pods_Raven_RewardsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_RewardsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB69E23050658B4CC19F20F1 /* Pods-Raven RewardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven RewardsTests.release.xcconfig"; path = "Target Support Files/Pods-Raven RewardsTests/Pods-Raven RewardsTests.release.xcconfig"; sourceTree = "<group>"; };
-		ED35853AA3B2D78FA26D39A1 /* Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F4229C43AD37D664FE711FE7 /* Pods-Raven RewardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven RewardsTests.debug.xcconfig"; path = "Target Support Files/Pods-Raven RewardsTests/Pods-Raven RewardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		16C9F46D94BF6EE617BB823D /* Pods-Raven Rewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.debug.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.debug.xcconfig"; sourceTree = "<group>"; };
+		38EB0AF4294E360B7066B385 /* Pods-Raven Rewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.release.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.release.xcconfig"; sourceTree = "<group>"; };
+		C42A433F8EB395E9B582BB16 /* Pods_Raven_Rewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_Rewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C45BDBF2CF460C600C12BA0 /* CodeScanner in Frameworks */,
-				2A7AD7EC594CA33202637A7A /* Pods_Raven_Rewards.framework in Frameworks */,
+				160E9C5F33769478BBAEDBF5 /* Pods_Raven_Rewards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +124,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0DA2AA995F69B49CF87F767 /* Pods_Raven_RewardsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +131,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				982D5C1DEA665B099FDA34B2 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +189,7 @@
 				0C9D54702C5F2B1D0075AC6D /* Raven Rewards */,
 				0C9D546F2C5F2B1D0075AC6D /* Products */,
 				B9E576E1C861214E5486DBE0 /* Pods */,
-				713785F2E0376150DA035EB7 /* Frameworks */,
+				4BEF64CF305E68EB6C932E64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,12 +296,10 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		713785F2E0376150DA035EB7 /* Frameworks */ = {
+		4BEF64CF305E68EB6C932E64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5C3500B71B8A576048E97018 /* Pods_Raven_Rewards.framework */,
-				2745A983DD38AEF69577A597 /* Pods_Raven_Rewards_Raven_RewardsUITests.framework */,
-				8564685F6EDB20C0D60A9A37 /* Pods_Raven_RewardsTests.framework */,
+				C42A433F8EB395E9B582BB16 /* Pods_Raven_Rewards.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -319,12 +307,8 @@
 		B9E576E1C861214E5486DBE0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1FFA08BA53A1867304635221 /* Pods-Raven Rewards.debug.xcconfig */,
-				1A20CA90BF6423395436CDA5 /* Pods-Raven Rewards.release.xcconfig */,
-				ED35853AA3B2D78FA26D39A1 /* Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig */,
-				156C2810E1B2AB36E123B6AB /* Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig */,
-				F4229C43AD37D664FE711FE7 /* Pods-Raven RewardsTests.debug.xcconfig */,
-				EB69E23050658B4CC19F20F1 /* Pods-Raven RewardsTests.release.xcconfig */,
+				16C9F46D94BF6EE617BB823D /* Pods-Raven Rewards.debug.xcconfig */,
+				38EB0AF4294E360B7066B385 /* Pods-Raven Rewards.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -336,11 +320,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C9D54982C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven Rewards" */;
 			buildPhases = (
-				5543760FE8F8066FA4FE96CB /* [CP] Check Pods Manifest.lock */,
+				EA08205E50D54B7490F82B47 /* [CP] Check Pods Manifest.lock */,
 				0C9D546A2C5F2B1D0075AC6D /* Sources */,
 				0C9D546B2C5F2B1D0075AC6D /* Frameworks */,
 				0C9D546C2C5F2B1D0075AC6D /* Resources */,
-				DD543A0B4BE4CEEE1B406D7A /* [CP] Embed Pods Frameworks */,
+				C7A48507D75C554A6EBAC37D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -358,7 +342,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C9D549B2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsTests" */;
 			buildPhases = (
-				9A380ED7574E0B412B02DA1F /* [CP] Check Pods Manifest.lock */,
 				0C9D54802C5F2B1F0075AC6D /* Sources */,
 				0C9D54812C5F2B1F0075AC6D /* Frameworks */,
 				0C9D54822C5F2B1F0075AC6D /* Resources */,
@@ -377,11 +360,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C9D549E2C5F2B1F0075AC6D /* Build configuration list for PBXNativeTarget "Raven RewardsUITests" */;
 			buildPhases = (
-				0545D0145F7B597861F36A1A /* [CP] Check Pods Manifest.lock */,
 				0C9D548A2C5F2B1F0075AC6D /* Sources */,
 				0C9D548B2C5F2B1F0075AC6D /* Frameworks */,
 				0C9D548C2C5F2B1F0075AC6D /* Resources */,
-				EB245B20D73B9486BF2DEE8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -471,29 +452,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0545D0145F7B597861F36A1A /* [CP] Check Pods Manifest.lock */ = {
+		C7A48507D75C554A6EBAC37D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Raven Rewards-Raven RewardsUITests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5543760FE8F8066FA4FE96CB /* [CP] Check Pods Manifest.lock */ = {
+		EA08205E50D54B7490F82B47 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -513,62 +489,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A380ED7574E0B412B02DA1F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Raven RewardsTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD543A0B4BE4CEEE1B406D7A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EB245B20D73B9486BF2DEE8C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Raven Rewards-Raven RewardsUITests/Pods-Raven Rewards-Raven RewardsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -782,7 +702,7 @@
 		};
 		0C9D54992C5F2B1F0075AC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FFA08BA53A1867304635221 /* Pods-Raven Rewards.debug.xcconfig */;
+			baseConfigurationReference = 16C9F46D94BF6EE617BB823D /* Pods-Raven Rewards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -813,7 +733,7 @@
 		};
 		0C9D549A2C5F2B1F0075AC6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A20CA90BF6423395436CDA5 /* Pods-Raven Rewards.release.xcconfig */;
+			baseConfigurationReference = 38EB0AF4294E360B7066B385 /* Pods-Raven Rewards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -844,7 +764,6 @@
 		};
 		0C9D549C2C5F2B1F0075AC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4229C43AD37D664FE711FE7 /* Pods-Raven RewardsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -865,7 +784,6 @@
 		};
 		0C9D549D2C5F2B1F0075AC6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB69E23050658B4CC19F20F1 /* Pods-Raven RewardsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -886,7 +804,6 @@
 		};
 		0C9D549F2C5F2B1F0075AC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED35853AA3B2D78FA26D39A1 /* Pods-Raven Rewards-Raven RewardsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -905,7 +822,6 @@
 		};
 		0C9D54A02C5F2B1F0075AC6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 156C2810E1B2AB36E123B6AB /* Pods-Raven Rewards-Raven RewardsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

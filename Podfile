@@ -2,29 +2,14 @@
 # platform :ios, '9.0'
 
 target 'Raven Rewards' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for Raven Rewards
-
-pod 'Appirater'
-pod 'SDWebImage'
-
-# Firebase
-
-pod 'Firebase/Core'
-pod 'Firebase/Auth'
-pod 'Firebase/Database'
-pod 'Firebase/Analytics'
-pod 'Firebase/Crashlytics'
-pod 'Firebase/Storage'
-  target 'Raven RewardsTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'Raven RewardsUITests' do
-    # Pods for testing
-  end
+  pod 'Appirater'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Analytics'
+  pod 'SDWebImage'
 
 end
+

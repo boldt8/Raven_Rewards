@@ -5,7 +5,7 @@
 //  Created by Alexander Boldt on 8/4/24.
 //
 
-import FirebaseDatabase
+import FirebaseFirestore
 //import Combine
 
 public class DatabaseManager{

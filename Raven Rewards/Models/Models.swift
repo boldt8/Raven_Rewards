@@ -8,22 +8,37 @@
 import Foundation
 
 
-class RealUser: Encodable, Decodable {
-    var points: Int = 2
-    var username: String = ""
-    var bio: String = ""
-    var profilePhoto: String = "https://www.google.com"
-    var isAdmin: Bool = false
-   
+struct RealUser: Codable {
+    let username: String
+    let email: String
 }
 
-extension Encodable{
-    var toDictionay: [String: Any]?{
-        guard let data = try? JSONEncoder().encode(self) else {
-            return nil
-        }
-        
-        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+struct Comment: Codable {
+    let username: String
+    let comment: String
+    let dateString: String
+}
+
+struct UserInfo: Codable {
+    let name: String
+    let bio: String
+}
+
+struct Post: Codable {
+    let id: String
+    let caption: String
+    let postedDate: String
+    let postUrlString: String
+    var likers: [String]
+
+    var date: Date {
+        guard let date = DateFormatter.formatter.date(from: postedDate) else { fatalError() }
+        return date
+    }
+
+    var storageReference: String? {
+        guard let username = UserDefaults.standard.string(forKey: "username") else { return nil }
+        return "\(username)/posts/\(id).png"
     }
 }
 

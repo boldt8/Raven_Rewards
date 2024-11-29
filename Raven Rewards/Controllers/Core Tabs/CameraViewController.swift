@@ -85,7 +85,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func didTapScanButton() {
-        let vc = UIHostingController(rootView: QRScanner())
-        present(vc, animated: true)
+        //let vc = UIHostingController(rootView: QRScanner())
+        //present(vc, animated: true)
     }
 }

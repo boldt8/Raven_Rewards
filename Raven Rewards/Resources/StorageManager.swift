@@ -1,37 +1,71 @@
 //
 //  StorageManager.swift
-//  Raven Rewards
+//  Instagram
 //
-//  Created by Alexander Boldt on 8/4/24.
+//  Created by Afraz Siddiqui on 3/20/21.
 //
 
+import Foundation
 import FirebaseStorage
 
-public class StorageManager{
-    
+/// Object to interface with firebase storage
+final class StorageManager {
     static let shared = StorageManager()
-    
-    private let bucket = Storage.storage().reference()
-    
-    public enum IGStorageManagerError: Error {
-        case failedToDownload
-    }
-    
-    // Mark: -Public
-    
-    public func uploadUserPost(model: UserPost, completion: @escaping (Result<URL,Error>) -> Void) {
-        
-    }
-    
-    public func downloadImage(with reference: String, completion: @escaping (Result<URL, IGStorageManagerError>) -> Void) {
-        bucket.child(reference).downloadURL(completion: { url, error in
-            guard let url = url, error == nil else {
-                completion(.failure(.failedToDownload))
-                return
+
+    private init() {}
+
+    private let storage = Storage.storage().reference()
+
+    /// Upload post image
+    /// - Parameters:
+    ///   - data: Image data
+    ///   - id: New post id
+    ///   - completion: Result callback
+    public func uploadPost(
+        data: Data?,
+        id: String,
+        completion: @escaping (URL?) -> Void
+    ) {
+        guard let username = UserDefaults.standard.string(forKey: "username"),
+              let data = data else {
+            return
+        }
+        let ref = storage.child("\(username)/posts/\(id).png")
+        ref.putData(data, metadata: nil) { _, error in
+            ref.downloadURL { url, _ in
+                completion(url)
             }
-            
-            completion(.success(url))
-        })
+        }
+    }
+
+    public func downloadURL(for post: Post, completion: @escaping (URL?) -> Void) {
+        guard let ref = post.storageReference else {
+            completion(nil)
+            return
+        }
+        
+        storage.child(ref).downloadURL { url, _ in
+            completion(url)
+        }
+    }
+
+    public func profilePictureURL(for username: String, completion: @escaping (URL?) -> Void) {
+        storage.child("\(username)/profile_picture.png").downloadURL { url, _ in
+            completion(url)
+        }
+    }
+
+    public func uploadProfilePicture(
+        username: String,
+        data: Data?,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let data = data else {
+            return
+        }
+        storage.child("\(username)/profile_picture.png").putData(data, metadata: nil) { _, error in
+            completion(error == nil)
+        }
     }
 }
 

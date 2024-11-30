@@ -105,7 +105,7 @@ final class SettingsViewController: UIViewController {
                                             style: .cancel, handler: nil))
         actionSheet.addAction(UIAlertAction(title: "Log Out",
                                             style: .destructive, handler: {_ in
-            AuthManager.shared.logOut(completion: { success in
+            AuthManager.shared.signOut(completion: { success in
                 DispatchQueue.main.async {
                     if success {
                         // present log in

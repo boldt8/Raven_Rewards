@@ -18,6 +18,30 @@ final class DatabaseManager {
 
     /// Database referenec
     private let database = Firestore.firestore()
+    
+    /// Find users with prefix
+    /// - Parameters:
+    ///   - usernamePrefix: Query prefix
+    ///   - completion: Result callback
+    public func incrPoints(
+        username: String
+    ) {
+        Task {
+            
+            let ref = database.collection("users")
+                .document(username)
+            do{
+                let currUser = try await ref.getDocument(as: RealUser.self)
+                try await ref.updateData(["points" : currUser.points + 1])
+            }
+            catch {
+                print(error)
+            }
+            
+         }
+    }
+    
+    
 
     /// Find users with prefix
     /// - Parameters:
@@ -425,15 +449,13 @@ final class DatabaseManager {
     ///   - completion: Result callback
     public func getUserInfo(
         username: String,
-        completion: @escaping (UserInfo?) -> Void
+        completion: @escaping (RealUser?) -> Void
     ) {
         let ref = database.collection("users")
             .document(username)
-            .collection("information")
-            .document("basic")
         ref.getDocument { snapshot, error in
             guard let data = snapshot?.data(),
-                  let userInfo = UserInfo(with: data) else {
+                  let userInfo = RealUser(with: data) else {
                 completion(nil)
                 return
             }
@@ -445,23 +467,23 @@ final class DatabaseManager {
     /// - Parameters:
     ///   - userInfo: UserInfo model
     ///   - completion: Callback
-    public func setUserInfo(
-        userInfo: UserInfo,
-        completion: @escaping (Bool) -> Void
-    ) {
-        guard let username = UserDefaults.standard.string(forKey: "username"),
-              let data = userInfo.asDictionary() else {
-            return
-        }
-
-        let ref = database.collection("users")
-            .document(username)
-            .collection("information")
-            .document("basic")
-        ref.setData(data) { error in
-            completion(error == nil)
-        }
-    }
+//    public func setUserInfo(
+//        userInfo: UserInfo,
+//        completion: @escaping (Bool) -> Void
+//    ) {
+//        guard let username = UserDefaults.standard.string(forKey: "username"),
+//              let data = userInfo.asDictionary() else {
+//            return
+//        }
+//
+//        let ref = database.collection("users")
+//            .document(username)
+//            .collection("information")
+//            .document("basic")
+//        ref.setData(data) { error in
+//            completion(error == nil)
+//        }
+//    }
 
     // MARK: - Comment
 

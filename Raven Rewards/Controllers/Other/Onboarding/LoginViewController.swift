@@ -8,15 +8,15 @@
 import SafariServices
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
     }
-
+    
     private let usernameEmailField: UITextField = {
         let field = UITextField()
-        field.placeholder = "Username or Email..."
+        field.placeholder = "Email..."
         field.returnKeyType = .next
         field.leftViewMode = .always
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -97,14 +97,14 @@ class LoginViewController: UIViewController {
                               action: #selector(didTapLoginButton),
                               for: .touchUpInside)
         createAccountButton.addTarget(self,
-                              action: #selector(didTapCreateAccountButton),
-                              for: .touchUpInside)
+                                      action: #selector(didTapCreateAccountButton),
+                                      for: .touchUpInside)
         termsButton.addTarget(self,
                               action: #selector(didTapTermsButton),
                               for: .touchUpInside)
         privacyButton.addTarget(self,
-                              action: #selector(didTapPrivacyButton),
-                              for: .touchUpInside)
+                                action: #selector(didTapPrivacyButton),
+                                for: .touchUpInside)
         
         usernameEmailField.delegate = self
         passwordField.delegate = self
@@ -204,29 +204,25 @@ class LoginViewController: UIViewController {
         passwordField.resignFirstResponder()
         usernameEmailField.resignFirstResponder()
         
-        guard let usernameEmail = usernameEmailField.text, !usernameEmail.isEmpty,
-              let password = passwordField.text, !password.isEmpty, password.count >= 8 else {
-                return
+        guard let email = usernameEmailField.text,
+              let password = passwordField.text,
+              !email.trimmingCharacters(in: .whitespaces).isEmpty,
+              !password.trimmingCharacters(in: .whitespaces).isEmpty,
+              password.count >= 6 else {
+            return
         }
         
-        var username: String?
-        var email: String?
-        
-        if usernameEmail.contains("@"), usernameEmail.contains("."){
-            //email
-            email = usernameEmail
-        }
-        else {
-            // username
-            username = usernameEmail
-        }
-        AuthManager.shared.logicUser(username: username, email: email,password: password) { success in
+        AuthManager.shared.signIn(email: email, password: password) { [weak self] result in
             DispatchQueue.main.async {
-                if success {
+                switch result{
+                    
+                    
+                case .success:
                     // user logged in
-                    self.dismiss(animated: true, completion: nil)
-                }
-                else {
+                    
+                    self?.dismiss(animated: true, completion: nil)
+                    
+                case .failure(let error):
                     // error occurred
                     let alert = UIAlertController(title: "Log In Error",
                                                   message: "we were unable to log you in.",
@@ -234,15 +230,15 @@ class LoginViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "Dismiss",
                                                   style: .cancel,
                                                   handler: nil))
-                    self.present(alert, animated: true)
+                    self?.present(alert, animated: true)
+                    print(error)
                 }
-
             }
+            
         }
-        
     }
-    
-    @objc private func didTapTermsButton() {
+        
+    @objc func didTapTermsButton() {
         guard let url = URL(string: "https://help.instagram.com/581066165581870/") else {
             return
         }
@@ -250,7 +246,7 @@ class LoginViewController: UIViewController {
         present(vc, animated:true)
     }
     
-    @objc private func didTapPrivacyButton() {
+    @objc func didTapPrivacyButton() {
         guard let url = URL(string: "https://help.instagram.com/155833707900388") else {
             return
         }
@@ -258,21 +254,16 @@ class LoginViewController: UIViewController {
         present(vc, animated:true)
     }
     
-    @objc private func didTapCreateAccountButton() {
+    @objc func didTapCreateAccountButton() {
         let vc = RegistrationViewController()
         vc.title = "Create Account"
         
         present(UINavigationController(rootViewController: vc), animated:true)
     }
     
-    
-
-    
-
-}
-
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    // MARK: Field Delegate
+        
+    @nonobjc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == usernameEmailField {
             passwordField.becomeFirstResponder()
         }
@@ -281,4 +272,5 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
+        
 }

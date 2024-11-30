@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
@@ -98,59 +98,55 @@ class RegistrationViewController: UIViewController {
 
     }
     
+    private func presentError() {
+        let alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password longer than 6 characters.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    private func presentInternalError() {
+        let alert = UIAlertController(title: "Woops", message: "this email is already taken or we had an internal error.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
     @objc private func didTapRegister() {
         emailField.resignFirstResponder()
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
         
-        guard let email = emailField.text, !email.isEmpty,
-              let password = passwordField.text, !password.isEmpty,
-              let username = usernameField.text, !username.isEmpty else {
-              return
-        }
-        if (password.count < 8 ){
-            let alert = UIAlertController(title: "Failed",
-                                          message: "password must be 8 characters or more",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss",
-                                          style: .cancel,
-                                          handler: nil))
-            self.present(alert, animated: true)
+        guard let username = usernameField.text,
+              let email = emailField.text,
+              let password = passwordField.text,
+              !email.trimmingCharacters(in: .whitespaces).isEmpty,
+              !password.trimmingCharacters(in: .whitespaces).isEmpty,
+              !username.trimmingCharacters(in: .whitespaces).isEmpty,
+              password.count >= 6,
+              username.count >= 2,
+              username.trimmingCharacters(in: .alphanumerics).isEmpty else {
+            presentError()
             return
         }
         
-        AuthManager.shared.registerNewUser(username: username, email: email, password: password, points: 0, bio: "No bio yet...", profilePhoto: "https://www.google.com", isAdmin: false) { registered in
+        AuthManager.shared.signUp(email: email, username: username, password: password) { [weak self] registered in
             DispatchQueue.main.async{
-                if registered {
-                    // good to go
-                    
+                switch registered {
+                case .success(let user):
                     let alert = UIAlertController(title: "Success",
                                                   message: "we successfully created an account",
                                                   preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Dismiss",
                                                   style: .cancel,
                                                   handler: nil))
-                    self.present(alert, animated: true)
-                    
-                }
-                else {
-                    // failed
-                    let alert = UIAlertController(title: "Log In Error",
-                                                  message: "we were unable to create an account (This account may have already been created)",
-                                                  preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss",
-                                                  style: .cancel,
-                                                  handler: nil))
-                    self.present(alert, animated: true)
+                    self?.present(alert, animated: true)
+                case .failure(let error):
+                    self?.presentInternalError()
+                    print("\n\nSign Up Error: \(error)")
                 }
             }
         }
     }
     
-
-
-}
-extension RegistrationViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == usernameField {
             emailField.becomeFirstResponder()
@@ -163,4 +159,5 @@ extension RegistrationViewController: UITextFieldDelegate{
         }
         return true
     }
+
 }

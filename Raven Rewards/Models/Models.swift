@@ -11,17 +11,13 @@ import Foundation
 struct RealUser: Codable {
     let username: String
     let email: String
+    let points: Int
 }
 
 struct Comment: Codable {
     let username: String
     let comment: String
     let dateString: String
-}
-
-struct UserInfo: Codable {
-    let name: String
-    let bio: String
 }
 
 struct Post: Codable {
@@ -41,6 +37,53 @@ struct Post: Codable {
         return "\(username)/posts/\(id).png"
     }
 }
+
+struct PosterCollectionViewCellViewModel {
+    let username: String
+    let profilePictureURL: URL
+}
+
+struct PostCollectionViewCellViewModel {
+    let postUrl: URL
+}
+
+struct PostActionsCollectionViewCellViewModel {
+    let isLiked: Bool
+}
+
+struct PostLikesCollectionViewCellViewModel {
+    /// Represents a array of usernames who have liked this post
+    let likers: [String]
+}
+
+struct PostCaptionCollectionViewCellViewModel {
+    let username: String
+    let caption: String?
+}
+
+struct PostDatetimeCollectionViewCellViewModel {
+    let date: Date
+}
+
+enum SinglePostCellType {
+    case poster(viewModel: PosterCollectionViewCellViewModel)
+    case post(viewModel: PostCollectionViewCellViewModel)
+    case actions(viewModel: PostActionsCollectionViewCellViewModel)
+    case likeCount(viewModel: PostLikesCollectionViewCellViewModel)
+    case caption(viewModel: PostCaptionCollectionViewCellViewModel)
+    case timestamp(viewModel: PostDatetimeCollectionViewCellViewModel)
+    case comment(viewModel: Comment)
+}
+
+enum HomeFeedCellType {
+    case poster(viewModel: PosterCollectionViewCellViewModel)
+    case post(viewModel: PostCollectionViewCellViewModel)
+    case actions(viewModel: PostActionsCollectionViewCellViewModel)
+    case likeCount(viewModel: PostLikesCollectionViewCellViewModel)
+    case caption(viewModel: PostCaptionCollectionViewCellViewModel)
+    case timestamp(viewModel: PostDatetimeCollectionViewCellViewModel)
+}
+
 
 enum Gender {
     case male, female, other

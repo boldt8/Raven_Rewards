@@ -26,7 +26,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
             let contex = CIContext()
             let filter = CIFilter.qrCodeGenerator()
             var url: String
-            let view = imageGenerate("\(AuthManager.shared.getUserID())")
+            let view = imageGenerate(AuthManager.shared.currUserID)
             func imageGenerate(_ url: String) -> UIImage {
                 let data = Data(url.utf8)
                 filter.setValue(data, forKey: "inputMessage")
@@ -46,27 +46,26 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     let scanButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
     
     private func fetchUser() {
-        Task {
-            let currUser = try await DatabaseManager.shared.getUser(uid: AuthManager.shared.getUserID())
-            await MainActor.run(body: {
-                self.ravenPoints.text = "Current Raven Points: \(currUser.points)"
-                if(currUser.isAdmin){
-                    self.scanButton.isHidden = false
-                }
-            })
-        }
+        print("fetshing for camerview controller")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         // Do any additional setup after loading the view.
-        fetchUser()
         view.addSubview(ravenPoints)
         view.addSubview(QR)
         // Check to see if admin user
         view.addSubview(scanButton)
-        self.scanButton.isHidden = true
+        self.scanButton.isHidden = false
+        guard let username = UserDefaults.standard.string(forKey: "username") else { return }
+        DatabaseManager.shared.getUserInfo(username: username) { [weak self] info in
+            DispatchQueue.main.async {
+                if let info = info {
+                    self?.ravenPoints.text = "Current Raven Points: \(info.points)"
+                }
+            }
+        }
         
         
     }
@@ -85,7 +84,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func didTapScanButton() {
-        //let vc = UIHostingController(rootView: QRScanner())
-        //present(vc, animated: true)
+        let vc = UIHostingController(rootView: QRScanner())
+        present(vc, animated: true)
     }
 }

@@ -1,208 +1,88 @@
 //
-//  ProfileInfoHeaderCollectionReusableView.swift
-//  Raven Rewards
+//  ProfileHeaderCollectionReusableView.swift
+//  Instagram
 //
-//  Created by Alexander Boldt on 8/8/24.
+//  Created by Afraz Siddiqui on 3/23/21.
 //
 
 import UIKit
 
-protocol ProfileInfoHeaderCollectionReusableViewDelegate: AnyObject {
-//    func profileHeaderDidTapPostsButton(_ header: ProfileInfoHeaderCollectionReusableView)
-//    func profileHeaderDidTapFollowersButton(_ header: ProfileInfoHeaderCollectionReusableView)
-//    func profileHeaderDidTapFollowingButton(_ header: ProfileInfoHeaderCollectionReusableView)
-    func profileHeaderDidTapEditProfileButton(_ header: ProfileInfoHeaderCollectionReusableView)
+protocol ProfileHeaderCollectionReusableViewDelegate: AnyObject {
+    func profileHeaderCollectionReusableViewDidTapProfilePicture(_ header: ProfileHeaderCollectionReusableView)
 }
 
-final class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
-    static let identifier = "ProfileInfoHeaderCollectionReusableView"
-    
-    public weak var delegate: ProfileInfoHeaderCollectionReusableViewDelegate?
-    
-    private let profilePhotoImageView: UIImageView = {
+class ProfileHeaderCollectionReusableView: UICollectionReusableView {
+    static let identifier = "ProfileHeaderCollectionReusableView"
+
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "test")
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .secondarySystemBackground
         return imageView
     }()
-    
-    private func fetchDataHeader(){
-            Task {
-                let currUser = try await DatabaseManager.shared.getUser(uid: AuthManager.shared.getUserID())
-                await MainActor.run(body: {
-                    self.nameLabel.text = currUser.username
-                    self.bioLabel.text = currUser.bio
-                })
-            }
-    }
-    
-//    private let postsButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Posts", for: .normal)
-//        button.setTitleColor(.label, for: .normal)
-//        button.backgroundColor = .secondarySystemBackground
-//        return button
-//    }()
-//    
-//    private let followingButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Following", for: .normal)
-//        button.setTitleColor(.label, for: .normal)
-//        button.backgroundColor = .secondarySystemBackground
-//        return button
-//    }()
-//    
-//    private let followersButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Followers", for: .normal)
-//        button.setTitleColor(.label, for: .normal)
-//        button.backgroundColor = .secondarySystemBackground
-//        return button
-//    }()
-    
-    private let editProfileButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Edit Your Profile", for: .normal)
-        button.setTitleColor(.label, for: .normal)
-        button.backgroundColor = .secondarySystemBackground
-        return button
-    }()
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Joe Smith"
-        label.textColor = .label
-        label.numberOfLines = 1
-        return label
-    }()
-    
+
+    weak var delegate: ProfileHeaderCollectionReusableViewDelegate?
+
     private let bioLabel: UILabel = {
         let label = UILabel()
-        label.text = "this is the first account"
-        label.textColor = .label
-        label.numberOfLines = 0 //Line wrap
+        label.numberOfLines = 0
+        label.text = "iOS Academy\nThis is my profile bio!"
+        label.font = .systemFont(ofSize: 18)
         return label
     }()
-    
-    //MARK: - Init
-    
-    
+
+    // MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews()
-        addButtonActions()
-        fetchDataHeader()
-        backgroundColor = .systemBackground
-        clipsToBounds = true
-    }
-    
-    private func addSubviews() {
-        addSubview(profilePhotoImageView)
-//        addSubview(followersButton)
-//        addSubview(followingButton)
-//        addSubview(postsButton)
+        addSubview(imageView)
         addSubview(bioLabel)
-        addSubview(nameLabel)
-        addSubview(editProfileButton)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapImage))
+        imageView.addGestureRecognizer(tap)
     }
-    
-    private func addButtonActions() {
-//        followersButton.addTarget(self,
-//                                  action: #selector(didTapFollowerButton),
-//                                  for: .touchUpInside)
-//        followingButton.addTarget(self,
-//                                  action: #selector(didTapFollowingButton),
-//                                  for: .touchUpInside)
-//        postsButton.addTarget(self,
-//                                  action: #selector(didTapPostsButton),
-//                                  for: .touchUpInside)
-        editProfileButton.addTarget(self,
-                                  action: #selector(didTapEditProfileButton),
-                                  for: .touchUpInside)
-    }
-    
+
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
-    
+
+    @objc func didTapImage() {
+        delegate?.profileHeaderCollectionReusableViewDidTapProfilePicture(self)
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let profilePhotoSize = width/4
-        profilePhotoImageView.frame = CGRect(
-            x: 5,
-            y: 5,
-            width: profilePhotoSize,
-            height: profilePhotoSize
-        ).integral
-        
-        profilePhotoImageView.layer.cornerRadius = profilePhotoSize/2.0
-        
-        let buttonHeight = profilePhotoSize/2
-        let countButtonWidth = (width-10-profilePhotoSize)/3
-        
-//        postsButton.frame = CGRect(
-//            x: profilePhotoImageView.right,
-//            y: 5,
-//            width: countButtonWidth,
-//            height: buttonHeight
-//        ).integral
-//        
-//        followersButton.frame = CGRect(
-//            x: postsButton.right,
-//            y: 5,
-//            width: countButtonWidth,
-//            height: buttonHeight
-//        ).integral
-//        
-//        followingButton.frame = CGRect(
-//            x: followersButton.right,
-//            y: 5,
-//            width: countButtonWidth,
-//            height: buttonHeight
-//        ).integral
-        
-        editProfileButton.frame = CGRect(
-            x: profilePhotoImageView.right + 10,
-            y: buttonHeight/2,
-            width: countButtonWidth*2.5,
-            height: buttonHeight
-        ).integral
-        
-        nameLabel.frame = CGRect(
-            x: 5,
-            y: 5 + profilePhotoImageView.bottom,
-            width: width - 10,
-            height: 50
-        ).integral
-        
-        let bioLabelSize = bioLabel.sizeThatFits(frame.size)
+        let imageSize: CGFloat = width/3.5
+        imageView.frame = CGRect(x: 5, y: 5, width: imageSize, height: imageSize)
+        imageView.layer.cornerRadius = imageSize/2
+        let bioSize = bioLabel.sizeThatFits(
+            bounds.size
+        )
         bioLabel.frame = CGRect(
             x: 5,
-            y: 5 + nameLabel.bottom,
-            width: width - 10,
-            height: bioLabelSize.height
-        ).integral
-        
-        
+            y: imageView.bottom+10,
+            width: width-10,
+            height: bioSize.height+50
+        )
     }
-    
-    // MARK: - Actions
-    
-//    @objc private func didTapFollowerButton() {
-//        delegate?.profileHeaderDidTapFollowersButton(self)
-//    }
-//    
-//    @objc private func didTapFollowingButton() {
-//        delegate?.profileHeaderDidTapFollowingButton(self)
-//    }
-//    
-//    @objc private func didTapPostsButton() {
-//        delegate?.profileHeaderDidTapPostsButton(self)
-//    }
-    
-    @objc private func didTapEditProfileButton() {
-        delegate?.profileHeaderDidTapEditProfileButton(self)
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        bioLabel.text = nil
+    }
+
+    public func configure(with viewModel: ProfileHeaderViewModel) {
+        imageView.sd_setImage(with: viewModel.profilePictureUrl, completed: nil)
+        var text = ""
+        if let name = viewModel.name {
+            text = name + "\n"
+        }
+        text += viewModel.bio ?? "Welcome to my profile!"
+        bioLabel.text = text
         
     }
 }

@@ -1,92 +1,115 @@
 //
 //  AuthManager.swift
-//  Raven Rewards
+//  Instagram
 //
-//  Created by Alexander Boldt on 8/4/24.
+//  Created by Afraz Siddiqui on 3/20/21.
 //
 
 import FirebaseAuth
+import Foundation
 
-public class AuthManager{
-    
+/// Object to manage authentication
+final class AuthManager {
+    /// Shared instanece
     static let shared = AuthManager()
+
+    /// Private constructor
+    private init() {}
+
+    /// Auth reference
+    private let auth = Auth.auth()
     
-    // Mark: -Public
-    
-    public func getUserID() -> String {
-        let user = Auth.auth().currentUser
-        guard let name = user?.email?.safeDatabaseKey() else { return "" }
-        return name
+    /// Current useremail
+    public var currUserID: String {
+        guard let username = UserDefaults.standard.string(forKey: "username") else { return "" }
+        return username
     }
-    
-    public func registerNewUser(username: String, email: String, password: String, points: Int, bio: String, profilePhoto: String, isAdmin: Bool,  completion: @escaping (Bool) -> Void) {
-        /*
-         - Check is username is avaliable
-         - Check if email is avaliable
-         */
-        DatabaseManager.shared.canCreateNewUser(with: email, username: username) { canCreate in
-            if canCreate {
-                /*
-                 - Create account
-                 - Insert account to database
-                 */
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    guard error == nil, result != nil else {
-                        // Firebase auth could not create account
-                        completion(false)
-                        return
-                    }
-                    
-                    // Insert into database
-                    DatabaseManager.shared.insertNewUser(with: email, username: username, points: points, bio: bio, profilePhoto: profilePhoto, isAdmin: isAdmin) { inserted in
-                        if inserted {
-                            completion(true)
-                            return
-                        }
-                        else {
-                            // Failed to insert to databaes
-                            completion(false)
-                            return
-                        }
-                    }
-                }
-            }
-            else {
-                // either username or email does not exist
-                completion(false)
-            }
-        }
+
+    /// Auth errors that can occur
+    enum AuthError: Error {
+        case newUserCreation
+        case signInFailed
     }
-    
-    public func logicUser(username: String?, email: String?, password: String, completion: @escaping (Bool) -> Void) {
-        if let email = email{
-            // email log in
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                guard authResult != nil, error == nil else {
-                    completion(false)
+
+    /// Determine if user is signed in
+    public var isSignedIn: Bool {
+        return auth.currentUser != nil
+    }
+
+    /// Attempt sign in
+    /// - Parameters:
+    ///   - email: Email of user
+    ///   - password: Password of user
+    ///   - completion: Callback
+    public func signIn(
+        email: String,
+        password: String,
+        completion: @escaping (Result<RealUser, Error>) -> Void
+    ) {
+        DatabaseManager.shared.findUser(with: email) { [weak self] user in
+            guard let user = user else {
+                completion(.failure(AuthError.signInFailed))
+                print("could not find your user")
+                return
+            }
+
+            self?.auth.signIn(withEmail: email, password: password) { result, error in
+            guard result != nil, error == nil else {
+                    completion(.failure(AuthError.signInFailed))
                     return
-                }
-                
-                completion(true)
+            }
+
+                UserDefaults.standard.setValue(user.username, forKey: "username")
+                UserDefaults.standard.setValue(user.email, forKey: "email")
+                completion(.success(user))
             }
         }
-        else if let username = username {
-            // username log in
-            print(username)
+    }
+
+    /// Attempt new user sign up
+    /// - Parameters:
+    ///   - email: Email
+    ///   - username: Username
+    ///   - password: Password
+    ///   - profilePicture: Optional profile picture data
+    ///   - completion: Callback
+    public func signUp(
+        email: String,
+        username: String,
+        password: String,
+        completion: @escaping (Result<RealUser, Error>) -> Void
+    ) {
+        let newUser = RealUser(username: username, email: email, points: 0)
+        // Create account
+        auth.createUser(withEmail: email, password: password) { result, error in
+            guard result != nil, error == nil else {
+                completion(.failure(AuthError.newUserCreation))
+                return
+            }
+
+            DatabaseManager.shared.createUser(newUser: newUser) { success in
+                if success {
+                    completion(.success(newUser))
+                }
+                else {
+                    completion(.failure(AuthError.newUserCreation))
+                }
+            }
         }
     }
-    
-    /// Attempt to log out firebase user
-    public func logOut(completion: (Bool) -> Void) {
+
+    /// Attempt Sign Out
+    /// - Parameter completion: Callback upon sign out
+    public func signOut(
+        completion: @escaping (Bool) -> Void
+    ) {
         do {
-            try Auth.auth().signOut()
+            try auth.signOut()
             completion(true)
-            return
         }
         catch {
-            completion(false)
             print(error)
-            return
+            completion(false)
         }
     }
 }

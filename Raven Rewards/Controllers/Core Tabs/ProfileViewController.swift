@@ -1,204 +1,333 @@
 //
 //  ProfileViewController.swift
-//  Raven Rewards
+//  Instagram
 //
-//  Created by Alexander Boldt on 8/3/24.
+//  Created by Afraz Siddiqui on 3/20/21.
 //
 
 import UIKit
 
-/// Profile view controller
+enum ProfileButtonType {
+    case edit
+    case follow(isFollowing: Bool)
+}
+
+struct ProfileHeaderViewModel {
+    let profilePictureUrl: URL?
+    let followerCount: Int
+    let followingICount: Int
+    let postCount: Int
+    let buttonType: ProfileButtonType
+    let name: String?
+    let bio: String?
+}
+
+/// Reusable controller for Profile
 final class ProfileViewController: UIViewController {
-    
+
+    private let user: RealUser
+
+    private var isCurrentUser: Bool {
+        return user.username.lowercased() == UserDefaults.standard.string(forKey: "username")?.lowercased() ?? ""
+    }
+
     private var collectionView: UICollectionView?
+
+    private var headerViewModel: ProfileHeaderViewModel?
+
+    private var posts: [Post] = []
     
-    private var userPosts = [UserPost]()
+    private var observer: NSObjectProtocol?
+
+    // MARK: - Init
+
+    init(user: RealUser) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.user = RealUser(username: "hello", email: "hi", points: 0)
+        super.init(coder: aDecoder)
+    }
+    
+    
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = user.username.uppercased()
         view.backgroundColor = .systemBackground
-        configureNavigationBar()
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 1
-        layout.minimumInteritemSpacing = 1
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
-        let size = (view.width - 4)/3
-        layout.itemSize = CGSize(width: size, height: size)
-        
-        collectionView = UICollectionView(frame: .zero,
-                                          collectionViewLayout: layout)
-        
-        // Cell
-        collectionView?.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
-        // Headers
-        collectionView?.register(ProfileInfoHeaderCollectionReusableView.self,
-                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier)
-        collectionView?.register(ProfileTabsCollectionReusableView.self,
-                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileTabsCollectionReusableView.identifier)
+        configureNavBar()
+        configureCollectionView()
+        fetchProfileInfo()
 
-        
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        guard let collectionView = collectionView else {
-            return
+        if isCurrentUser {
+            observer = NotificationCenter.default.addObserver(
+                forName: .didPostNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                self?.posts.removeAll()
+                self?.fetchProfileInfo()
+            }
         }
-        view.addSubview(collectionView)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
     }
-    
-    private func configureNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"),
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(didTapSettingsButton))
+
+    private func fetchProfileInfo() {
+        let username = user.username
+
+        let group = DispatchGroup()
+
+        // Fetch Posts
+        group.enter()
+        DatabaseManager.shared.posts(for: username) { [weak self] result in
+            defer {
+                group.leave()
+            }
+
+            switch result {
+            case .success(let posts):
+                self?.posts = posts
+            case .failure:
+                break
+            }
+        }
+
+        // Fetch Profiel Header Info
+
+        var profilePictureUrl: URL?
+        var buttonType: ProfileButtonType = .edit
+        var followers = 0
+        var following = 0
+        var posts = 0
+        var name: String?
+        var bio: String?
+
+        // Counts (3)
+        group.enter()
+        DatabaseManager.shared.getUserCounts(username: user.username) { result in
+            defer {
+                group.leave()
+            }
+            posts = result.posts
+            followers = result.followers
+            following = result.following
+        }
+
+
+        // Bio, name
+        DatabaseManager.shared.getUserInfo(username: user.username) { userInfo in
+            name = userInfo?.username
+            bio = "no bio"
+        }
+
+        // Profile picture url
+        group.enter()
+        StorageManager.shared.profilePictureURL(for: user.username) { url in
+            defer {
+                group.leave()
+            }
+            profilePictureUrl = url
+        }
+
+//        // if profile is not for current user,
+//        if !isCurrentUser {
+//            // Get follow state
+//            group.enter()
+//            DatabaseManager.shared.isFollowing(targetUsername: user.username) { isFollowing in
+//                defer {
+//                    group.leave()
+//                }
+//                print(isFollowing)
+//                buttonType = .follow(isFollowing: isFollowing)
+//            }
+//        }
+
+        group.notify(queue: .main) {
+            self.headerViewModel = ProfileHeaderViewModel(
+                profilePictureUrl: profilePictureUrl,
+                followerCount: followers,
+                followingICount: following,
+                postCount: posts,
+                buttonType: buttonType,
+                name: name,
+                bio: bio
+            )
+            self.collectionView?.reloadData()
+        }
     }
-    
-    @objc private func didTapSettingsButton() {
+
+    private func configureNavBar() {
+        if isCurrentUser {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "gear"),
+                style: .done,
+                target: self,
+                action: #selector(didTapSettings)
+            )
+        }
+    }
+
+    @objc func didTapSettings() {
         let vc = SettingsViewController()
-        vc.title = "Settings"
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-
-}
-
-extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 0
-        }
-  //      return userPosts.count
-        return 30
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //let model = userPosts[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
-        
-        //cell.configure(with: model)
-        cell.configure(debug: "test")
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        
-        // get the model and open post controller
-        //let model = userPosts[indexPath.row]
-        let user = User(username: "Joe",
-                        bio: "",
-                        name: (first: "", last: ""),
-                        profilePhoto: URL(string: "https://www.google.com")!,
-                        birthDate: Date(),
-                        gender: .male,
-                        counts: UserCount(followers: 1, following: 1, posts: 1),
-                        joinDate: Date())
-        let post = UserPost(identifier: "",
-                            postType: .photo,
-                            thumbnailImage: URL(string: "https://www.google.com")!,
-                            postURL: URL(string: "https://www.google.com")!,
-                            caption: nil,
-                            likeCount: [],
-                            comments: [],
-                            createdDate: Date(),
-                            taggedUsers: [],
-                            owner: user)
-        let vc = PostViewController(model: post)
-        vc.title = post.postType.rawValue
-        vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        guard kind == UICollectionView.elementKindSectionHeader else {
-            //footer
-            return UICollectionReusableView()
-        }
-        
-        if indexPath.section == 1 {
-            // tabs header
-            let tabControlHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileTabsCollectionReusableView.identifier,
-                                                                         for: indexPath) as! ProfileTabsCollectionReusableView
-            tabControlHeader.delegate = self
-            return tabControlHeader
-            
-        }
-        
-        let profileHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                     withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier,
-                                                                     for: indexPath) as! ProfileInfoHeaderCollectionReusableView
-        profileHeader.delegate = self
-        return profileHeader
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0 {
-            return CGSize(width: collectionView.width,
-                          height: collectionView.height/3)
-        }
-        // Size of section tabs
-        return CGSize(width: collectionView.width,
-                      height: 50)
-    }
-    
-}
-
-//MARK: - ProfileInfoHeaderCollectionReusableViewDelegate
-
-extension ProfileViewController: ProfileInfoHeaderCollectionReusableViewDelegate {
-//    func profileHeaderDidTapPostsButton(_ header: ProfileInfoHeaderCollectionReusableView) {
-//        // scroll to the posts
-//        collectionView?.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: true)
-//    }
-    
-//    func profileHeaderDidTapFollowersButton(_ header: ProfileInfoHeaderCollectionReusableView) {
-//        var mockData = [UserRelationship]()
-//        for x in 0..<10 {
-//            mockData.append(UserRelationship(username: "@Joe", name: "Joe Smith", type: x % 2 == 0 ? .following : .not_following))
-//        }
-//        let vc = ListViewController(data: mockData)
-//        vc.title = "Followers"
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//    
-//    func profileHeaderDidTapFollowingButton(_ header: ProfileInfoHeaderCollectionReusableView) {
-//        var mockData = [UserRelationship]()
-//        for x in 0..<10 {
-//            mockData.append(UserRelationship(username: "@Joe", name: "Joe Smith", type: x % 2 == 0 ? .following : .not_following))
-//        }
-//        let vc = ListViewController(data: mockData)
-//        vc.title = "Following"
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//    
-    func profileHeaderDidTapEditProfileButton(_ header: ProfileInfoHeaderCollectionReusableView) {
-        let vc = EditProfileViewController()
-        vc.title = "Edit Profile"
         present(UINavigationController(rootViewController: vc), animated: true)
     }
-    
 }
 
-extension ProfileViewController: ProfileTabsCollectionReusableViewDelegate {
-    func didTapGridButtonTab() {
-        // Reload collection view with data
+extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count
     }
-    
-    func didTapTaggedButtonTab() {
-        // Reload collection view with data
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: PhotoCollectionViewCell.identifier,
+            for: indexPath
+        ) as? PhotoCollectionViewCell else {
+            fatalError()
+        }
+        cell.configure(with: URL(string: posts[indexPath.row].postUrlString))
+        return cell
     }
-    
-    
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: ProfileHeaderCollectionReusableView.identifier,
+                for: indexPath
+              ) as? ProfileHeaderCollectionReusableView else {
+            return UICollectionReusableView()
+        }
+        if let viewModel = headerViewModel {
+            headerView.configure(with: viewModel)
+        }
+        headerView.delegate = self
+        return headerView
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let post = posts[indexPath.row]
+        let vc = PostViewController(post: post, owner: user.username)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
+    func profileHeaderCollectionReusableViewDidTapProfilePicture(_ header: ProfileHeaderCollectionReusableView) {
+
+        guard isCurrentUser else {
+            return
+        }
+
+        let sheet = UIAlertController(
+            title: "Change Picture",
+            message: "Update your photo to reflect your best self.",
+            preferredStyle: .actionSheet
+        )
+
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        sheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { [weak self] _ in
+
+            DispatchQueue.main.async {
+                let picker = UIImagePickerController()
+                picker.sourceType = .camera
+                picker.allowsEditing = true
+                picker.delegate = self
+                self?.present(picker, animated: true)
+            }
+        }))
+        sheet.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { [weak self] _ in
+            DispatchQueue.main.async {
+                let picker = UIImagePickerController()
+                picker.allowsEditing = true
+                picker.sourceType = .photoLibrary
+                picker.delegate = self
+                self?.present(picker, animated: true)
+            }
+        }))
+        present(sheet, animated: true)
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        StorageManager.shared.uploadProfilePicture(
+            username: user.username,
+            data: image.pngData()
+        ) { [weak self] success in
+            if success {
+                self?.headerViewModel = nil
+                self?.posts = []
+                self?.fetchProfileInfo()
+            }
+        }
+    }
+}
+
+extension ProfileViewController {
+    func configureCollectionView() {
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ -> NSCollectionLayoutSection? in
+
+                let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+
+                item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
+
+                let group = NSCollectionLayoutGroup.horizontal(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1),
+                        heightDimension: .fractionalWidth(0.33)
+                    ),
+                    subitem: item,
+                    count: 3
+                )
+
+                let section = NSCollectionLayoutSection(group: group)
+
+                section.boundarySupplementaryItems = [
+                    NSCollectionLayoutBoundarySupplementaryItem(
+                        layoutSize: NSCollectionLayoutSize(
+                            widthDimension: .fractionalWidth(1),
+                            heightDimension: .fractionalWidth(0.66)
+                        ),
+                        elementKind: UICollectionView.elementKindSectionHeader,
+                        alignment: .top
+                    )
+                ]
+
+                return section
+            })
+        )
+        collectionView.register(PhotoCollectionViewCell.self,
+                                forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        collectionView.register(
+            ProfileHeaderCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: ProfileHeaderCollectionReusableView.identifier
+        )
+        collectionView.backgroundColor = .systemBackground
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        view.addSubview(collectionView)
+
+        self.collectionView = collectionView
+    }
 }

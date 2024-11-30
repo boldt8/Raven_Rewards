@@ -26,7 +26,7 @@ struct Comment: Codable {
     let dateString: String
 }
 
-struct Post: Codable {
+struct Post: Codable, Identifiable {
     let id: String
     let caption: String
     let postedDate: String

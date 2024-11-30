@@ -37,6 +37,22 @@ final class StorageManager {
             }
         }
     }
+    
+    public func uploadShopPost(
+        data: Data?,
+        id: String,
+        completion: @escaping (URL?) -> Void
+    ) {
+        guard let data = data else {
+            return
+        }
+        let ref = storage.child("Shop/\(id).png")
+        ref.putData(data, metadata: nil) { _, error in
+            ref.downloadURL { url, _ in
+                completion(url)
+            }
+        }
+    }
 
     public func downloadURL(for post: Post, completion: @escaping (URL?) -> Void) {
         guard let ref = post.storageReference else {

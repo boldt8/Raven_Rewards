@@ -89,6 +89,26 @@ final class DatabaseManager {
             completion(.success(posts))
         }
     }
+    
+    /// Find posts from a given user
+    /// - Parameters:
+    ///   - username: Username to query
+    ///   - completion: Result callback
+    public func shopPosts() async throws -> [Post] {
+        let ref = database.collection("shop")
+        let snapshot = try await ref.getDocuments()
+        
+        var posts: [Post] = []
+        
+        for document in snapshot.documents {
+            let post = try document.data(as: Post.self)
+            posts.append(post)
+        }
+        
+        return posts
+    }
+    
+    
 
     /// Find single user with email
     /// - Parameters:
@@ -137,6 +157,22 @@ final class DatabaseManager {
         }
 
         let reference = database.document("users/\(username)/posts/\(newPost.id)")
+        guard let data = newPost.asDictionary() else {
+            completion(false)
+            return
+        }
+        reference.setData(data) { error in
+            completion(error == nil)
+        }
+    }
+    
+    /// Create new post
+    /// - Parameters:
+    ///   - newPost: New Post model
+    ///   - completion: Result callback
+    public func createShopPost(newPost: Post, completion: @escaping (Bool) -> Void) {
+
+        let reference = database.document("shop/\(newPost.id)")
         guard let data = newPost.asDictionary() else {
             completion(false)
             return

@@ -7,10 +7,12 @@
 
 import AVFoundation
 import UIKit
+import SwiftUI
 
 /// Controller to handle taking pictures or choosing from Library
 final class PostUploadViewController: UIViewController {
 
+    private var isUploadingShop = false
     private var output = AVCapturePhotoOutput()
     private var captureSession: AVCaptureSession?
     private let previewLayer = AVCaptureVideoPreviewLayer()
@@ -31,8 +33,32 @@ final class PostUploadViewController: UIViewController {
         button.tintColor = .label
         button.setImage(UIImage(systemName: "photo", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)),
                         for: .normal)
+        
         return button
     }()
+    
+    let shopButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
+    
+    let uploadShopButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
+    
+    @objc func didTapShopButton() {
+        Task{
+            let data = try await DatabaseManager.shared.shopPosts()
+
+            let vc = UIHostingController(rootView: Raven_Shop(data: RavenShopData(posts: data)))
+            present(vc, animated: true)
+        }
+    }
+    
+    @objc func didTapPickShopPhoto() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        picker.delegate = self
+        isUploadingShop = true
+        present(picker, animated: true)
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +67,8 @@ final class PostUploadViewController: UIViewController {
         view.addSubview(cameraView)
         view.addSubview(shutterButton)
         view.addSubview(photoPickerButton)
+        view.addSubview(shopButton)
+        view.addSubview(uploadShopButton)
         self.cameraView.isHidden = true
         self.shutterButton.isHidden = true
         self.photoPickerButton.isHidden = true
@@ -77,6 +105,15 @@ final class PostUploadViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        shopButton.center = CGPoint(x: view.width/2, y: view.height*3/4)
+        shopButton.setTitle("View Raven Shop", for: .normal)
+        shopButton.backgroundColor = .systemPink
+        shopButton.addTarget(self, action: #selector(didTapShopButton), for: .touchUpInside)
+        uploadShopButton.center = CGPoint(x: view.width/2, y: view.height*1/4)
+        uploadShopButton.setTitle("Upload to Raven Shop", for: .normal)
+        uploadShopButton.backgroundColor = .systemPink
+        uploadShopButton.addTarget(self, action: #selector(didTapPickShopPhoto), for: .touchUpInside)
+        
         cameraView.frame = view.bounds
         previewLayer.frame = CGRect(
             x: 0,
@@ -184,7 +221,13 @@ extension PostUploadViewController: UIImagePickerControllerDelegate, UINavigatio
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
-        showEditPhoto(image: image)
+        if(!isUploadingShop){
+            showEditPhoto(image: image)
+        }
+        if(isUploadingShop){
+            shopEditPhoto(image: image)
+        }
+        isUploadingShop = false
     }
 }
 
@@ -196,6 +239,21 @@ extension PostUploadViewController: AVCapturePhotoCaptureDelegate {
         }
         captureSession?.stopRunning()
         showEditPhoto(image: image)
+    }
+    private func shopEditPhoto(image: UIImage) {
+        guard let resizedImage = image.sd_resizedImage(
+            with: CGSize(width: 640, height: 640),
+            scaleMode: .aspectFill
+        ) else {
+            return
+        }
+
+        let vc = ShopEditViewController(image: resizedImage)
+        if #available(iOS 14.0, *) {
+            vc.navigationItem.backButtonDisplayMode = .minimal
+        }
+        navigationController?.pushViewController(vc, animated: false)
+
     }
 
     private func showEditPhoto(image: UIImage) {

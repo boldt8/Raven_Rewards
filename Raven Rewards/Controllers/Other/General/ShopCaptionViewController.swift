@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CaptionViewController: UIViewController, UITextViewDelegate {
+class ShopCaptionViewController: UIViewController, UITextViewDelegate {
 
     private let image: UIImage
 
@@ -66,7 +66,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         }
 
         // Upload Post
-        StorageManager.shared.uploadShopPost(
+        StorageManager.shared.uploadPost(
             data: image.pngData(),
             id: newPostID
         ) { newPostDownloadURL in
@@ -85,7 +85,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             )
 
             // Update Database
-            DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
+            DatabaseManager.shared.createShopPost(newPost: newPost) { [weak self] finished in
                 guard finished else {
                     return
                 }
@@ -121,9 +121,10 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             width: size,
             height: size
         )
+        
         textView.frame = CGRect(
             x: 20,
-            y: imageVIew.bottom+20,
+            y: imageVIew.bottom+30,
             width: view.width-40,
             height: 100
         )

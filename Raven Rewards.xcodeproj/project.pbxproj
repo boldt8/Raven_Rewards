@@ -39,9 +39,7 @@
 		0C9D54B72C5F39F40075AC6D /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54B62C5F39F40075AC6D /* PostViewController.swift */; };
 		0C9D54B92C5F3A1E0075AC6D /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */; };
 		0C9D54BB2C5F3A2E0075AC6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */; };
-		0C9D54C12C5F3A690075AC6D /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */; };
 		0C9D54C32C5F3AC90075AC6D /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C22C5F3AC90075AC6D /* PostEditViewController.swift */; };
-		0C9D54C52C5F3AD80075AC6D /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */; };
 		0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE36B5F2C60A19B00BECC60 /* Extensions.swift */; };
 		0CEB6F4C2CFA824500C81CC0 /* CommentBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F4B2CFA824500C81CC0 /* CommentBarViewDelegate.swift */; };
 		0CEB6F4E2CFA828200C81CC0 /* IGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F4D2CFA828200C81CC0 /* IGTextField.swift */; };
@@ -62,6 +60,13 @@
 		0CEB6F6C2CFAAA7F00C81CC0 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F6B2CFAAA7F00C81CC0 /* AnalyticsManager.swift */; };
 		0CEB6F6E2CFAAAB300C81CC0 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F6D2CFAAAB300C81CC0 /* HapticsManager.swift */; };
 		0CEB6F702CFAABC700C81CC0 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F6F2CFAABC700C81CC0 /* CaptionViewController.swift */; };
+		0CEB6F722CFABE0100C81CC0 /* Raven Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F712CFABE0100C81CC0 /* Raven Shop.swift */; };
+		0CEB6F742CFADB2200C81CC0 /* RavenShopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F732CFADB2200C81CC0 /* RavenShopData.swift */; };
+		0CEB6F782CFADD1800C81CC0 /* ListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F772CFADD1800C81CC0 /* ListElementView.swift */; };
+		0CEB6F7A2CFAE9E200C81CC0 /* ShopEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F792CFAE9E200C81CC0 /* ShopEditViewController.swift */; };
+		0CEB6F7C2CFAEB8500C81CC0 /* ShopCaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F7B2CFAEB8500C81CC0 /* ShopCaptionViewController.swift */; };
+		0CEB6F7F2CFB094900C81CC0 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0CEB6F7E2CFB094900C81CC0 /* SDWebImageSwiftUI */; };
+		0CEB6F812CFB0A9B00C81CC0 /* SDWebImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F802CFB0A9B00C81CC0 /* SDWebImageLoader.swift */; };
 		160E9C5F33769478BBAEDBF5 /* Pods_Raven_Rewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42A433F8EB395E9B582BB16 /* Pods_Raven_Rewards.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,9 +121,7 @@
 		0C9D54B62C5F39F40075AC6D /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		0C9D54C22C5F3AC90075AC6D /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
-		0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
 		0CE36B5F2C60A19B00BECC60 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CEB6F4B2CFA824500C81CC0 /* CommentBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBarViewDelegate.swift; sourceTree = "<group>"; };
 		0CEB6F4D2CFA828200C81CC0 /* IGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGTextField.swift; sourceTree = "<group>"; };
@@ -139,6 +142,12 @@
 		0CEB6F6B2CFAAA7F00C81CC0 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		0CEB6F6D2CFAAAB300C81CC0 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		0CEB6F6F2CFAABC700C81CC0 /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
+		0CEB6F712CFABE0100C81CC0 /* Raven Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Raven Shop.swift"; sourceTree = "<group>"; };
+		0CEB6F732CFADB2200C81CC0 /* RavenShopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RavenShopData.swift; sourceTree = "<group>"; };
+		0CEB6F772CFADD1800C81CC0 /* ListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementView.swift; sourceTree = "<group>"; };
+		0CEB6F792CFAE9E200C81CC0 /* ShopEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopEditViewController.swift; sourceTree = "<group>"; };
+		0CEB6F7B2CFAEB8500C81CC0 /* ShopCaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCaptionViewController.swift; sourceTree = "<group>"; };
+		0CEB6F802CFB0A9B00C81CC0 /* SDWebImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageLoader.swift; sourceTree = "<group>"; };
 		16C9F46D94BF6EE617BB823D /* Pods-Raven Rewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.debug.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.debug.xcconfig"; sourceTree = "<group>"; };
 		38EB0AF4294E360B7066B385 /* Pods-Raven Rewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Raven Rewards.release.xcconfig"; path = "Target Support Files/Pods-Raven Rewards/Pods-Raven Rewards.release.xcconfig"; sourceTree = "<group>"; };
 		C42A433F8EB395E9B582BB16 /* Pods_Raven_Rewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Raven_Rewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CEB6F7F2CFB094900C81CC0 /* SDWebImageSwiftUI in Frameworks */,
 				0C45BDBF2CF460C600C12BA0 /* CodeScanner in Frameworks */,
 				160E9C5F33769478BBAEDBF5 /* Pods_Raven_Rewards.framework in Frameworks */,
 				0CEB6F5E2CFA8AF900C81CC0 /* AdSupport.framework in Frameworks */,
@@ -177,13 +187,16 @@
 			children = (
 				0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */,
 				0C9D54B62C5F39F40075AC6D /* PostViewController.swift */,
-				0C9D54C02C5F3A690075AC6D /* SearchResultViewController.swift */,
 				0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */,
 				0CEB6F652CFA9D1700C81CC0 /* ListViewController.swift */,
 				0C9D54C22C5F3AC90075AC6D /* PostEditViewController.swift */,
-				0C9D54C42C5F3AD80075AC6D /* PublishPostViewController.swift */,
 				0CEB6F5F2CFA9BFC00C81CC0 /* ProfileHeaderCountView.swift */,
 				0CEB6F6F2CFAABC700C81CC0 /* CaptionViewController.swift */,
+				0CEB6F732CFADB2200C81CC0 /* RavenShopData.swift */,
+				0CEB6F772CFADD1800C81CC0 /* ListElementView.swift */,
+				0CEB6F792CFAE9E200C81CC0 /* ShopEditViewController.swift */,
+				0CEB6F7B2CFAEB8500C81CC0 /* ShopCaptionViewController.swift */,
+				0CEB6F802CFB0A9B00C81CC0 /* SDWebImageLoader.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -325,6 +338,7 @@
 				0C9D54A82C5F2F970075AC6D /* CameraViewController.swift */,
 				0C9D54AC2C5F2FB90075AC6D /* ProfileViewController.swift */,
 				0C45BDC02CF470CF00C12BA0 /* QRScanner.swift */,
+				0CEB6F712CFABE0100C81CC0 /* Raven Shop.swift */,
 			);
 			path = "Core Tabs";
 			sourceTree = "<group>";
@@ -385,6 +399,7 @@
 			name = "Raven Rewards";
 			packageProductDependencies = (
 				0C45BDBE2CF460C600C12BA0 /* CodeScanner */,
+				0CEB6F7E2CFB094900C81CC0 /* SDWebImageSwiftUI */,
 			);
 			productName = "Raven Rewards";
 			productReference = 0C9D546E2C5F2B1D0075AC6D /* Raven Rewards.app */;
@@ -461,6 +476,7 @@
 			packageReferences = (
 				0CF0C73F2C602E85001209F0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0C45BDBD2CF45EE900C12BA0 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				0CEB6F7D2CFB094900C81CC0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 0C9D546F2C5F2B1D0075AC6D /* Products */;
 			projectDirPath = "";
@@ -550,23 +566,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CEB6F742CFADB2200C81CC0 /* RavenShopData.swift in Sources */,
 				0CEB6F702CFAABC700C81CC0 /* CaptionViewController.swift in Sources */,
 				0C9D54B92C5F3A1E0075AC6D /* EditProfileViewController.swift in Sources */,
 				0CEB6F562CFA840200C81CC0 /* PostLikesCollectionViewCell.swift in Sources */,
 				0C9D54A72C5F2F740075AC6D /* PostUploadViewController.swift in Sources */,
-				0C9D54C52C5F3AD80075AC6D /* PublishPostViewController.swift in Sources */,
 				0C9D54A92C5F2F970075AC6D /* CameraViewController.swift in Sources */,
 				0CEB6F6A2CFAA41C00C81CC0 /* ListUserTableViewCellViewModel.swift in Sources */,
+				0CEB6F782CFADD1800C81CC0 /* ListElementView.swift in Sources */,
 				0C45BDC12CF470CF00C12BA0 /* QRScanner.swift in Sources */,
 				0CEB6F522CFA838700C81CC0 /* PostCollectionViewCell.swift in Sources */,
 				0C9D54762C5F2B1D0075AC6D /* HomeViewController.swift in Sources */,
+				0CEB6F7C2CFAEB8500C81CC0 /* ShopCaptionViewController.swift in Sources */,
 				0C9D54B52C5F39D50075AC6D /* RegistrationViewController.swift in Sources */,
 				0CEB6F542CFA83CA00C81CC0 /* PostActionsCollectionViewCell.swift in Sources */,
 				0C8CB6402C6D829B00488833 /* NoNotificaitonsView.swift in Sources */,
+				0CEB6F7A2CFAE9E200C81CC0 /* ShopEditViewController.swift in Sources */,
 				0C8CB62D2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift in Sources */,
 				0CEB6F5C2CFA84B200C81CC0 /* CommentCollectionViewCell.swift in Sources */,
 				0C9D54C32C5F3AC90075AC6D /* PostEditViewController.swift in Sources */,
 				0C2A428F2C60954F003C0D37 /* StorageManager.swift in Sources */,
+				0CEB6F722CFABE0100C81CC0 /* Raven Shop.swift in Sources */,
 				0C8CB63E2C6AD6E400488833 /* UserFollowTableViewCell.swift in Sources */,
 				0CEB6F682CFAA3E600C81CC0 /* ListUserTableViewCell.swift in Sources */,
 				0C8CB63C2C66DAB800488833 /* Models.swift in Sources */,
@@ -578,11 +598,11 @@
 				0C2A428B2C60940E003C0D37 /* DatabaseManager.swift in Sources */,
 				0C8CB62A2C656C1300488833 /* IGFeedPostTableViewCell.swift in Sources */,
 				0C8CB6362C6595E000488833 /* PhotoCollectionViewCell.swift in Sources */,
-				0C9D54C12C5F3A690075AC6D /* SearchResultViewController.swift in Sources */,
 				0CEB6F6C2CFAAA7F00C81CC0 /* AnalyticsManager.swift in Sources */,
 				0C9D54B32C5F39CA0075AC6D /* LoginViewController.swift in Sources */,
 				0CEB6F4C2CFA824500C81CC0 /* CommentBarViewDelegate.swift in Sources */,
 				0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */,
+				0CEB6F812CFB0A9B00C81CC0 /* SDWebImageLoader.swift in Sources */,
 				0CEB6F622CFA9C4B00C81CC0 /* ProfileHeaderCountViewViewModel.swift in Sources */,
 				0C8CB6312C656E3600488833 /* IGFeedPostGeneralTableViewCell.swift in Sources */,
 				0C8CB6382C65965800488833 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
@@ -785,7 +805,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -816,7 +836,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -956,6 +976,14 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		0CEB6F7D2CFB094900C81CC0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
 		0CF0C73F2C602E85001209F0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -971,6 +999,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C45BDBD2CF45EE900C12BA0 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		0CEB6F7E2CFB094900C81CC0 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CEB6F7D2CFB094900C81CC0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

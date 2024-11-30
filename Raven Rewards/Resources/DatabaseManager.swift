@@ -269,52 +269,52 @@ final class DatabaseManager {
         }
     }
 
-//    /// Follow states that are supported
-//    enum RelationshipState {
-//        case follow
-//        case unfollow
-//    }
+    /// Follow states that are supported
+    enum RelationshipState {
+        case follow
+        case unfollow
+    }
 
-//    /// Update relationship of follow for user
-//    /// - Parameters:
-//    ///   - state: State to update to
-//    ///   - targetUsername: Other user username
-//    ///   - completion: Result callback
-//    public func updateRelationship(
-//        state: RelationshipState,
-//        for targetUsername: String,
-//        completion: @escaping (Bool) -> Void
-//    ) {
-//        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else {
-//            completion(false)
-//            return
-//        }
-//
-//        let currentFollowing = database.collection("users")
-//            .document(currentUsername)
-//            .collection("following")
-//
-//        let targetUserFollowers = database.collection("users")
-//            .document(targetUsername)
-//            .collection("followers")
-//
-//        switch state {
-//        case .unfollow:
-//            // Remove follower for currentUser following list
-//            currentFollowing.document(targetUsername).delete()
-//            // Remove currentUser from targetUser followers list
-//            targetUserFollowers.document(currentUsername).delete()
-//
-//            completion(true)
-//        case .follow:
-//            // Add follower for requester following list
-//            currentFollowing.document(targetUsername).setData(["valid": "1"])
-//            // Add currentUser to targetUser followers list
-//            targetUserFollowers.document(currentUsername).setData(["valid": "1"])
-//
-//            completion(true)
-//        }
-//    }
+    /// Update relationship of follow for user
+    /// - Parameters:
+    ///   - state: State to update to
+    ///   - targetUsername: Other user username
+    ///   - completion: Result callback
+    public func updateRelationship(
+        state: RelationshipState,
+        for targetUsername: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else {
+            completion(false)
+            return
+        }
+
+        let currentFollowing = database.collection("users")
+            .document(currentUsername)
+            .collection("following")
+
+        let targetUserFollowers = database.collection("users")
+            .document(targetUsername)
+            .collection("followers")
+
+        switch state {
+        case .unfollow:
+            // Remove follower for currentUser following list
+            currentFollowing.document(targetUsername).delete()
+            // Remove currentUser from targetUser followers list
+            targetUserFollowers.document(currentUsername).delete()
+
+            completion(true)
+        case .follow:
+            // Add follower for requester following list
+            currentFollowing.document(targetUsername).setData(["valid": "1"])
+            // Add currentUser to targetUser followers list
+            targetUserFollowers.document(currentUsername).setData(["valid": "1"])
+
+            completion(true)
+        }
+    }
 
     /// Get user counts for target usre
     /// - Parameters:
@@ -379,67 +379,67 @@ final class DatabaseManager {
         }
     }
 
-//    /// Check if current user is following another
-//    /// - Parameters:
-//    ///   - targetUsername: Other user to check
-//    ///   - completion: Result callback
-//    public func isFollowing(
-//        targetUsername: String,
-//        completion: @escaping (Bool) -> Void
-//    ) {
-//        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else {
-//            completion(false)
-//            return
-//        }
-//
-//        let ref = database.collection("users")
-//            .document(targetUsername)
-//            .collection("followers")
-//            .document(currentUsername)
-//        ref.getDocument { snapshot, error in
-//            guard snapshot?.data() != nil, error == nil else {
-//                // Not following
-//                completion(false)
-//                return
-//            }
-//            // following
-//            completion(true)
-//        }
-//    }
+    /// Check if current user is following another
+    /// - Parameters:
+    ///   - targetUsername: Other user to check
+    ///   - completion: Result callback
+    public func isFollowing(
+        targetUsername: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else {
+            completion(false)
+            return
+        }
+
+        let ref = database.collection("users")
+            .document(targetUsername)
+            .collection("followers")
+            .document(currentUsername)
+        ref.getDocument { snapshot, error in
+            guard snapshot?.data() != nil, error == nil else {
+                // Not following
+                completion(false)
+                return
+            }
+            // following
+            completion(true)
+        }
+    }
 
 //    /// Get followers for user
 //    /// - Parameters:
 //    ///   - username: Username to query
 //    ///   - completion: Result callback
-//    public func followers(for username: String, completion: @escaping ([String]) -> Void) {
-//        let ref = database.collection("users")
-//            .document(username)
-//            .collection("followers")
-//        ref.getDocuments { snapshot, error in
-//            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
-//                completion([])
-//                return
-//            }
-//            completion(usernames)
-//        }
-//    }
+    public func followers(for username: String, completion: @escaping ([String]) -> Void) {
+        let ref = database.collection("users")
+            .document(username)
+            .collection("followers")
+        ref.getDocuments { snapshot, error in
+            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
+                completion([])
+                return
+            }
+            completion(usernames)
+        }
+    }
 
-//    /// Get users that parameter username follows
-//    /// - Parameters:
-//    ///   - username: Query usernam
-//    ///   - completion: Result callback
-//    public func following(for username: String, completion: @escaping ([String]) -> Void) {
-//        let ref = database.collection("users")
-//            .document(username)
-//            .collection("following")
-//        ref.getDocuments { snapshot, error in
-//            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
-//                completion([])
-//                return
-//            }
-//            completion(usernames)
-//        }
-//    }
+    /// Get users that parameter username follows
+    /// - Parameters:
+    ///   - username: Query usernam
+    ///   - completion: Result callback
+    public func following(for username: String, completion: @escaping ([String]) -> Void) {
+        let ref = database.collection("users")
+            .document(username)
+            .collection("following")
+        ref.getDocuments { snapshot, error in
+            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
+                completion([])
+                return
+            }
+            completion(usernames)
+        }
+    }
 
     // MARK: - User Info
 
@@ -447,15 +447,34 @@ final class DatabaseManager {
     /// - Parameters:
     ///   - username: username to query for
     ///   - completion: Result callback
+    public func getUserPoints(
+            username: String,
+            completion: @escaping (RealUser?) -> Void
+        ) {
+            let ref = database.collection("users")
+                .document(username)
+            ref.getDocument { snapshot, error in
+                guard let data = snapshot?.data(),
+                      let userInfo = RealUser(with: data) else {
+                    completion(nil)
+                    return
+                }
+                completion(userInfo)
+            }
+    }
+    
+    
     public func getUserInfo(
         username: String,
-        completion: @escaping (RealUser?) -> Void
+        completion: @escaping (UserInfo?) -> Void
     ) {
         let ref = database.collection("users")
             .document(username)
+            .collection("information")
+            .document("basic")
         ref.getDocument { snapshot, error in
             guard let data = snapshot?.data(),
-                  let userInfo = RealUser(with: data) else {
+                  let userInfo = UserInfo(with: data) else {
                 completion(nil)
                 return
             }
@@ -463,27 +482,28 @@ final class DatabaseManager {
         }
     }
 
+
     /// Set user info
     /// - Parameters:
     ///   - userInfo: UserInfo model
     ///   - completion: Callback
-//    public func setUserInfo(
-//        userInfo: UserInfo,
-//        completion: @escaping (Bool) -> Void
-//    ) {
-//        guard let username = UserDefaults.standard.string(forKey: "username"),
-//              let data = userInfo.asDictionary() else {
-//            return
-//        }
-//
-//        let ref = database.collection("users")
-//            .document(username)
-//            .collection("information")
-//            .document("basic")
-//        ref.setData(data) { error in
-//            completion(error == nil)
-//        }
-//    }
+    public func setUserInfo(
+        userInfo: UserInfo,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let username = UserDefaults.standard.string(forKey: "username"),
+              let data = userInfo.asDictionary() else {
+            return
+        }
+
+        let ref = database.collection("users")
+            .document(username)
+            .collection("information")
+            .document("basic")
+        ref.setData(data) { error in
+            completion(error == nil)
+        }
+    }
 
     // MARK: - Comment
 

@@ -128,7 +128,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        AuthManager.shared.signUp(email: email, username: username, password: password) { [weak self] registered in
+        AuthManager.shared.signUp(email: email, username: username, password: password, isAdmin: false) { [weak self] registered in
             DispatchQueue.main.async{
                 switch registered {
                 case .success(let user):

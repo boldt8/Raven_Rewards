@@ -24,6 +24,12 @@ final class AuthManager {
         guard let username = UserDefaults.standard.string(forKey: "username") else { return "" }
         return username
     }
+    
+    /// Current useremail
+    public var currUserEmail: String {
+        guard let username = UserDefaults.standard.string(forKey: "email") else { return "" }
+        return username
+    }
 
     /// Auth errors that can occur
     enum AuthError: Error {
@@ -77,9 +83,10 @@ final class AuthManager {
         email: String,
         username: String,
         password: String,
+        isAdmin: Bool,
         completion: @escaping (Result<RealUser, Error>) -> Void
     ) {
-        let newUser = RealUser(username: username, email: email, points: 0)
+        let newUser = RealUser(username: username, email: email, points: 0, isAdmin: false)
         // Create account
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {

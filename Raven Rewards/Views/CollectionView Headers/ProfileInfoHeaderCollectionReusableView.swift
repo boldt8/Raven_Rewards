@@ -26,6 +26,8 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 
     weak var delegate: ProfileHeaderCollectionReusableViewDelegate?
 
+    public let countContainerView = ProfileHeaderCountView()
+
     private let bioLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -38,6 +40,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(countContainerView)
         addSubview(imageView)
         addSubview(bioLabel)
 
@@ -58,6 +61,12 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         let imageSize: CGFloat = width/3.5
         imageView.frame = CGRect(x: 5, y: 5, width: imageSize, height: imageSize)
         imageView.layer.cornerRadius = imageSize/2
+        countContainerView.frame = CGRect(
+            x: imageView.right+5,
+            y: 3,
+            width: width-imageView.right-10,
+            height: imageSize
+        )
         let bioSize = bioLabel.sizeThatFits(
             bounds.size
         )
@@ -83,6 +92,13 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         }
         text += viewModel.bio ?? "Welcome to my profile!"
         bioLabel.text = text
-        
+        // Container
+        let containerViewModel = ProfileHeaderCountViewViewModel(
+            followerCount: viewModel.followerCount,
+            followingCount: viewModel.followingICount,
+            postsCount: viewModel.postCount,
+            actioonType: viewModel.buttonType
+        )
+        countContainerView.configure(with: containerViewModel)
     }
 }

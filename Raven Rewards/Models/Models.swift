@@ -12,6 +12,12 @@ struct RealUser: Codable {
     let username: String
     let email: String
     let points: Int
+    let isAdmin: Bool
+}
+
+struct UserInfo: Codable {
+    let name: String
+    let bio: String
 }
 
 struct Comment: Codable {

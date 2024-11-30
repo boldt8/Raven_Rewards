@@ -8,11 +8,7 @@
 import UIKit
 
 /// Home Feed View Controller
-final class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PostLikesCollectionViewCellDelegate {
-    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
-        return
-    }
-    
+final class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     /// CollectionView for feed
     private var collectionView: UICollectionView?
@@ -30,7 +26,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Instagram"
+        title = "RavenRewards"
         view.backgroundColor = .systemBackground
         configureCollectionView()
         fetchPosts()
@@ -55,14 +51,24 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
         guard let username = UserDefaults.standard.string(forKey: "username") else {
             return
         }
+        let userGroup = DispatchGroup()
+        userGroup.enter()
+
         var allPosts: [(post: Post, owner: String)] = []
 
-        
+        DatabaseManager.shared.following(for: username) { usernames in
+            defer {
+                userGroup.leave()
+            }
 
-            let users = ["hello"]
+            let users = usernames + [username]
             for current in users {
+                userGroup.enter()
                 DatabaseManager.shared.posts(for: current) { result in
                     DispatchQueue.main.async {
+                        defer {
+                            userGroup.leave()
+                        }
 
                         switch result {
                         case .success(let posts):
@@ -75,8 +81,10 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
                         }
                     }
                 }
+            }
         }
 
+        userGroup.notify(queue: .main) {
             let group = DispatchGroup()
             self.allPosts = allPosts
             allPosts.forEach { model in
@@ -93,6 +101,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
                         }
                     }
                 )
+            }
 
             group.notify(queue: .main) {
                 self.sortData()
@@ -256,6 +265,14 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 }
 
+extension HomeViewController: PostLikesCollectionViewCellDelegate {
+    func postLikesCollectionViewCellDidTapLikeCount(_ cell: PostLikesCollectionViewCell, index: Int) {
+        HapticManager.shared.vibrateForSelection()
+        let vc = ListViewController(type: .likers(usernames: allPosts[index].post.likers))
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 extension HomeViewController: PostCaptionCollectionViewCellDelegate {
     func postCaptionCollectionViewCellDidTapCaptioon(_ cell: PostCaptionCollectionViewCell) {
         print("tapped caption")
@@ -264,6 +281,7 @@ extension HomeViewController: PostCaptionCollectionViewCellDelegate {
 
 extension HomeViewController: PostActionsCollectionViewCellDelegate {
     func postActionsCollectionViewCellDidTapShare(_ cell: PostActionsCollectionViewCell, index: Int) {
+        AnalyticsManager.shared.logFeedInteraction(.share)
         let section = viewModels[index]
         section.forEach { cellType in
             switch cellType {
@@ -281,15 +299,17 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
     }
 
     func postActionsCollectionViewCellDidTapComment(_ cell: PostActionsCollectionViewCell, index: Int) {
+        AnalyticsManager.shared.logFeedInteraction(.comment)
         let tuple = allPosts[index]
- 
+        HapticManager.shared.vibrateForSelection()
         let vc = PostViewController(post: tuple.post, owner: tuple.owner)
         vc.title = "Post"
         navigationController?.pushViewController(vc, animated: true)
     }
 
     func postActionsCollectionViewCellDidTapLike(_ cell: PostActionsCollectionViewCell, isLiked: Bool, index: Int) {
-
+        AnalyticsManager.shared.logFeedInteraction(.like)
+        HapticManager.shared.vibrateForSelection()
         let tuple = allPosts[index]
         DatabaseManager.shared.updateLikeState(
             state: isLiked ? .like : .unlike,
@@ -305,7 +325,7 @@ extension HomeViewController: PostActionsCollectionViewCellDelegate {
 
 extension HomeViewController: PostCollectionViewCellDelegate {
     func postCollectionViewCellDidLike(_ cell: PostCollectionViewCell, index: Int) {
-
+        AnalyticsManager.shared.logFeedInteraction(.doubleTapToLike)
         let tuple = allPosts[index]
         DatabaseManager.shared.updateLikeState(
             state: .like,
@@ -347,7 +367,7 @@ extension HomeViewController: PosterCollectionViewCellDelegate {
         }))
         sheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: { _ in
             // Report
-     
+            AnalyticsManager.shared.logFeedInteraction(.reported)
         }))
         present(sheet, animated: true)
     }
@@ -483,7 +503,6 @@ extension HomeViewController {
             PostDateTimeCollectionViewCell.self,
             forCellWithReuseIdentifier: PostDateTimeCollectionViewCell.identifer
         )
-
 
         self.collectionView = collectionView
     }

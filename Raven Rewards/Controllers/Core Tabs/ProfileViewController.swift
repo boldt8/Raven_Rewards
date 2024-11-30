@@ -22,6 +22,8 @@ struct ProfileHeaderViewModel {
     let bio: String?
 }
 
+import UIKit
+
 /// Reusable controller for Profile
 final class ProfileViewController: UIViewController {
 
@@ -45,14 +47,14 @@ final class ProfileViewController: UIViewController {
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
-        self.user = RealUser(username: "hello", email: "hi", points: 0)
+        let username = AuthManager.shared.currUserID
+        let email = AuthManager.shared.currUserEmail
+        self.user = RealUser(username: username, email: email, points: 0, isAdmin: false)
         super.init(coder: aDecoder)
     }
     
-    
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -124,8 +126,8 @@ final class ProfileViewController: UIViewController {
 
         // Bio, name
         DatabaseManager.shared.getUserInfo(username: user.username) { userInfo in
-            name = userInfo?.username
-            bio = "no bio"
+            name = userInfo?.name
+            bio = userInfo?.bio
         }
 
         // Profile picture url
@@ -137,18 +139,18 @@ final class ProfileViewController: UIViewController {
             profilePictureUrl = url
         }
 
-//        // if profile is not for current user,
-//        if !isCurrentUser {
-//            // Get follow state
-//            group.enter()
-//            DatabaseManager.shared.isFollowing(targetUsername: user.username) { isFollowing in
-//                defer {
-//                    group.leave()
-//                }
-//                print(isFollowing)
-//                buttonType = .follow(isFollowing: isFollowing)
-//            }
-//        }
+        // if profile is not for current user,
+        if !isCurrentUser {
+            // Get follow state
+            group.enter()
+            DatabaseManager.shared.isFollowing(targetUsername: user.username) { isFollowing in
+                defer {
+                    group.leave()
+                }
+                print(isFollowing)
+                buttonType = .follow(isFollowing: isFollowing)
+            }
+        }
 
         group.notify(queue: .main) {
             self.headerViewModel = ProfileHeaderViewModel(
@@ -208,6 +210,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         if let viewModel = headerViewModel {
             headerView.configure(with: viewModel)
+            headerView.countContainerView.delegate = self
         }
         headerView.delegate = self
         return headerView
@@ -276,6 +279,64 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                 self?.headerViewModel = nil
                 self?.posts = []
                 self?.fetchProfileInfo()
+            }
+        }
+    }
+}
+
+extension ProfileViewController: ProfileHeaderCountViewDelegate {
+    func profileHeaderCountViewDidTapFollowers(_ containerView: ProfileHeaderCountView) {
+        let vc = ListViewController(type: .followers(user: user))
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func profileHeaderCountViewDidTapFollowing(_ containerView: ProfileHeaderCountView) {
+        let vc = ListViewController(type: .following(user: user))
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func profileHeaderCountViewDidTapPosts(_ containerView: ProfileHeaderCountView) {
+        guard posts.count >= 18 else {
+            return
+        }
+        collectionView?.setContentOffset(CGPoint(x: 0, y: view.width * 0.4),
+                                         animated: true)
+    }
+
+    func profileHeaderCountViewDidTapEditProfile(_ containerView: ProfileHeaderCountView) {
+        let vc = EditProfileViewController()
+        vc.completion = { [weak self] in
+            self?.headerViewModel = nil
+            self?.fetchProfileInfo()
+        }
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
+    }
+
+    func profileHeaderCountViewDidTapFollow(_ containerView: ProfileHeaderCountView) {
+        DatabaseManager.shared.updateRelationship(
+            state: .follow,
+            for: user.username
+        ) { [weak self] success in
+            if !success {
+                print("failed to follow")
+                DispatchQueue.main.async {
+                    self?.collectionView?.reloadData()
+                }
+            }
+        }
+    }
+
+    func profileHeaderCountViewDidTapUnFollow(_ containerView: ProfileHeaderCountView) {
+        DatabaseManager.shared.updateRelationship(
+            state: .unfollow,
+            for: user.username
+        ) { [weak self] success in
+            if !success {
+                print("failed to follow")
+                DispatchQueue.main.async {
+                    self?.collectionView?.reloadData()
+                }
             }
         }
     }

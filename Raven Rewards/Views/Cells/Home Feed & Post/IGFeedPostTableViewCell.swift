@@ -5,7 +5,7 @@
 //  Created by Alexander Boldt on 8/8/24.
 //
 import AVFoundation
-import SDWebImage
+import SDWebImageSwiftUI
 import UIKit
 
 

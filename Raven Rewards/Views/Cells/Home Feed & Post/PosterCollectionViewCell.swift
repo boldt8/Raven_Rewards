@@ -5,7 +5,7 @@
 //  Created by Afraz Siddiqui on 3/21/21.
 //
 
-import SDWebImage
+import SDWebImageSwiftUI
 import UIKit
 
 protocol PosterCollectionViewCellDelegate: AnyObject {

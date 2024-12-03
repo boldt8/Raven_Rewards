@@ -9,7 +9,6 @@ target 'Raven Rewards' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
-  pod 'SDWebImage'
 
 end
 

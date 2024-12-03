@@ -60,7 +60,7 @@ class ShopCaptionViewController: UIViewController, UITextViewDelegate {
         }
 
         // Generate post ID
-        guard let newPostID = createNewPostID(),
+        guard let newPostID = createShopPostID(),
               let stringDate = String.date(from: Date()) else {
             return
         }
@@ -102,14 +102,12 @@ class ShopCaptionViewController: UIViewController, UITextViewDelegate {
 
     }
 
-    private func createNewPostID() -> String? {
-        let timeStamp = Date().timeIntervalSince1970
-        let randomNumber = Int.random(in: 0...1000)
+    private func createShopPostID() -> String? {
         guard let username = UserDefaults.standard.string(forKey: "username") else {
             return nil
         }
 
-        return "\(username)_\(randomNumber)_\(timeStamp)"
+        return "\(username)_"
     }
 
     override func viewDidLayoutSubviews() {

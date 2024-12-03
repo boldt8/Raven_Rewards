@@ -69,6 +69,7 @@ final class PostUploadViewController: UIViewController {
         view.addSubview(photoPickerButton)
         view.addSubview(shopButton)
         view.addSubview(uploadShopButton)
+        self.uploadShopButton.isHidden = true
         self.cameraView.isHidden = true
         self.shutterButton.isHidden = true
         self.photoPickerButton.isHidden = true
@@ -81,6 +82,7 @@ final class PostUploadViewController: UIViewController {
             if let user = user {
                 DispatchQueue.main.async {
                     if(user.isAdmin){
+                        self?.uploadShopButton.isHidden = false
                         self?.cameraView.isHidden = false
                         self?.shutterButton.isHidden = false
                         self?.photoPickerButton.isHidden = false
@@ -105,7 +107,7 @@ final class PostUploadViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        shopButton.center = CGPoint(x: view.width/2, y: view.height*3/4)
+        shopButton.center = CGPoint(x: view.width/2, y: view.height*1/2)
         shopButton.setTitle("View Raven Shop", for: .normal)
         shopButton.backgroundColor = .systemPink
         shopButton.addTarget(self, action: #selector(didTapShopButton), for: .touchUpInside)

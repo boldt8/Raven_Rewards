@@ -23,6 +23,19 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
     private var allPosts: [(post: Post, owner: String)] = []
 
     // MARK: - Lifecycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if AuthManager.shared.isSignedIn == false {
+            // Show log in
+            let loginVC = LoginViewController()
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: true) {
+                self.navigationController?.popToRootViewController(animated: false)
+                self.tabBarController?.selectedIndex = 0
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +66,18 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         let userGroup = DispatchGroup()
         userGroup.enter()
+        
+        
 
         var allPosts: [(post: Post, owner: String)] = []
 
-        DatabaseManager.shared.following(for: username) { usernames in
+        DatabaseManager.shared.otherUsers(for: username) { usernames in
             defer {
                 userGroup.leave()
             }
 
-            let users = usernames + [username]
+            let users = usernames
+//            print(users)
             for current in users {
                 userGroup.enter()
                 DatabaseManager.shared.posts(for: current) { result in
@@ -69,20 +85,23 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
                         defer {
                             userGroup.leave()
                         }
-
+                        
                         switch result {
                         case .success(let posts):
                             allPosts.append(contentsOf: posts.compactMap({
                                 (post: $0, owner: current)
                             }))
-
+                       
                         case .failure:
                             break
                         }
+//                        print(allPosts)
                     }
                 }
             }
+            
         }
+        
 
         userGroup.notify(queue: .main) {
             let group = DispatchGroup()

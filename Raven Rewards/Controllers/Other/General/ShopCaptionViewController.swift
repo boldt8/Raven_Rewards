@@ -60,13 +60,13 @@ class ShopCaptionViewController: UIViewController, UITextViewDelegate {
         }
 
         // Generate post ID
-        guard let newPostID = createShopPostID(),
+        guard let newPostID = createNewShopPostID(),
               let stringDate = String.date(from: Date()) else {
             return
         }
 
         // Upload Post
-        StorageManager.shared.uploadPost(
+        StorageManager.shared.ShopPostupload(
             data: image.pngData(),
             id: newPostID
         ) { newPostDownloadURL in
@@ -102,12 +102,14 @@ class ShopCaptionViewController: UIViewController, UITextViewDelegate {
 
     }
 
-    private func createShopPostID() -> String? {
+    private func createNewShopPostID() -> String? {
+        let timeStamp = Date().timeIntervalSince1970
+        let randomNumber = Int.random(in: 1000...2000)
         guard let username = UserDefaults.standard.string(forKey: "username") else {
             return nil
         }
 
-        return "\(username)_"
+        return "\(username)_\(randomNumber)_\(timeStamp)"
     }
 
     override func viewDidLayoutSubviews() {

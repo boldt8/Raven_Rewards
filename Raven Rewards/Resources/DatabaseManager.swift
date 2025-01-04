@@ -464,6 +464,21 @@ final class DatabaseManager {
     /// - Parameters:
     ///   - username: Query usernam
     ///   - completion: Result callback
+    public func otherUsers(for username: String, completion: @escaping ([String]) -> Void) {
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let usernames = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
+                completion([])
+                return
+            }
+            completion(usernames)
+        }
+    }
+    
+    /// Get users that parameter username follows
+    /// - Parameters:
+    ///   - username: Query usernam
+    ///   - completion: Result callback
     public func following(for username: String, completion: @escaping ([String]) -> Void) {
         let ref = database.collection("users")
             .document(username)

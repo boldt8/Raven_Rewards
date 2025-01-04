@@ -138,7 +138,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                     alert.addAction(UIAlertAction(title: "Dismiss",
                                                   style: .cancel,
                                                   handler: nil))
+                    
                     self?.present(alert, animated: true)
+                    
                 case .failure(let error):
                     self?.presentInternalError()
                     print("\n\nSign Up Error: \(error)")

@@ -66,7 +66,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         }
 
         // Upload Post
-        StorageManager.shared.uploadShopPost(
+        StorageManager.shared.uploadPost(
             data: image.pngData(),
             id: newPostID
         ) { newPostDownloadURL in

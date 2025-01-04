@@ -20,10 +20,10 @@
                         <color key="selectedImageTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="qSs-h3-Pcp" kind="relationship" relationship="viewControllers" id="rYu-Ab-CNz"/>
                         <segue destination="D9P-Ba-ig3" kind="relationship" relationship="viewControllers" id="oLn-GZ-5tF"/>
-                        <segue destination="8zh-70-Odk" kind="relationship" relationship="viewControllers" id="m63-pB-x1b"/>
                         <segue destination="h6J-cR-aSH" kind="relationship" relationship="viewControllers" id="0pT-nO-w9q"/>
+                        <segue destination="qSs-h3-Pcp" kind="relationship" relationship="viewControllers" id="rYu-Ab-CNz"/>
+                        <segue destination="8zh-70-Odk" kind="relationship" relationship="viewControllers" id="m63-pB-x1b"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCF-vO-SQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -51,7 +51,7 @@
         <scene sceneID="cnA-GJ-fLK">
             <objects>
                 <navigationController id="h6J-cR-aSH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="VUZ-if-tli"/>
+                    <tabBarItem key="tabBarItem" title="" image="dollarsign" catalog="system" id="VUZ-if-tli"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BPq-cR-3We">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -85,7 +85,7 @@
         <scene sceneID="sEM-4m-18Y">
             <objects>
                 <navigationController id="D9P-Ba-ig3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="plus" catalog="system" id="rnD-Nt-P7o"/>
+                    <tabBarItem key="tabBarItem" title="" image="qrcode" catalog="system" id="rnD-Nt-P7o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FSx-5a-qAS">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -164,10 +164,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dollarsign" catalog="system" width="89" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person" catalog="system" width="128" height="121"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="qrcode" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -38,7 +38,7 @@ final class StorageManager {
         }
     }
     
-    public func uploadShopPost(
+    public func ShopPostupload(
         data: Data?,
         id: String,
         completion: @escaping (URL?) -> Void

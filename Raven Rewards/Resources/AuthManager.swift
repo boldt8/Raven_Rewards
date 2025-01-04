@@ -102,6 +102,16 @@ final class AuthManager {
                     completion(.failure(AuthError.newUserCreation))
                 }
             }
+//            StorageManager.shared.uploadProfilePicture(
+//                username: username,
+//                data: UIImage(systemName: "Person2")?.pngData()
+//            ) { [weak self] success in
+//                DispatchQueue.main.async{
+//                    if success {
+//                        print("hooray")
+//                    }
+//                }
+//            }
         }
     }
 

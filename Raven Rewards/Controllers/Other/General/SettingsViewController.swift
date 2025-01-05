@@ -26,8 +26,21 @@ final class SettingsViewController: UIViewController {
     
     private var data = [[SettingsCellModel]]()
     
+    @objc func didTapClose() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    private func setUpNavBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(didTapClose)
+        )
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavBar()
         configureModels()
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
@@ -56,8 +69,11 @@ final class SettingsViewController: UIViewController {
             SettingsCellModel(title: "Privacy Policy") { [weak self] in
                 self?.openURL(type: .privacy)
             },
-            SettingsCellModel(title: "Help / Feedback") { [weak self] in
-                self?.openURL(type: .help)
+            SettingsCellModel(title: "Help") { [weak self] in
+                let vc = InfoViewController()
+                vc.title = "Info"
+                
+                self?.present(UINavigationController(rootViewController: vc), animated:true)
             }
         ])
         

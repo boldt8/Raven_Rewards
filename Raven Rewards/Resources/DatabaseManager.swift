@@ -12,6 +12,8 @@ import FirebaseFirestore
 final class DatabaseManager {
     /// Shared instance
     static let shared = DatabaseManager()
+    
+    public var lastPointValue = 0
 
     /// Private constructor
     private init() {}
@@ -19,20 +21,41 @@ final class DatabaseManager {
     /// Database referenec
     private let database = Firestore.firestore()
     
+    private func createNewHistoryID() -> String? {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.year, .day, .minute, .second]
+        formatter.allowsFractionalUnits = true
+        let timeStamp = Date().timeIntervalSinceReferenceDate
+        let currDate = formatter.string(from: timeStamp)
+        let randomNumber = Int.random(in: 0...1000)
+        guard let username = UserDefaults.standard.string(forKey: "username") else {
+            return nil
+        }
+
+        return "\(username)_\(randomNumber)_\(String(describing: currDate))"
+    }
+    
     /// Find users with prefix
     /// - Parameters:
     ///   - usernamePrefix: Query prefix
     ///   - completion: Result callback
     public func incrPoints(
-        username: String
+        username: String,
+        points: Int
     ) {
+        lastPointValue = Int(points)
         Task {
+            let currentUsername = createNewHistoryID() 
             
             let ref = database.collection("users")
                 .document(username)
+            let ref2 = database.collection("users")
+                .document(username).collection("history")
             do{
                 let currUser = try await ref.getDocument(as: RealUser.self)
-                try await ref.updateData(["points" : currUser.points + 1])
+                try await ref.updateData(["points" : currUser.points + points])
+                try await ref2.document(currentUsername ?? "unknown").setData(["points": "\(points)"])
             }
             catch {
                 print(error)

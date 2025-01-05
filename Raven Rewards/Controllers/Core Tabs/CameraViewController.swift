@@ -21,6 +21,10 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         return body
     }()
     
+    
+    
+    let helpButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
+    
     private let QR: UIImageView = {
         let qrCode: UIImage = {
             let contex = CIContext()
@@ -45,6 +49,11 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     
     let scanButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
     
+    let logo: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "Logo 2"))
+        return image
+    }()
+    
     private func fetchUser() {
         print("fetshing for camerview controller")
     }
@@ -57,6 +66,8 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         view.addSubview(QR)
         // Check to see if admin user
         view.addSubview(scanButton)
+        view.addSubview(helpButton)
+//        view.addSubview(logo)
         self.scanButton.isHidden = true
         guard let username = UserDefaults.standard.string(forKey: "username") else { return }
         DatabaseManager.shared.findUser(username: username) { [weak self] user in
@@ -84,7 +95,22 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         scanButton.setTitle("Scan QR code", for: .normal)
         scanButton.backgroundColor = .systemPink
         scanButton.addTarget(self, action: #selector(didTapScanButton), for: .touchUpInside)
+        helpButton.center = CGPoint(x: view.width*13/16, y: view.height*3/32)
+        helpButton.setTitle("Help", for: .normal)
+        helpButton.backgroundColor = .systemOrange
+        helpButton.addTarget(self, action: #selector(didTapHelpButton), for: .touchUpInside)
+        let logoSize = CGFloat(100)
+        logo.frame = CGRect(x: view.width/16,
+                                    y: view.safeAreaInsets.top + view.height*3/16,
+                                     width: logoSize,
+                                     height: logoSize)
+    }
+    
+    @objc func didTapHelpButton() {
+        let vc = InfoViewController()
+        vc.title = "Info"
         
+        present(UINavigationController(rootViewController: vc), animated:true)
     }
     
     @objc func didTapScanButton() {

@@ -40,6 +40,8 @@
 		0C9D54B92C5F3A1E0075AC6D /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */; };
 		0C9D54BB2C5F3A2E0075AC6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */; };
 		0C9D54C32C5F3AC90075AC6D /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C22C5F3AC90075AC6D /* PostEditViewController.swift */; };
+		0CA9C1302D2A1FF900D4577B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA9C12F2D2A1FF900D4577B /* InfoViewController.swift */; };
+		0CA9C1342D2B0B6800D4577B /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA9C1332D2B0B6800D4577B /* InfoTableViewCell.swift */; };
 		0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE36B5F2C60A19B00BECC60 /* Extensions.swift */; };
 		0CEB6F4C2CFA824500C81CC0 /* CommentBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F4B2CFA824500C81CC0 /* CommentBarViewDelegate.swift */; };
 		0CEB6F4E2CFA828200C81CC0 /* IGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F4D2CFA828200C81CC0 /* IGTextField.swift */; };
@@ -122,6 +124,8 @@
 		0C9D54B82C5F3A1E0075AC6D /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		0C9D54BA2C5F3A2E0075AC6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0C9D54C22C5F3AC90075AC6D /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
+		0CA9C12F2D2A1FF900D4577B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		0CA9C1332D2B0B6800D4577B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		0CE36B5F2C60A19B00BECC60 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CEB6F4B2CFA824500C81CC0 /* CommentBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBarViewDelegate.swift; sourceTree = "<group>"; };
 		0CEB6F4D2CFA828200C81CC0 /* IGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGTextField.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				0CEB6F792CFAE9E200C81CC0 /* ShopEditViewController.swift */,
 				0CEB6F7B2CFAEB8500C81CC0 /* ShopCaptionViewController.swift */,
 				0CEB6F802CFB0A9B00C81CC0 /* SDWebImageLoader.swift */,
+				0CA9C12F2D2A1FF900D4577B /* InfoViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				0CEB6F4B2CFA824500C81CC0 /* CommentBarViewDelegate.swift */,
 				0C9D547A2C5F2B1E0075AC6D /* Assets.xcassets */,
 				0CEB6F4D2CFA828200C81CC0 /* IGTextField.swift */,
+				0CA9C1332D2B0B6800D4577B /* InfoTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -566,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CA9C1342D2B0B6800D4577B /* InfoTableViewCell.swift in Sources */,
 				0CEB6F742CFADB2200C81CC0 /* RavenShopData.swift in Sources */,
 				0CEB6F702CFAABC700C81CC0 /* CaptionViewController.swift in Sources */,
 				0C9D54B92C5F3A1E0075AC6D /* EditProfileViewController.swift in Sources */,
@@ -588,6 +595,7 @@
 				0C2A428F2C60954F003C0D37 /* StorageManager.swift in Sources */,
 				0CEB6F722CFABE0100C81CC0 /* Raven Shop.swift in Sources */,
 				0C8CB63E2C6AD6E400488833 /* UserFollowTableViewCell.swift in Sources */,
+				0CA9C1302D2A1FF900D4577B /* InfoViewController.swift in Sources */,
 				0CEB6F682CFAA3E600C81CC0 /* ListUserTableViewCell.swift in Sources */,
 				0C8CB63C2C66DAB800488833 /* Models.swift in Sources */,
 				0CEB6F4E2CFA828200C81CC0 /* IGTextField.swift in Sources */,

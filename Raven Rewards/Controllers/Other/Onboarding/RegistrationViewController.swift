@@ -71,6 +71,16 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
+    
+    private let loadingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Loading...", for: .normal)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = Constants.cornerRadius
+        button.backgroundColor = .systemOrange
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +94,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(emailField)
         view.addSubview(passwordField)
         view.addSubview(registerButton)
+        view.addSubview(loadingButton)
+        loadingButton.isHidden = true
         
         view.backgroundColor = .systemBackground
     }
@@ -95,22 +107,26 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         emailField.frame = CGRect(x: 20, y: usernameField.bottom + 10, width: view.width - 40, height: 52)
         passwordField.frame = CGRect(x: 20, y: emailField.bottom + 10, width: view.width - 40, height: 52)
         registerButton.frame = CGRect(x: 20, y: passwordField.bottom + 10, width: view.width - 40, height: 52)
+        loadingButton.frame = CGRect(x: 20, y: passwordField.bottom + 10, width: view.width - 40, height: 52)
 
     }
     
     private func presentError() {
-        let alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password longer than 6 characters.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password longer than 6 characters and don't use special characters.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
+        loadingButton.isHidden = true
     }
     
     private func presentInternalError() {
         let alert = UIAlertController(title: "Woops", message: "this email is already taken or we had an internal error.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
+        loadingButton.isHidden = true
     }
     
     @objc private func didTapRegister() {
+        loadingButton.isHidden = false
         emailField.resignFirstResponder()
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
@@ -137,13 +153,17 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                                                   preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Dismiss",
                                                   style: .cancel,
-                                                  handler: nil))
-                    
+                                                  handler: {action in  self?.dismiss(animated: true, completion: nil)
+                    }))
                     self?.present(alert, animated: true)
+                    
+                   
+                    
                     
                 case .failure(let error):
                     self?.presentInternalError()
                     print("\n\nSign Up Error: \(error)")
+                    
                 }
             }
         }

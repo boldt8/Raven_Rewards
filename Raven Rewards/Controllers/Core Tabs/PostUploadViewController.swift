@@ -107,11 +107,11 @@ final class PostUploadViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        shopButton.center = CGPoint(x: view.width/2, y: view.height*1/2)
+        shopButton.center = CGPoint(x: view.width/2, y: view.height*14/16)
         shopButton.setTitle("View Raven Shop", for: .normal)
         shopButton.backgroundColor = .systemPink
         shopButton.addTarget(self, action: #selector(didTapShopButton), for: .touchUpInside)
-        uploadShopButton.center = CGPoint(x: view.width/2, y: view.height*1/4)
+        uploadShopButton.center = CGPoint(x: view.width/2, y: view.height*15/16)
         uploadShopButton.setTitle("Upload to Raven Shop", for: .normal)
         uploadShopButton.backgroundColor = .systemPink
         uploadShopButton.addTarget(self, action: #selector(didTapPickShopPhoto), for: .touchUpInside)

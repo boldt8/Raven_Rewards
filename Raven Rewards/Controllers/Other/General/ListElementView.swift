@@ -23,6 +23,7 @@ struct ListElementView: View {
         
         HStack {
             SDWebImageLoader(url: item.postUrlString, contentMode: .fit)
+                .frame(width: 80, height:80)
             VStack(alignment: .leading, content: {
                 Text(item.caption)
                     .font(.subheadline)
@@ -42,7 +43,9 @@ struct ListDetailView: View {
             VStack {
                 HStack{
                     SDWebImageLoader(url: item.postUrlString, contentMode: .fit)
+                        .frame(width: 200, height:200)
                 }.frame(minWidth: 0, maxWidth: .infinity)
+
                 Text(item.caption)
                     .padding(.horizontal, 20)
                 }

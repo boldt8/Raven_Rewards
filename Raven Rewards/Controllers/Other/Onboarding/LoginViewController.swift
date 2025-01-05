@@ -44,6 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         field.backgroundColor = .secondarySystemBackground
         field.layer.borderWidth = 1.0
         field.layer.borderColor = UIColor.secondaryLabel.cgColor
+        
         return field
     }()
     
@@ -54,6 +55,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.layer.cornerRadius = Constants.cornerRadius
         button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    private let helpButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Help", for: .normal)
+        button.setTitleColor(.secondaryLabel,
+                             for: .normal)
         return button
     }()
     
@@ -88,10 +97,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return header
     }()
     
+    private func getInfo() {
+        let vc = InfoViewController()
+        vc.title = "Info"
+        
+        self.present(UINavigationController(rootViewController: vc), animated:true)
+    }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         loginButton.addTarget(self,
                               action: #selector(didTapLoginButton),
@@ -99,6 +116,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         createAccountButton.addTarget(self,
                                       action: #selector(didTapCreateAccountButton),
                                       for: .touchUpInside)
+        helpButton.addTarget(self,
+                              action: #selector(didTapHelpButton),
+                              for: .touchUpInside)
         termsButton.addTarget(self,
                               action: #selector(didTapTermsButton),
                               for: .touchUpInside)
@@ -114,7 +134,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        getInfo()
         //assign frames
         
         headerView.frame = CGRect(
@@ -152,6 +172,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             height: 52.0
         )
         
+        helpButton.frame = CGRect(
+            x: 10,
+            y: view.height-view.safeAreaInsets.bottom-150,
+            width: view.width-20,
+            height: 50
+        )
+        
         termsButton.frame = CGRect(
             x: 10,
             y: view.height-view.safeAreaInsets.bottom-100,
@@ -187,12 +214,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                  y: view.safeAreaInsets.top,
                                  width: headerView.width,
                                  height: headerView.height - view.safeAreaInsets.top)
+        let logoView = UIImageView(image: UIImage(named: "Logo"))
+        headerView.addSubview(logoView)
+        logoView.contentMode = .scaleAspectFill
+        let logoSize = CGFloat(175)
+        logoView.frame = CGRect(x: view.width/2 - logoSize/2,
+                                y: view.safeAreaInsets.top + view.height*2/32,
+                                 width: logoSize,
+                                 height: logoSize)
     }
     
     private func addSubviews () {
         view.addSubview(usernameEmailField)
         view.addSubview(passwordField)
         view.addSubview(loginButton)
+        view.addSubview(helpButton)
         view.addSubview(termsButton)
         view.addSubview(privacyButton)
         view.addSubview(createAccountButton)
@@ -225,7 +261,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 case .failure(let error):
                     // error occurred
                     let alert = UIAlertController(title: "Log In Error",
-                                                  message: "we were unable to log you in.",
+                                                  message: "We were unable to log you in. Please make sure you enter your email/password correctly",
                                                   preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Dismiss",
                                                   style: .cancel,
@@ -236,6 +272,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
+    }
+    
+    @objc func didTapHelpButton() {
+        getInfo()
     }
         
     @objc func didTapTermsButton() {

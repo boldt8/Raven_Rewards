@@ -29,7 +29,6 @@ struct SDWebImageLoader: View {
         
         .resizable()
         .aspectRatio(contentMode: contentMode)
-        .frame(width: 80, height: 80)
 
     }
 }

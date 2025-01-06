@@ -50,9 +50,14 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
             style: .done,
             target: self,
             action: #selector(didTapPost))
+        
     }
 
     @objc func didTapPost() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "loading",
+            style: .done,
+            target: self, action: nil)
         textView.resignFirstResponder()
         var caption = textView.text ?? ""
         if caption == "Add caption..." {

@@ -17,11 +17,11 @@ final class AuthManager {
     private init() {}
 
     /// Auth reference
-    private let auth = Auth.auth()
+    public let auth = Auth.auth()
     
     /// Current useremail
     public var currUserID: String {
-        guard let username = UserDefaults.standard.string(forKey: "username") else { return "" }
+        guard let username = UserDefaults.standard.string(forKey: "username") else { return "Refresh App" }
         return username
     }
     

@@ -63,9 +63,6 @@ final class SettingsViewController: UIViewController {
         ])
         
         data.append([
-            SettingsCellModel(title: "Terms of Service") { [weak self] in
-                self?.openURL(type: .terms)
-            },
             SettingsCellModel(title: "Privacy Policy") { [weak self] in
                 self?.openURL(type: .privacy)
             },
@@ -85,15 +82,13 @@ final class SettingsViewController: UIViewController {
     }
     
     enum SettingsURLType {
-        case terms, privacy, help
+        case privacy
     }
     
     private func openURL(type: SettingsURLType) {
         let urlString: String
         switch type {
-        case .terms: urlString = "https://help.instagram.com/581066165581870/"
-        case .privacy: urlString = "https://help.instagram.com/155833707900388/"
-        case .help: urlString = "https://help.instagram.com"
+        case .privacy: urlString = "https://www.termsfeed.com/live/f0ed9aa0-1913-42d1-8071-fa2060e9a09c"
         }
         
         

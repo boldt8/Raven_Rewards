@@ -85,6 +85,19 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if AuthManager.shared.isSignedIn == false {
+            // Show log in
+            let loginVC = LoginViewController()
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: true) {
+                self.navigationController?.popToRootViewController(animated: false)
+                self.tabBarController?.selectedIndex = 0
+            }
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         ravenPoints.frame = CGRect(x: 0, y: 0, width: view.width/2, height: view.width/2)

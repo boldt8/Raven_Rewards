@@ -147,7 +147,6 @@ final class ProfileViewController: UIViewController {
                 defer {
                     group.leave()
                 }
-                print(isFollowing)
                 buttonType = .follow(isFollowing: isFollowing)
             }
         }

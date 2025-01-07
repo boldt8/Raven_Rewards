@@ -66,14 +66,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
-    private let termsButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Terms of Service", for: .normal)
-        button.setTitleColor(.secondaryLabel,
-                             for: .normal)
-        return button
-    }()
-    
     private let privacyButton: UIButton = {
         let button = UIButton()
         button.setTitle("Privacy Policy", for: .normal)
@@ -118,9 +110,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                       for: .touchUpInside)
         helpButton.addTarget(self,
                               action: #selector(didTapHelpButton),
-                              for: .touchUpInside)
-        termsButton.addTarget(self,
-                              action: #selector(didTapTermsButton),
                               for: .touchUpInside)
         privacyButton.addTarget(self,
                                 action: #selector(didTapPrivacyButton),
@@ -174,13 +163,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         helpButton.frame = CGRect(
             x: 10,
-            y: view.height-view.safeAreaInsets.bottom-150,
-            width: view.width-20,
-            height: 50
-        )
-        
-        termsButton.frame = CGRect(
-            x: 10,
             y: view.height-view.safeAreaInsets.bottom-100,
             width: view.width-20,
             height: 50
@@ -229,7 +211,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(passwordField)
         view.addSubview(loginButton)
         view.addSubview(helpButton)
-        view.addSubview(termsButton)
         view.addSubview(privacyButton)
         view.addSubview(createAccountButton)
         view.addSubview(headerView)
@@ -279,7 +260,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
         
     @objc func didTapTermsButton() {
-        guard let url = URL(string: "https://help.instagram.com/581066165581870/") else {
+        guard let url = URL(string: "https://www.termsfeed.com/live/f0ed9aa0-1913-42d1-8071-fa2060e9a09c") else {
             return
         }
         let vc = SFSafariViewController(url: url)
@@ -287,7 +268,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func didTapPrivacyButton() {
-        guard let url = URL(string: "https://help.instagram.com/155833707900388") else {
+        guard let url = URL(string: "https://www.termsfeed.com/live/f0ed9aa0-1913-42d1-8071-fa2060e9a09c") else {
             return
         }
         let vc = SFSafariViewController(url: url)

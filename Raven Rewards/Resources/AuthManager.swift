@@ -25,6 +25,14 @@ final class AuthManager {
         return username
     }
     
+    /// Get Current useremail Asynchronously
+    public func getCurrUserID(
+        completion: @escaping (String) -> Void
+    ) {
+        guard let username = UserDefaults.standard.string(forKey: "username") else {  return }
+        completion(username)
+    }
+    
     /// Current useremail
     public var currUserEmail: String {
         guard let username = UserDefaults.standard.string(forKey: "email") else { return "" }

@@ -27,7 +27,7 @@ import UIKit
 /// Reusable controller for Profile
 final class ProfileViewController: UIViewController {
 
-    private let user: RealUser
+    private var user: RealUser
 
     private var isCurrentUser: Bool {
         return user.username.lowercased() == UserDefaults.standard.string(forKey: "username")?.lowercased() ?? ""
@@ -65,7 +65,7 @@ final class ProfileViewController: UIViewController {
         configureCollectionView()
         fetchProfileInfo()
 
-        if isCurrentUser {
+        if true {
             observer = NotificationCenter.default.addObserver(
                 forName: .didPostNotification,
                 object: nil,
@@ -73,6 +73,7 @@ final class ProfileViewController: UIViewController {
             ) { [weak self] _ in
                 self?.posts.removeAll()
                 self?.fetchProfileInfo()
+                
             }
         }
     }
@@ -83,90 +84,97 @@ final class ProfileViewController: UIViewController {
     }
 
     private func fetchProfileInfo() {
-        let username = user.username
+        AuthManager.shared.getCurrUserID(completion: {
+            [weak self] success in
+            
+            self?.user.username = success
+            self?.title = success.uppercased()
+            let username = self?.user.username
 
-        let group = DispatchGroup()
+            let group = DispatchGroup()
 
-        // Fetch Posts
-        group.enter()
-        DatabaseManager.shared.posts(for: username) { [weak self] result in
-            defer {
-                group.leave()
-            }
-
-            switch result {
-            case .success(let posts):
-                self?.posts = posts
-            case .failure:
-                break
-            }
-        }
-
-        // Fetch Profiel Header Info
-
-        var profilePictureUrl: URL?
-        var buttonType: ProfileButtonType = .edit
-        var followers = 0
-        var following = 0
-        var posts = 0
-        var name: String?
-        var bio: String?
-
-        // Counts (3)
-        group.enter()
-        DatabaseManager.shared.getUserCounts(username: user.username) { result in
-            defer {
-                group.leave()
-            }
-            posts = result.posts
-            followers = result.followers
-            following = result.following
-        }
-
-
-        // Bio, name
-        DatabaseManager.shared.getUserInfo(username: user.username) { userInfo in
-            name = userInfo?.name
-            bio = userInfo?.bio
-        }
-
-        // Profile picture url
-        group.enter()
-        StorageManager.shared.profilePictureURL(for: user.username) { url in
-            defer {
-                group.leave()
-            }
-            profilePictureUrl = url
-        }
-
-        // if profile is not for current user,
-        if !isCurrentUser {
-            // Get follow state
+            // Fetch Posts
             group.enter()
-            DatabaseManager.shared.isFollowing(targetUsername: user.username) { isFollowing in
+            DatabaseManager.shared.posts(for: username ?? "test") { [weak self] result in
                 defer {
                     group.leave()
                 }
-                buttonType = .follow(isFollowing: isFollowing)
-            }
-        }
 
-        group.notify(queue: .main) {
-            self.headerViewModel = ProfileHeaderViewModel(
-                profilePictureUrl: profilePictureUrl,
-                followerCount: followers,
-                followingICount: following,
-                postCount: posts,
-                buttonType: buttonType,
-                name: name,
-                bio: bio
-            )
-            self.collectionView?.reloadData()
-        }
+                switch result {
+                case .success(let posts):
+                    self?.posts = posts
+                case .failure:
+                    break
+                }
+            }
+
+            // Fetch Profiel Header Info
+
+            var profilePictureUrl: URL?
+            var buttonType: ProfileButtonType = .edit
+            var followers = 0
+            var following = 0
+            var posts = 0
+            var name: String?
+            var bio: String?
+
+            // Counts (3)
+            group.enter()
+            DatabaseManager.shared.getUserCounts(username: self?.user.username ?? "test") { result in
+                defer {
+                    group.leave()
+                }
+                posts = result.posts
+                followers = result.followers
+                following = result.following
+            }
+
+
+            // Bio, name
+            DatabaseManager.shared.getUserInfo(username: self?.user.username ?? "test") { userInfo in
+                name = userInfo?.name
+                bio = userInfo?.bio
+            }
+
+            // Profile picture url
+            group.enter()
+            StorageManager.shared.profilePictureURL(for: self?.user.username ?? "test") { url in
+                defer {
+                    group.leave()
+                }
+                profilePictureUrl = url
+            }
+
+            // if profile is not for current user,
+            if !(self?.isCurrentUser ?? true) {
+                // Get follow state
+                group.enter()
+                DatabaseManager.shared.isFollowing(targetUsername: self?.user.username ?? "test") { isFollowing in
+                    defer {
+                        group.leave()
+                    }
+                    buttonType = .follow(isFollowing: isFollowing)
+                }
+            }
+
+            group.notify(queue: .main) {
+                self?.headerViewModel = ProfileHeaderViewModel(
+                    profilePictureUrl: profilePictureUrl,
+                    followerCount: followers,
+                    followingICount: following,
+                    postCount: posts,
+                    buttonType: buttonType,
+                    name: name,
+                    bio: bio
+                )
+                self?.collectionView?.reloadData()
+            }
+        })
+        
     }
 
     private func configureNavBar() {
-        if isCurrentUser {
+        if true {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "gear"),
                 style: .done,

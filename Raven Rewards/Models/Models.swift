@@ -9,7 +9,7 @@ import Foundation
 
 
 struct RealUser: Codable {
-    let username: String
+    var username: String
     let email: String
     let points: Int
     let isAdmin: Bool

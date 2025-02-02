@@ -282,6 +282,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         present(UINavigationController(rootViewController: vc), animated:true)
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+              //Do thing here
+        passwordField.resignFirstResponder()
+        usernameEmailField.resignFirstResponder()
+    }
+    
     // MARK: Field Delegate
         
     @nonobjc func textFieldShouldReturn(_ textField: UITextField) -> Bool {

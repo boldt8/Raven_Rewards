@@ -21,7 +21,7 @@ final class AuthManager {
     
     /// Current useremail
     public var currUserID: String {
-        guard let username = UserDefaults.standard.string(forKey: "username") else { return "Refresh App" }
+        guard let username = UserDefaults.standard.string(forKey: "username") else { return "T1" }
         return username
     }
     

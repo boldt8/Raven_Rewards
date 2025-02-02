@@ -17,6 +17,8 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     private let ravenPoints: UITextView = {
         let body = UITextView()
         body.text = "Current Raven Points: "
+        body.isEditable = false
+        body.isSelectable = false
         body.font = UIFont(name: "GillSans-Bold", size: CGFloat(30))
         return body
     }()
@@ -54,22 +56,12 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         return image
     }()
     
-    private func fetchUser() {
-        print("fetshing for camerview controller")
-    }
+    let bubble: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "Scan your QR code for Raven Points!"))
+        return image
+    }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        // Do any additional setup after loading the view.
-        view.addSubview(ravenPoints)
-        view.addSubview(QR)
-        // Check to see if admin user
-        view.addSubview(scanButton)
-        view.addSubview(helpButton)
-//        view.addSubview(logo)
-        self.scanButton.isHidden = true
-        guard let username = UserDefaults.standard.string(forKey: "username") else { return }
+    private func fetchUser(username: String) {
         DatabaseManager.shared.findUser(username: username) { [weak self] user in
             if let user = user {
                 DispatchQueue.main.async {
@@ -81,12 +73,53 @@ class CameraViewController: UIViewController, UITextViewDelegate {
                 }
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        view.addSubview(ravenPoints)
+        view.addSubview(QR)
+        // Check to see if admin user
+        view.addSubview(scanButton)
+        view.addSubview(helpButton)
+        view.addSubview(logo)
+        view.addSubview(bubble)
+        self.scanButton.isHidden = true
+        guard let username = UserDefaults.standard.string(forKey: "username") else { return }
+        fetchUser(username: username)
         
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if (!UserDefaults.standard.bool(forKey: "hasRunBefore")) {
+            print("The app is launching for the first time. Setting UserDefaults...")
+            
+            AuthManager.shared.signOut(completion: { success in
+                DispatchQueue.main.async {
+                    if success {
+                        // present log in
+                        let loginVC = LoginViewController()
+                        loginVC.modalPresentationStyle = .fullScreen
+                        self.present(loginVC, animated: true) {
+                            self.navigationController?.popToRootViewController(animated: false)
+                            self.tabBarController?.selectedIndex = 0
+                        }
+                    }
+                    else {
+                        // error occurred
+                        fatalError("Could not log out user")
+                    }
+                }
+            })
+            
+            // Update the flag indicator
+            UserDefaults.standard.set(true, forKey: "hasRunBefore")
+            UserDefaults.standard.synchronize() // This forces the app to update userDefaults
+            
+        }
         if AuthManager.shared.isSignedIn == false {
             // Show log in
             let loginVC = LoginViewController()
@@ -101,9 +134,10 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         ravenPoints.frame = CGRect(x: 0, y: 0, width: view.width/2, height: view.width/2)
-        ravenPoints.center = CGPoint(x: view.width/2, y: view.height*1/4)
+        ravenPoints.center = CGPoint(x: view.width/2, y: view.height*1/8)
         QR.frame = CGRect(x: 0, y: 0, width: view.width/2, height: view.width/2)
-        QR.center = view.center
+        print (UserDefaults.standard.dictionaryRepresentation().keys)
+        QR.center = CGPoint(x: view.width/2, y: view.height*9/16)
         scanButton.center = CGPoint(x: view.width/2, y: view.height*3/4)
         scanButton.setTitle("Scan QR code", for: .normal)
         scanButton.backgroundColor = .systemPink
@@ -113,10 +147,14 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         helpButton.backgroundColor = .systemOrange
         helpButton.addTarget(self, action: #selector(didTapHelpButton), for: .touchUpInside)
         let logoSize = CGFloat(100)
-        logo.frame = CGRect(x: view.width/16,
-                                    y: view.safeAreaInsets.top + view.height*3/16,
+        logo.frame = CGRect(x: view.width*2/16,
+                                    y: view.safeAreaInsets.top + view.height*7/32,
                                      width: logoSize,
                                      height: logoSize)
+        bubble.frame = CGRect(x: view.width*2/16,
+                                    y: view.safeAreaInsets.top + view.height*1/16,
+                                     width: logoSize * 3,
+                                     height: logoSize * 3)
     }
     
     @objc func didTapHelpButton() {

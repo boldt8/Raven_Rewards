@@ -26,6 +26,32 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if (!UserDefaults.standard.bool(forKey: "hasRunBefore")) {
+            print("The app is launching for the first time. Setting UserDefaults...")
+            
+            AuthManager.shared.signOut(completion: { success in
+                DispatchQueue.main.async {
+                    if success {
+                        // present log in
+                        let loginVC = LoginViewController()
+                        loginVC.modalPresentationStyle = .fullScreen
+                        self.present(loginVC, animated: true) {
+                            self.navigationController?.popToRootViewController(animated: false)
+                            self.tabBarController?.selectedIndex = 0
+                        }
+                    }
+                    else {
+                        // error occurred
+                        fatalError("Could not log out user")
+                    }
+                }
+            })
+            
+            // Update the flag indicator
+            UserDefaults.standard.set(true, forKey: "hasRunBefore")
+            UserDefaults.standard.synchronize() // This forces the app to update userDefaults
+            
+        }
         if AuthManager.shared.isSignedIn == false {
             // Show log in
             let loginVC = LoginViewController()

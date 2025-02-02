@@ -12,7 +12,6 @@ struct QRScanner: View {
     @State var isPresentingScanner = false
     @State var scannedCode: String = "Scan a QR code to get started"
     @State var points = "\(DatabaseManager.shared.lastPointValue)"
-    @State var save = 0
     
     var scannerSheet : some View {
         CodeScannerView(
@@ -23,7 +22,7 @@ struct QRScanner: View {
                     self.isPresentingScanner = false
                     DatabaseManager.shared.incrPoints(
                         username: self.scannedCode,
-                        points: save
+                        points: DatabaseManager.shared.lastPointValue
                     )
                 }
                 
@@ -38,7 +37,7 @@ struct QRScanner: View {
                     .textFieldStyle(.roundedBorder)
                     .padding()
                     .onSubmit {
-                        save = Int(points) ?? 0
+                        DatabaseManager.shared.lastPointValue = Int(points) ?? 0
                     }
             } else {
                 // Fallback on earlier versions

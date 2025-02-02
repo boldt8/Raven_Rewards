@@ -41,6 +41,11 @@ final class PostUploadViewController: UIViewController {
     
     let uploadShopButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
     
+    let bubble: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "Visit the student store to redeem rewards!"))
+        return image
+    }()
+    
     @objc func didTapShopButton() {
         Task{
             let data = try await DatabaseManager.shared.shopPosts()
@@ -58,7 +63,15 @@ final class PostUploadViewController: UIViewController {
         isUploadingShop = true
         present(picker, animated: true)
     }
-
+    private func fetchUser(username: String, handler: @escaping ((Bool) -> Void)) {
+        DatabaseManager.shared.findUser(username: username) { [weak self] user in
+            if let user = user {
+                DispatchQueue.main.async {
+                    handler(user.isAdmin)
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +82,7 @@ final class PostUploadViewController: UIViewController {
         view.addSubview(photoPickerButton)
         view.addSubview(shopButton)
         view.addSubview(uploadShopButton)
+        view.addSubview(bubble)
         self.uploadShopButton.isHidden = true
         self.cameraView.isHidden = true
         self.shutterButton.isHidden = true
@@ -78,16 +92,13 @@ final class PostUploadViewController: UIViewController {
         shutterButton.addTarget(self, action: #selector(didTapTakePhoto), for: .touchUpInside)
         photoPickerButton.addTarget(self, action: #selector(didTapPickPhoto), for: .touchUpInside)
         guard let username = UserDefaults.standard.string(forKey: "username") else { return }
-        DatabaseManager.shared.findUser(username: username) { [weak self] user in
-            if let user = user {
-                DispatchQueue.main.async {
-                    if(user.isAdmin){
-                        self?.uploadShopButton.isHidden = false
-                        self?.cameraView.isHidden = false
-                        self?.shutterButton.isHidden = false
-                        self?.photoPickerButton.isHidden = false
-                    }
-                }
+        fetchUser(username: username) { (result) in
+            if(result){
+                self.uploadShopButton.isHidden = false
+                self.cameraView.isHidden = false
+                self.shutterButton.isHidden = false
+                self.photoPickerButton.isHidden = false
+                self.bubble.isHidden = true
             }
         }
     }
@@ -107,7 +118,14 @@ final class PostUploadViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        shopButton.center = CGPoint(x: view.width/2, y: view.height*14/16)
+        let bubSize = CGFloat(300)
+        
+        bubble.frame = CGRect(x: view.width/2,
+                              y: view.safeAreaInsets.top + view.height*5/32,
+                              width: bubSize,
+                               height: bubSize)
+        bubble.center = CGPoint(x: view.width/2,  y: view.safeAreaInsets.top + view.height*4/16)
+        shopButton.center = CGPoint(x: view.width/2, y: view.height/2)
         shopButton.setTitle("View Raven Shop", for: .normal)
         shopButton.backgroundColor = .systemPink
         shopButton.addTarget(self, action: #selector(didTapShopButton), for: .touchUpInside)
@@ -137,6 +155,12 @@ final class PostUploadViewController: UIViewController {
                                          y: shutterButton.top + ((buttonSize/1.5)/2),
                                          width: buttonSize/1.5,
                                          height: buttonSize/1.5)
+        guard let username = UserDefaults.standard.string(forKey: "username") else { return }
+        fetchUser(username: username) { (result) in
+            if(result){
+                self.shopButton.center = CGPoint(x: self.view.width/2, y: self.view.height*14/16)
+            }
+        }
     }
 
     @objc func didTapPickPhoto() {
@@ -196,6 +220,7 @@ final class PostUploadViewController: UIViewController {
             cameraView.layer.addSublayer(previewLayer)
 
             captureSession.startRunning()
+            
         }
     }
 

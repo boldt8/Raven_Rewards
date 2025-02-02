@@ -86,7 +86,6 @@ final class ProfileViewController: UIViewController {
     private func fetchProfileInfo() {
         AuthManager.shared.getCurrUserID(completion: {
             [weak self] success in
-            
             self?.user.username = success
             self?.title = success.uppercased()
             let username = self?.user.username
@@ -95,7 +94,7 @@ final class ProfileViewController: UIViewController {
 
             // Fetch Posts
             group.enter()
-            DatabaseManager.shared.posts(for: username ?? "test") { [weak self] result in
+            DatabaseManager.shared.posts(for: username ?? "REFRESH APP") { [weak self] result in
                 defer {
                     group.leave()
                 }
@@ -120,7 +119,7 @@ final class ProfileViewController: UIViewController {
 
             // Counts (3)
             group.enter()
-            DatabaseManager.shared.getUserCounts(username: self?.user.username ?? "test") { result in
+            DatabaseManager.shared.getUserCounts(username: self?.user.username ?? "REFRESH APP") { result in
                 defer {
                     group.leave()
                 }
@@ -131,14 +130,14 @@ final class ProfileViewController: UIViewController {
 
 
             // Bio, name
-            DatabaseManager.shared.getUserInfo(username: self?.user.username ?? "test") { userInfo in
+            DatabaseManager.shared.getUserInfo(username: self?.user.username ?? "REFRESH APP") { userInfo in
                 name = userInfo?.name
                 bio = userInfo?.bio
             }
 
             // Profile picture url
             group.enter()
-            StorageManager.shared.profilePictureURL(for: self?.user.username ?? "test") { url in
+            StorageManager.shared.profilePictureURL(for: self?.user.username ?? "REFRESH APP") { url in
                 defer {
                     group.leave()
                 }
@@ -149,7 +148,7 @@ final class ProfileViewController: UIViewController {
             if !(self?.isCurrentUser ?? true) {
                 // Get follow state
                 group.enter()
-                DatabaseManager.shared.isFollowing(targetUsername: self?.user.username ?? "test") { isFollowing in
+                DatabaseManager.shared.isFollowing(targetUsername: self?.user.username ?? "REFRESH APP") { isFollowing in
                     defer {
                         group.leave()
                     }

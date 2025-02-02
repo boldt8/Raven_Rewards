@@ -12,9 +12,7 @@
 		0C2A428F2C60954F003C0D37 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A428E2C60954F003C0D37 /* StorageManager.swift */; };
 		0C45BDBF2CF460C600C12BA0 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 0C45BDBE2CF460C600C12BA0 /* CodeScanner */; };
 		0C45BDC12CF470CF00C12BA0 /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45BDC02CF470CF00C12BA0 /* QRScanner.swift */; };
-		0C6C6C7E2C6032A30048FB6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */; };
-		0C6C6C7F2C6032A30048FB6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */; };
-		0C6C6C802C6032A30048FB6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */; };
+		0C6D397B2D4F463000CE64EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6D397A2D4F463000CE64EE /* GoogleService-Info.plist */; };
 		0C8CB62A2C656C1300488833 /* IGFeedPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB6292C656C1300488833 /* IGFeedPostTableViewCell.swift */; };
 		0C8CB62D2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB62C2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift */; };
 		0C8CB62F2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB62E2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift */; };
@@ -94,7 +92,8 @@
 		0C2A428C2C6094AC003C0D37 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		0C2A428E2C60954F003C0D37 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		0C45BDC02CF470CF00C12BA0 /* QRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
-		0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C6D39792D4F2DDA00CE64EE /* Raven Rewards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Raven Rewards.entitlements"; sourceTree = "<group>"; };
+		0C6D397A2D4F463000CE64EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C8CB6292C656C1300488833 /* IGFeedPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostTableViewCell.swift; sourceTree = "<group>"; };
 		0C8CB62C2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		0C8CB62E2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGFeedPostActionsTableViewCell.swift; sourceTree = "<group>"; };
@@ -270,6 +269,7 @@
 		0C9D54702C5F2B1D0075AC6D /* Raven Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				0C6D39792D4F2DDA00CE64EE /* Raven Rewards.entitlements */,
 				0C9D54A42C5F2D7F0075AC6D /* Resources */,
 				0C9D54A32C5F2D770075AC6D /* Models */,
 				0C9D54A22C5F2D690075AC6D /* Views */,
@@ -314,7 +314,7 @@
 		0C9D54A42C5F2D7F0075AC6D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0C6C6C7D2C6032A30048FB6D /* GoogleService-Info.plist */,
+				0C6D397A2D4F463000CE64EE /* GoogleService-Info.plist */,
 				0C9D54732C5F2B1D0075AC6D /* SceneDelegate.swift */,
 				0C9D54712C5F2B1D0075AC6D /* AppDelegate.swift */,
 				0C2A428A2C60940E003C0D37 /* DatabaseManager.swift */,
@@ -501,7 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C9D547B2C5F2B1E0075AC6D /* Assets.xcassets in Resources */,
-				0C6C6C7E2C6032A30048FB6D /* GoogleService-Info.plist in Resources */,
+				0C6D397B2D4F463000CE64EE /* GoogleService-Info.plist in Resources */,
 				0C9D547E2C5F2B1E0075AC6D /* Base in Resources */,
 				0C9D54792C5F2B1D0075AC6D /* Base in Resources */,
 			);
@@ -511,7 +511,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C6C6C7F2C6032A30048FB6D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +518,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C6C6C802C6032A30048FB6D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +800,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Raven Rewards/Raven Rewards.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -843,6 +842,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Raven Rewards/Raven Rewards.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

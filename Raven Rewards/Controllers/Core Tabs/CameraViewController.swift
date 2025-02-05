@@ -7,6 +7,7 @@
 
 import AVFoundation
 import UIKit
+import SafariServices
 import CoreImage.CIFilterBuiltins
 import SwiftUI
 
@@ -19,6 +20,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         body.text = "Current Raven Points: "
         body.isEditable = false
         body.isSelectable = false
+        body.isScrollEnabled = false
         body.font = UIFont(name: "GillSans-Bold", size: CGFloat(30))
         return body
     }()
@@ -61,9 +63,44 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         return image
     }()
     
+    private func openURL(urlString: String) {
+        
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let vc = SFSafariViewController(url: url)
+        present(vc, animated: true)
+    }
+    
     private func fetchUser(username: String) {
         DatabaseManager.shared.findUser(username: username) { [weak self] user in
             if let user = user {
+                
+                DatabaseManager.shared.getCurrentVersion { [weak self] currVer in
+                    guard let currentVersion = currVer else {
+                        print("\n\nFetching Error")
+                        return
+                    }
+                    if(user.currentVersion != currentVersion){
+                        let alert = UIAlertController(title: "Version Outdated",
+                                                      message: "You are on an old version of the app, please update",
+                                                      preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Update",
+                                                      style: .cancel,
+                                                      handler: {action in
+                            self?.openURL(urlString: "https://apps.apple.com/us/app/raven-rewards/id6740197422")
+                                }))
+                        alert.addAction(UIAlertAction(title: "Nope",
+                                                      style: .default,
+                                                      handler: {action in
+                            self?.dismiss(animated: true, completion: nil)
+                                }))
+                                
+                        self?.present(alert, animated: true)
+                    }
+                 }
                 DispatchQueue.main.async {
                     self?.ravenPoints.text = "Current Raven Points: \(user.points)"
                     if(user.isAdmin){
@@ -71,6 +108,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
                     }
                     
                 }
+                
             }
         }
     }
@@ -78,6 +116,8 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.isNavigationBarHidden = true
         view.addSubview(ravenPoints)
         view.addSubview(QR)
         // Check to see if admin user

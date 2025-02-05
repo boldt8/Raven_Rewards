@@ -77,6 +77,7 @@ final class PostUploadViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         title = "Raven Shop"
+       
         view.addSubview(cameraView)
         view.addSubview(shutterButton)
         view.addSubview(photoPickerButton)
@@ -105,7 +106,6 @@ final class PostUploadViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tabBarController?.tabBar.isHidden = true
         if let session = captureSession, !session.isRunning {
             session.startRunning()
         }
@@ -158,7 +158,8 @@ final class PostUploadViewController: UIViewController {
         guard let username = UserDefaults.standard.string(forKey: "username") else { return }
         fetchUser(username: username) { (result) in
             if(result){
-                self.shopButton.center = CGPoint(x: self.view.width/2, y: self.view.height*14/16)
+                self.shopButton.center = CGPoint(x: self.view.width/2, y: self.view.height*13/16)
+                self.uploadShopButton.center = CGPoint(x: self.view.width/2, y: self.view.height*21/32)
             }
         }
     }

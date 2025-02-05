@@ -516,6 +516,30 @@ final class DatabaseManager {
     }
 
     // MARK: - User Info
+    
+    /// Get user info
+    /// - Parameters:
+    ///   - completion: Result callback
+    public func getCurrentVersion(
+            completion: @escaping (Double?) -> Void
+        ) {
+            let ref = database.collection("versionHistory")
+                .document("newestVersion")
+            ref.getDocument { snapshot, error in
+                guard let data = snapshot?.data() else {
+                    print("ERROR")
+                    completion(nil)
+                    return
+                }
+                var realNum: Double?
+                for num in data.values {
+                    realNum = (num as! Double)
+                }
+                
+                completion(realNum)
+            }
+    }
+    
 
     /// Get user info
     /// - Parameters:

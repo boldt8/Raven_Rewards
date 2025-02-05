@@ -92,9 +92,10 @@ final class AuthManager {
         username: String,
         password: String,
         isAdmin: Bool,
+        currentVersion: Double,
         completion: @escaping (Result<RealUser, Error>) -> Void
     ) {
-        let newUser = RealUser(username: username, email: email, points: 0, isAdmin: false)
+        let newUser = RealUser(username: username, email: email, points: 0, isAdmin: false, currentVersion: currentVersion)
         // Create account
         auth.createUser(withEmail: email, password: password) { result, error in
             guard result != nil, error == nil else {

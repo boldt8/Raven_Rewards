@@ -13,6 +13,7 @@ struct RealUser: Codable {
     let email: String
     let points: Int
     let isAdmin: Bool
+    let currentVersion: Double
 }
 
 struct UserInfo: Codable {

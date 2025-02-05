@@ -143,27 +143,35 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             presentError()
             return
         }
+        DatabaseManager.shared.getCurrentVersion { [weak self] currVer in
+            guard let currentVersion = currVer else {
+                self?.presentInternalError()
+                print("\n\nSign Up Error")
+                return 
+            }
         
-        AuthManager.shared.signUp(email: email, username: username, password: password, isAdmin: false) { [weak self] registered in
-            DispatchQueue.main.async{
-                switch registered {
-                case .success(let user):
-                    let alert = UIAlertController(title: "Success",
-                                                  message: "we successfully created an account",
-                                                  preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss",
-                                                  style: .cancel,
-                                                  handler: {action in  self?.dismiss(animated: true, completion: nil)
-                    }))
-                    self?.present(alert, animated: true)
-                    
-                   
-                    
-                    
-                case .failure(let error):
-                    self?.presentInternalError()
-                    print("\n\nSign Up Error: \(error)")
-                    
+        
+            AuthManager.shared.signUp(email: email, username: username, password: password, isAdmin: false, currentVersion: currentVersion) { [weak self] registered in
+                DispatchQueue.main.async{
+                    switch registered {
+                    case .success(let user):
+                        let alert = UIAlertController(title: "Success",
+                                                      message: "we successfully created an account",
+                                                      preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss",
+                                                      style: .cancel,
+                                                      handler: {action in  self?.dismiss(animated: true, completion: nil)
+                        }))
+                        self?.present(alert, animated: true)
+                        
+                        
+                        
+                        
+                    case .failure(let error):
+                        self?.presentInternalError()
+                        print("\n\nSign Up Error: \(error)")
+                        
+                    }
                 }
             }
         }

@@ -40,6 +40,28 @@ final class DatabaseManager {
     /// - Parameters:
     ///   - usernamePrefix: Query prefix
     ///   - completion: Result callback
+    public func incrVersion(
+        username: String,
+        version: Double
+    ) {
+        Task {
+            
+            let ref = database.collection("users")
+                .document(username)
+            do{
+                try await ref.updateData(["currentVersion" : version])
+            }
+            catch {
+                print(error)
+            }
+            
+         }
+    }
+    
+    /// Find users with prefix
+    /// - Parameters:
+    ///   - usernamePrefix: Query prefix
+    ///   - completion: Result callback
     public func incrPoints(
         username: String,
         points: Int

@@ -29,12 +29,11 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     
     let helpButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
     
-    private let QR: UIImageView = {
+    private func makeQR(username: String) -> UIImageView {
         let qrCode: UIImage = {
             let contex = CIContext()
             let filter = CIFilter.qrCodeGenerator()
-            var url: String
-            let view = imageGenerate(AuthManager.shared.currUserID)
+            let view = imageGenerate(username)
             func imageGenerate(_ url: String) -> UIImage {
                 let data = Data(url.utf8)
                 filter.setValue(data, forKey: "inputMessage")
@@ -49,6 +48,10 @@ class CameraViewController: UIViewController, UITextViewDelegate {
             return view
         }()
         return UIImageView(image: qrCode)
+    }
+    
+    private var QR: UIImageView = {
+        return UIImageView()
     }()
     
     let scanButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
@@ -74,66 +77,74 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         present(vc, animated: true)
     }
     
+    
     private func fetchUser(username: String) {
-        DatabaseManager.shared.findUser(username: username) { [weak self] user in
-            if let user = user {
-                
-                DatabaseManager.shared.getCurrentVersion { [weak self] currVer in
-                    guard let currentVersion = currVer else {
-                        print("\n\nFetching Error")
-                        return
+        guard let userVersion = Double(Bundle.main.currentUserVersion!) else {
+                return
+        }
+            DatabaseManager.shared.findUser(username: username) { [weak self] user in
+                if let user = user {
+                    DatabaseManager.shared.incrVersion(username: username, version: userVersion)
+                    DatabaseManager.shared.getCurrentVersion { [weak self] currVer in
+                        guard let currentVersion = currVer else {
+                            print("\n\nFetching Error")
+                            return
+                        }
+                        if(userVersion != currentVersion){
+                            let alert = UIAlertController(title: "Version Outdated",
+                                                          message: "You are on an old version of the app, please update",
+                                                          preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Update",
+                                                          style: .cancel,
+                                                          handler: {action in
+                                self?.openURL(urlString: "https://apps.apple.com/us/app/raven-rewards/id6740197422")
+                            }))
+                            alert.addAction(UIAlertAction(title: "Nope",
+                                                          style: .default,
+                                                          handler: {action in
+                                self?.dismiss(animated: true, completion: nil)
+                            }))
+                            
+                            self?.present(alert, animated: true)
+                        }
                     }
-                    if(user.currentVersion != currentVersion){
-                        let alert = UIAlertController(title: "Version Outdated",
-                                                      message: "You are on an old version of the app, please update",
-                                                      preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Update",
-                                                      style: .cancel,
-                                                      handler: {action in
-                            self?.openURL(urlString: "https://apps.apple.com/us/app/raven-rewards/id6740197422")
-                                }))
-                        alert.addAction(UIAlertAction(title: "Nope",
-                                                      style: .default,
-                                                      handler: {action in
-                            self?.dismiss(animated: true, completion: nil)
-                                }))
-                                
-                        self?.present(alert, animated: true)
-                    }
-                 }
-                DispatchQueue.main.async {
-                    self?.ravenPoints.text = "Current Raven Points: \(user.points)"
-                    if(user.isAdmin){
-                        self?.scanButton.isHidden = false
+                    DispatchQueue.main.async {
+                        self?.ravenPoints.text = "Current Raven Points: \(user.points)"
+                        if(user.isAdmin){
+                            self?.scanButton.isHidden = false
+                        }
+                        self?.QR = self?.makeQR(username: username) ?? UIImageView()
+                        self?.view.addSubview(self?.QR ?? UIImageView())
                     }
                     
                 }
-                
             }
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         self.navigationController?.isNavigationBarHidden = true
         view.addSubview(ravenPoints)
-        view.addSubview(QR)
         // Check to see if admin user
         view.addSubview(scanButton)
         view.addSubview(helpButton)
         view.addSubview(logo)
         view.addSubview(bubble)
         self.scanButton.isHidden = true
-        guard let username = UserDefaults.standard.string(forKey: "username") else { return }
-        fetchUser(username: username)
+        
+        AuthManager.shared.getCurrUserID(completion: { [weak self] success in
+            self?.fetchUser(username: success)
+            
+        })
+        
         
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Used for first time download
         if (!UserDefaults.standard.bool(forKey: "hasRunBefore")) {
             print("The app is launching for the first time. Setting UserDefaults...")
             
@@ -141,12 +152,13 @@ class CameraViewController: UIViewController, UITextViewDelegate {
                 DispatchQueue.main.async {
                     if success {
                         // present log in
-                        let loginVC = LoginViewController()
+                        let loginVC = LoginViewController(firstTimeLogin: true)
                         loginVC.modalPresentationStyle = .fullScreen
                         self.present(loginVC, animated: true) {
                             self.navigationController?.popToRootViewController(animated: false)
                             self.tabBarController?.selectedIndex = 0
                         }
+                       
                     }
                     else {
                         // error occurred
@@ -160,9 +172,10 @@ class CameraViewController: UIViewController, UITextViewDelegate {
             UserDefaults.standard.synchronize() // This forces the app to update userDefaults
             
         }
+        // used for when you manually sign out or if you try to evade login
         if AuthManager.shared.isSignedIn == false {
             // Show log in
-            let loginVC = LoginViewController()
+            let loginVC = LoginViewController(firstTimeLogin: true)
             loginVC.modalPresentationStyle = .fullScreen
             self.present(loginVC, animated: true) {
                 self.navigationController?.popToRootViewController(animated: false)
@@ -176,7 +189,6 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         ravenPoints.frame = CGRect(x: 0, y: 0, width: view.width/2, height: view.width/2)
         ravenPoints.center = CGPoint(x: view.width/2, y: view.height*1/8)
         QR.frame = CGRect(x: 0, y: 0, width: view.width/2, height: view.width/2)
-        print (UserDefaults.standard.dictionaryRepresentation().keys)
         QR.center = CGPoint(x: view.width/2, y: view.height*9/16)
         scanButton.center = CGPoint(x: view.width/2, y: view.height*3/4)
         scanButton.setTitle("Scan QR code", for: .normal)
@@ -209,3 +221,10 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         present(vc, animated: true)
     }
 }
+
+private extension Bundle {
+    var currentUserVersion: String? {
+        infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+}
+

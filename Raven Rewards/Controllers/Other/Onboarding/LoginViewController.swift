@@ -96,6 +96,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.present(UINavigationController(rootViewController: vc), animated:true)
     }
     
+    private var firstLogin: Bool = false
+    
+    init(firstTimeLogin: Bool){
+        if(firstTimeLogin) {
+            firstLogin = true
+        }
+        else {
+            firstLogin = false
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.firstLogin = false
+        
+        super.init(coder: coder)
+    }
+    
     
     
     override func viewDidLoad() {
@@ -236,8 +254,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                 case .success:
                     // user logged in
+                    if((self?.firstLogin ?? false)){
+                        
+                        let alert = UIAlertController(title: "Mandatory Refresh",
+                                                      message: "Once you refresh the app you will be able to access your account",
+                                                      preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Refresh",
+                                                      style: .cancel,
+                                                      handler: { _ in
+                            exit(0)
+                        }))
+                        self?.present(alert, animated: true)
+                        
+                    }
+                    else{
+                        self?.dismiss(animated: true, completion: nil)
+                    }
                     
-                    self?.dismiss(animated: true, completion: nil)
+                    
                     
                 case .failure(let error):
                     // error occurred

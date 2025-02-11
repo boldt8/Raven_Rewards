@@ -86,8 +86,12 @@ final class ProfileViewController: UIViewController {
     private func fetchProfileInfo() {
         AuthManager.shared.getCurrUserID(completion: {
             [weak self] success in
-            self?.user.username = success
-            self?.title = success.uppercased()
+            if success == self?.user.username {
+                    self?.user.username = success
+            }
+            
+            
+            self?.title = self?.user.username.uppercased()
             let username = self?.user.username
 
             let group = DispatchGroup()

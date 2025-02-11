@@ -33,7 +33,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
                 DispatchQueue.main.async {
                     if success {
                         // present log in
-                        let loginVC = LoginViewController()
+                        let loginVC = LoginViewController(firstTimeLogin: false)
                         loginVC.modalPresentationStyle = .fullScreen
                         self.present(loginVC, animated: true) {
                             self.navigationController?.popToRootViewController(animated: false)
@@ -54,7 +54,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         if AuthManager.shared.isSignedIn == false {
             // Show log in
-            let loginVC = LoginViewController()
+            let loginVC = LoginViewController(firstTimeLogin: false)
             loginVC.modalPresentationStyle = .fullScreen
             self.present(loginVC, animated: true) {
                 self.navigationController?.popToRootViewController(animated: false)
@@ -101,7 +101,6 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
             defer {
                 userGroup.leave()
             }
-
             let users = usernames
 //            print(users)
             for current in users {

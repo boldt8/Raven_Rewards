@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 extension UIView {
     var top: CGFloat {
         frame.origin.y
@@ -93,5 +94,18 @@ extension String {
 extension Notification.Name {
     /// Notification to inform of new post
     static let didPostNotification = Notification.Name("didPostNotification")
+}
+
+extension Double {
+    func truncate(places : Int)-> Double {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+    }
+}
+
+extension Date {
+    func convertToTimeZone(initTimeZone: TimeZone, timeZone: TimeZone) -> Date {
+         let delta = TimeInterval(timeZone.secondsFromGMT(for: self) - initTimeZone.secondsFromGMT(for: self))
+         return addingTimeInterval(delta)
+    }
 }
 

@@ -62,7 +62,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
     }
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "RavenRewards"

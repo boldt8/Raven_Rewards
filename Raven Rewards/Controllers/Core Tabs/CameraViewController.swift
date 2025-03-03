@@ -124,6 +124,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        LocationsDataService.fetchLocs()
         self.navigationController?.isNavigationBarHidden = true
         view.addSubview(ravenPoints)
         // Check to see if admin user

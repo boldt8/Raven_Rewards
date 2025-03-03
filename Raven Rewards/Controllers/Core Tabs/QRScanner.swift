@@ -20,7 +20,7 @@ struct QRScanner: View {
                 if case let .success(code) = result {
                     self.scannedCode = code.string
                     self.isPresentingScanner = false
-                    DatabaseManager.shared.incrPoints(
+                    DatabaseManager.shared.incrPoints(locID: "lol", isLocEvent: false,
                         username: self.scannedCode,
                         points: DatabaseManager.shared.lastPointValue
                     )

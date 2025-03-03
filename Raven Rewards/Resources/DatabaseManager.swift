@@ -7,6 +7,8 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseFirestoreInternal
+import FirebaseCore
 
 /// Object to manage database interactions
 final class DatabaseManager {
@@ -58,26 +60,65 @@ final class DatabaseManager {
          }
     }
     
+    public func checkLocEvents(
+        username: String,
+        locID: String,
+        completion: @escaping (Bool) -> Void
+    )  {
+            let ref = database.collection("users")
+                .document(username)
+                .collection("locationEventHistory")
+            ref.getDocuments { snapshot, error in
+                guard let docIDz = snapshot?.documents,
+                      error == nil else {
+                    completion(false)
+                    return
+                }
+                for docID in docIDz {
+                    let id = docID.data()["id"] ?? "tspmo"
+                    if((id as! String) == locID){
+                        completion(true)
+                        return
+                    } else {
+                        completion(false)
+                        return
+                    }
+                }
+                
+            }
+    }
+    
     /// Find users with prefix
     /// - Parameters:
     ///   - usernamePrefix: Query prefix
     ///   - completion: Result callback
     public func incrPoints(
+        locID: String,
+        isLocEvent: Bool,
         username: String,
         points: Int
     ) {
         lastPointValue = Int(points)
         Task {
-            let currentUsername = createNewHistoryID() 
+            let documentName: String
+            let documentInfo: String
+            if(isLocEvent){
+                documentName = "locationEventHistory"
+                documentInfo = locID
+            }
+            else {
+                documentName = "history"
+                documentInfo = createNewHistoryID() ?? UUID().uuidString
+            }
             
             let ref = database.collection("users")
                 .document(username)
             let ref2 = database.collection("users")
-                .document(username).collection("history")
+                .document(username).collection("\(documentName)")
             do{
                 let currUser = try await ref.getDocument(as: RealUser.self)
                 try await ref.updateData(["points" : currUser.points + points])
-                try await ref2.document(currentUsername ?? "unknown").setData(["points": "\(points)"])
+                try await ref2.document(documentInfo ?? "unknown").setData(["points": "\(points)", "id" : documentInfo])
             }
             catch {
                 print(error)
@@ -307,6 +348,49 @@ final class DatabaseManager {
 //            completion(notifications)
 //        }
 //    }
+    
+    public func getCurrPins(
+        completion: @escaping (Result<[Location], Error>) -> Void
+    ){
+        let ref = database.collection("eventPins")
+        ref.getDocuments { (snapshot, error) in
+            var pins: [(Location)] = []
+            if let error = error {
+                print("Error receiving Firestore snapshot: \(String(describing: error))")
+                return
+            } else {
+                for document in snapshot!.documents {
+                        let point = document.get("coordinates") as! GeoPoint
+                    
+                        let time = document.get("time") as! Timestamp
+                    let pin = Location(id: document.get("id") as! String, name: document.get("name") as! String, coordinates: point, description: document.get("description") as! String, points: document.get("points") as! Int, time: time, radius: document.get("radius") as! Double)
+                    pins.append(pin)
+//                        print("\(document.documentID) => \(pin)")
+                }
+            }
+           
+            completion(.success(pins))
+        }
+    }
+    
+    public func storePin(
+        location: Location,
+        completion: @escaping (Bool) -> Void
+    ){
+        let ref = database.collection("eventPins")
+        ref.document("\(location.name)").setData([
+            "coordinates" : location.coordinates,
+            "name" : location.name,
+            "id" : location.id,
+            "description" : location.description,
+            "points" : location.points,
+            "radius" : location.radius,
+            "time" : location.time
+            
+        ]) {    error in
+            completion(error == nil)
+        }
+    }
 
     /// Creates new notification
     /// - Parameters:

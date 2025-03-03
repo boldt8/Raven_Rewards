@@ -53,7 +53,7 @@ class PostActionsCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.clipsToBounds = true
         contentView.addSubview(likeButton)
-        contentView.addSubview(commentButton)
+//        contentView.addSubview(commentButton)
         contentView.addSubview(shareButton)
 
         // Actions

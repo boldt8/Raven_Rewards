@@ -40,6 +40,21 @@
 		0C9D54C32C5F3AC90075AC6D /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D54C22C5F3AC90075AC6D /* PostEditViewController.swift */; };
 		0CA9C1302D2A1FF900D4577B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA9C12F2D2A1FF900D4577B /* InfoViewController.swift */; };
 		0CA9C1342D2B0B6800D4577B /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA9C1332D2B0B6800D4577B /* InfoTableViewCell.swift */; };
+		0CC1FED82D65D0BC001A3CD2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FED72D65D0BC001A3CD2 /* ForgotPasswordViewController.swift */; };
+		0CC1FEDA2D65D7D5001A3CD2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FED92D65D7D5001A3CD2 /* Service.swift */; };
+		0CC1FEDC2D6FB57F001A3CD2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FEDB2D6FB57F001A3CD2 /* MapViewController.swift */; };
+		0CC1FEE02D6FBA16001A3CD2 /* MapSegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FEDF2D6FBA16001A3CD2 /* MapSegueViewController.swift */; };
+		0CC1FEE22D7015F1001A3CD2 /* Location2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FEE12D7015F1001A3CD2 /* Location2.swift */; };
+		0CC1FF552D744BD4001A3CD2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC1FF452D744BD4001A3CD2 /* Preview Assets.xcassets */; };
+		0CC1FF562D744BD4001A3CD2 /* SwiftfulMapAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF512D744BD4001A3CD2 /* SwiftfulMapAppApp.swift */; };
+		0CC1FF572D744BD4001A3CD2 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF472D744BD4001A3CD2 /* LocationsViewModel.swift */; };
+		0CC1FF582D744BD4001A3CD2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF432D744BD4001A3CD2 /* Location.swift */; };
+		0CC1FF592D744BD4001A3CD2 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF4D2D744BD4001A3CD2 /* LocationsView.swift */; };
+		0CC1FF5A2D744BD4001A3CD2 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF492D744BD4001A3CD2 /* LocationDetailView.swift */; };
+		0CC1FF5B2D744BD4001A3CD2 /* LocationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF4B2D744BD4001A3CD2 /* LocationPreviewView.swift */; };
+		0CC1FF5C2D744BD4001A3CD2 /* LocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF4C2D744BD4001A3CD2 /* LocationsListView.swift */; };
+		0CC1FF5D2D744BD4001A3CD2 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF412D744BD4001A3CD2 /* LocationsDataService.swift */; };
+		0CC1FF5E2D744BD4001A3CD2 /* LocationMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1FF4A2D744BD4001A3CD2 /* LocationMapAnnotationView.swift */; };
 		0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE36B5F2C60A19B00BECC60 /* Extensions.swift */; };
 		0CEB6F4C2CFA824500C81CC0 /* CommentBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F4B2CFA824500C81CC0 /* CommentBarViewDelegate.swift */; };
 		0CEB6F4E2CFA828200C81CC0 /* IGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6F4D2CFA828200C81CC0 /* IGTextField.swift */; };
@@ -125,6 +140,21 @@
 		0C9D54C22C5F3AC90075AC6D /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		0CA9C12F2D2A1FF900D4577B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		0CA9C1332D2B0B6800D4577B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		0CC1FED72D65D0BC001A3CD2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		0CC1FED92D65D7D5001A3CD2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		0CC1FEDB2D6FB57F001A3CD2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0CC1FEDF2D6FBA16001A3CD2 /* MapSegueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSegueViewController.swift; sourceTree = "<group>"; };
+		0CC1FEE12D7015F1001A3CD2 /* Location2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location2.swift; sourceTree = "<group>"; };
+		0CC1FF412D744BD4001A3CD2 /* LocationsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
+		0CC1FF432D744BD4001A3CD2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		0CC1FF452D744BD4001A3CD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CC1FF472D744BD4001A3CD2 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		0CC1FF492D744BD4001A3CD2 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		0CC1FF4A2D744BD4001A3CD2 /* LocationMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapAnnotationView.swift; sourceTree = "<group>"; };
+		0CC1FF4B2D744BD4001A3CD2 /* LocationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreviewView.swift; sourceTree = "<group>"; };
+		0CC1FF4C2D744BD4001A3CD2 /* LocationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsListView.swift; sourceTree = "<group>"; };
+		0CC1FF4D2D744BD4001A3CD2 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
+		0CC1FF512D744BD4001A3CD2 /* SwiftfulMapAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulMapAppApp.swift; sourceTree = "<group>"; };
 		0CE36B5F2C60A19B00BECC60 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CEB6F4B2CFA824500C81CC0 /* CommentBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentBarViewDelegate.swift; sourceTree = "<group>"; };
 		0CEB6F4D2CFA828200C81CC0 /* IGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGTextField.swift; sourceTree = "<group>"; };
@@ -201,6 +231,8 @@
 				0CEB6F7B2CFAEB8500C81CC0 /* ShopCaptionViewController.swift */,
 				0CEB6F802CFB0A9B00C81CC0 /* SDWebImageLoader.swift */,
 				0CA9C12F2D2A1FF900D4577B /* InfoViewController.swift */,
+				0CC1FEDB2D6FB57F001A3CD2 /* MapViewController.swift */,
+				0CC1FED72D65D0BC001A3CD2 /* ForgotPasswordViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -269,6 +301,7 @@
 		0C9D54702C5F2B1D0075AC6D /* Raven Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				0CC1FF382D744AF8001A3CD2 /* TheMap */,
 				0C6D39792D4F2DDA00CE64EE /* Raven Rewards.entitlements */,
 				0C9D54A42C5F2D7F0075AC6D /* Resources */,
 				0C9D54A32C5F2D770075AC6D /* Models */,
@@ -307,6 +340,7 @@
 				0C8CB63B2C66DAB800488833 /* Models.swift */,
 				0CEB6F612CFA9C4B00C81CC0 /* ProfileHeaderCountViewViewModel.swift */,
 				0CEB6F692CFAA41C00C81CC0 /* ListUserTableViewCellViewModel.swift */,
+				0CC1FEE12D7015F1001A3CD2 /* Location2.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -323,6 +357,7 @@
 				0CE36B5F2C60A19B00BECC60 /* Extensions.swift */,
 				0CEB6F6B2CFAAA7F00C81CC0 /* AnalyticsManager.swift */,
 				0CEB6F6D2CFAAAB300C81CC0 /* HapticsManager.swift */,
+				0CC1FED92D65D7D5001A3CD2 /* Service.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -345,6 +380,7 @@
 				0C9D54AC2C5F2FB90075AC6D /* ProfileViewController.swift */,
 				0C45BDC02CF470CF00C12BA0 /* QRScanner.swift */,
 				0CEB6F712CFABE0100C81CC0 /* Raven Shop.swift */,
+				0CC1FEDF2D6FBA16001A3CD2 /* MapSegueViewController.swift */,
 			);
 			path = "Core Tabs";
 			sourceTree = "<group>";
@@ -365,6 +401,71 @@
 				0C9D54B22C5F39CA0075AC6D /* LoginViewController.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0CC1FF382D744AF8001A3CD2 /* TheMap */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1FF522D744BD4001A3CD2 /* SwiftfulThinking SwiftfUI-Map-App-MVVM 90e1888cb0ba0c12df31c42ef4eb4bd3b9b69595 SwiftfulMapApp */,
+			);
+			path = TheMap;
+			sourceTree = "<group>";
+		};
+		0CC1FF422D744BD4001A3CD2 /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1FF412D744BD4001A3CD2 /* LocationsDataService.swift */,
+			);
+			path = DataServices;
+			sourceTree = "<group>";
+		};
+		0CC1FF442D744BD4001A3CD2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1FF432D744BD4001A3CD2 /* Location.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0CC1FF462D744BD4001A3CD2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1FF452D744BD4001A3CD2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0CC1FF482D744BD4001A3CD2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1FF472D744BD4001A3CD2 /* LocationsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0CC1FF4E2D744BD4001A3CD2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1FF492D744BD4001A3CD2 /* LocationDetailView.swift */,
+				0CC1FF4A2D744BD4001A3CD2 /* LocationMapAnnotationView.swift */,
+				0CC1FF4B2D744BD4001A3CD2 /* LocationPreviewView.swift */,
+				0CC1FF4C2D744BD4001A3CD2 /* LocationsListView.swift */,
+				0CC1FF4D2D744BD4001A3CD2 /* LocationsView.swift */,
+				0CC1FF512D744BD4001A3CD2 /* SwiftfulMapAppApp.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0CC1FF522D744BD4001A3CD2 /* SwiftfulThinking SwiftfUI-Map-App-MVVM 90e1888cb0ba0c12df31c42ef4eb4bd3b9b69595 SwiftfulMapApp */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1FF422D744BD4001A3CD2 /* DataServices */,
+				0CC1FF442D744BD4001A3CD2 /* Models */,
+				0CC1FF462D744BD4001A3CD2 /* Preview Content */,
+				0CC1FF482D744BD4001A3CD2 /* ViewModels */,
+				0CC1FF4E2D744BD4001A3CD2 /* Views */,
+			);
+			path = "SwiftfulThinking SwiftfUI-Map-App-MVVM 90e1888cb0ba0c12df31c42ef4eb4bd3b9b69595 SwiftfulMapApp";
 			sourceTree = "<group>";
 		};
 		4BEF64CF305E68EB6C932E64 /* Frameworks */ = {
@@ -503,6 +604,7 @@
 				0C9D547B2C5F2B1E0075AC6D /* Assets.xcassets in Resources */,
 				0C6D397B2D4F463000CE64EE /* GoogleService-Info.plist in Resources */,
 				0C9D547E2C5F2B1E0075AC6D /* Base in Resources */,
+				0CC1FF552D744BD4001A3CD2 /* Preview Assets.xcassets in Resources */,
 				0C9D54792C5F2B1D0075AC6D /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +678,7 @@
 				0C9D54B92C5F3A1E0075AC6D /* EditProfileViewController.swift in Sources */,
 				0CEB6F562CFA840200C81CC0 /* PostLikesCollectionViewCell.swift in Sources */,
 				0C9D54A72C5F2F740075AC6D /* PostUploadViewController.swift in Sources */,
+				0CC1FEE22D7015F1001A3CD2 /* Location2.swift in Sources */,
 				0C9D54A92C5F2F970075AC6D /* CameraViewController.swift in Sources */,
 				0CEB6F6A2CFAA41C00C81CC0 /* ListUserTableViewCellViewModel.swift in Sources */,
 				0CEB6F782CFADD1800C81CC0 /* ListElementView.swift in Sources */,
@@ -588,6 +691,15 @@
 				0C8CB6402C6D829B00488833 /* NoNotificaitonsView.swift in Sources */,
 				0CEB6F7A2CFAE9E200C81CC0 /* ShopEditViewController.swift in Sources */,
 				0C8CB62D2C656DF000488833 /* IGFeedPostHeaderTableViewCell.swift in Sources */,
+				0CC1FF562D744BD4001A3CD2 /* SwiftfulMapAppApp.swift in Sources */,
+				0CC1FF572D744BD4001A3CD2 /* LocationsViewModel.swift in Sources */,
+				0CC1FF582D744BD4001A3CD2 /* Location.swift in Sources */,
+				0CC1FF592D744BD4001A3CD2 /* LocationsView.swift in Sources */,
+				0CC1FF5A2D744BD4001A3CD2 /* LocationDetailView.swift in Sources */,
+				0CC1FF5B2D744BD4001A3CD2 /* LocationPreviewView.swift in Sources */,
+				0CC1FF5C2D744BD4001A3CD2 /* LocationsListView.swift in Sources */,
+				0CC1FF5D2D744BD4001A3CD2 /* LocationsDataService.swift in Sources */,
+				0CC1FF5E2D744BD4001A3CD2 /* LocationMapAnnotationView.swift in Sources */,
 				0CEB6F5C2CFA84B200C81CC0 /* CommentCollectionViewCell.swift in Sources */,
 				0C9D54C32C5F3AC90075AC6D /* PostEditViewController.swift in Sources */,
 				0C2A428F2C60954F003C0D37 /* StorageManager.swift in Sources */,
@@ -609,6 +721,7 @@
 				0CEB6F4C2CFA824500C81CC0 /* CommentBarViewDelegate.swift in Sources */,
 				0CE36B602C60A19B00BECC60 /* Extensions.swift in Sources */,
 				0CEB6F812CFB0A9B00C81CC0 /* SDWebImageLoader.swift in Sources */,
+				0CC1FEE02D6FBA16001A3CD2 /* MapSegueViewController.swift in Sources */,
 				0CEB6F622CFA9C4B00C81CC0 /* ProfileHeaderCountViewViewModel.swift in Sources */,
 				0C8CB6312C656E3600488833 /* IGFeedPostGeneralTableViewCell.swift in Sources */,
 				0C8CB6382C65965800488833 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
@@ -620,9 +733,12 @@
 				0CEB6F602CFA9BFC00C81CC0 /* ProfileHeaderCountView.swift in Sources */,
 				0CEB6F662CFA9D1700C81CC0 /* ListViewController.swift in Sources */,
 				0C8CB62F2C656E1800488833 /* IGFeedPostActionsTableViewCell.swift in Sources */,
+				0CC1FED82D65D0BC001A3CD2 /* ForgotPasswordViewController.swift in Sources */,
 				0CEB6F502CFA833400C81CC0 /* PosterCollectionViewCell.swift in Sources */,
+				0CC1FEDA2D65D7D5001A3CD2 /* Service.swift in Sources */,
 				0C9D54BB2C5F3A2E0075AC6D /* SettingsViewController.swift in Sources */,
 				0CEB6F582CFA845400C81CC0 /* PostCaptionCollectionViewCell.swift in Sources */,
+				0CC1FEDC2D6FB57F001A3CD2 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

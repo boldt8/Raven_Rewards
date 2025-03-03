@@ -66,6 +66,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    private let forgotPasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Forgot Password", for: .normal)
+        button.setTitleColor(.secondaryLabel,
+                             for: .normal)
+        return button
+    }()
+
+    
     private let privacyButton: UIButton = {
         let button = UIButton()
         button.setTitle("Privacy Policy", for: .normal)
@@ -132,6 +141,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         privacyButton.addTarget(self,
                                 action: #selector(didTapPrivacyButton),
                                 for: .touchUpInside)
+        forgotPasswordButton.addTarget(self,
+                                action: #selector(didTapForgotPassword),
+                                for: .touchUpInside)
         
         usernameEmailField.delegate = self
         passwordField.delegate = self
@@ -193,6 +205,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             height: 50
         )
         
+        forgotPasswordButton.frame = CGRect(
+            x: 10,
+            y: view.height-view.safeAreaInsets.bottom-150,
+            width: view.width-20,
+            height: 50
+        )
+        
         configureHeaderView()
     }
     
@@ -232,7 +251,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(privacyButton)
         view.addSubview(createAccountButton)
         view.addSubview(headerView)
+        view.addSubview(forgotPasswordButton)
         
+    }
+    @objc private func didTapForgotPassword() {
+        let vc = ForgotPasswordViewController()
+        vc.title = "Forgot Password"
+        
+        self.present(UINavigationController(rootViewController: vc), animated:true)
     }
     
     @objc private func didTapLoginButton() {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cBN-f6-NAb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cBN-f6-NAb">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,6 +24,7 @@
                         <segue destination="h6J-cR-aSH" kind="relationship" relationship="viewControllers" id="0pT-nO-w9q"/>
                         <segue destination="qSs-h3-Pcp" kind="relationship" relationship="viewControllers" id="rYu-Ab-CNz"/>
                         <segue destination="8zh-70-Odk" kind="relationship" relationship="viewControllers" id="m63-pB-x1b"/>
+                        <segue destination="zry-nS-Tta" kind="relationship" relationship="viewControllers" id="3HZ-U1-AZK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCF-vO-SQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -45,7 +46,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YrZ-mM-Gqf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="336"/>
+            <point key="canvasLocation" x="22" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cnA-GJ-fLK">
@@ -162,10 +163,61 @@
             </objects>
             <point key="canvasLocation" x="-2002" y="1073"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RSU-ua-jn7">
+            <objects>
+                <navigationController id="zry-nS-Tta" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="hst-kj-FMc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C9N-c8-fzD">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JHI-nh-5WW" kind="relationship" relationship="rootViewController" id="z4a-88-EY1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aej-5B-qi8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="955" y="349"/>
+        </scene>
+        <!--Map Segue View Controller-->
+        <scene sceneID="Sme-tj-exO">
+            <objects>
+                <viewController id="JHI-nh-5WW" customClass="MapSegueViewController" customModule="Raven_Rewards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="shi-Ol-hLI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upW-oy-m6E">
+                                <rect key="frame" x="0.0" y="50" width="393" height="755"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="k40-Cm-ua9" kind="embed" destinationCreationSelector="mapSeque:" id="ElI-Oh-hbJ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ri7-Tl-5HH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9dN-ve-hLI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Smt-ek-ayv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1052.6717557251909" y="1050"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="EvB-Fy-mYe">
+            <objects>
+                <hostingController id="k40-Cm-ua9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZh-bq-VF8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2121" y="1508"/>
+        </scene>
     </scenes>
     <resources>
         <image name="dollarsign" catalog="system" width="89" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">

@@ -86,11 +86,16 @@ class InfoTableViewCell: UITableViewCell {
             tempButton.setImage(logo, for: .normal)
         case 3:
             nameLbl.text = "3"
-            infoLbl.text = "Check out the Raven Shop to see what is in stock to buy with Raven points. Items can be picked up at the Student Store"
+            infoLbl.text = "Check out the Raven Shop to see what is available to buy with Raven points. Items can be picked up at the Student Store"
             badgeImg.image = UIImage(systemName: "dollarsign", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
             tempButton.setImage(logo, for: .normal)
         case 4:
             nameLbl.text = "4"
+            infoLbl.text = "Contact ravenrewards966@gmail.com for any issues/questions and follow ravenrewards_app on instagram for more information!"
+            badgeImg.image = UIImage(systemName: "star.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
+            tempButton.setImage(logo, for: .normal)
+        case 5:
+            nameLbl.text = "5"
             infoLbl.text = "Go Ravens! Earn free stuff while supporting your fellow students! It's a Win-Win!"
             badgeImg.image = UIImage(systemName: "star.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
             tempButton.setImage(logo, for: .normal)
@@ -115,8 +120,8 @@ class InfoTableViewCell: UITableViewCell {
             containerVw.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -8),
             
             
-            badgeImg.heightAnchor.constraint(equalToConstant: 50),
-            badgeImg.widthAnchor.constraint(equalToConstant: 25),
+            badgeImg.heightAnchor.constraint(equalToConstant: 30),
+            badgeImg.widthAnchor.constraint(equalToConstant: 15),
             badgeImg.topAnchor.constraint(equalTo: contentStackVw.topAnchor),
             badgeImg.leadingAnchor.constraint(equalTo: containerVw.leadingAnchor, constant: 8),
             

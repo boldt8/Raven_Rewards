@@ -140,9 +140,22 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    private func presentError() {
-        let alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password longer than 6 characters and don't use spaces of special characters.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+    private func presentError(type: Int) {
+        let alert: UIAlertController
+        switch type{
+        case 1:
+            alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password that's atleast 6 characters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            break
+        case 2:
+            alert = UIAlertController(title: "Woops", message: "Don't use spaces or special characters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            break
+        default:
+            alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password that's atleast 6 characters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        }
+      
         present(alert, animated: true)
         loadingButton.isHidden = true
     }
@@ -163,6 +176,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func didTapRegister() {
         
+        
+        let username: String
+        let email: String
+        let password: String
+        
         loadingButton.isHidden = false
         emailField.resignFirstResponder()
         usernameField.resignFirstResponder()
@@ -172,18 +190,32 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             presentSelectionError()
             return
         }
-        guard let username = usernameField.text,
-              let email = emailField.text,
-              let password = passwordField.text,
-              !email.trimmingCharacters(in: .whitespaces).isEmpty,
-              !password.trimmingCharacters(in: .whitespaces).isEmpty,
-              !username.trimmingCharacters(in: .whitespaces).isEmpty,
-              password.count >= 6,
-              username.count >= 2,
-              username.trimmingCharacters(in: .alphanumerics).isEmpty else {
-            presentError()
+        guard let preUsername = usernameField.text,
+              let preEmail = emailField.text,
+              let prePassword = passwordField.text,
+              prePassword.count >= 6,
+              preUsername.count >= 2
+               else {
+            presentError(type: 1)
             return
         }
+        if(
+            !preEmail.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !prePassword.trimmingCharacters(in: .whitespaces).isEmpty &&
+            !preUsername.trimmingCharacters(in: .whitespaces).isEmpty &&
+            preUsername.trimmingCharacters(in: .alphanumerics).isEmpty &&
+            prePassword.trimmingCharacters(in: .alphanumerics).isEmpty
+        ){
+            username = preUsername
+            email = preEmail
+            password = prePassword
+        }
+        else {
+            presentError(type: 2)
+            return
+        }
+        
+        
         DatabaseManager.shared.getCurrentVersion { [weak self] currVer in
             guard let currentVersion = currVer else {
                 self?.presentInternalError()

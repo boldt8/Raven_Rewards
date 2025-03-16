@@ -12,6 +12,7 @@ class MapSegueViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Event Map"
     }
     
     @IBSegueAction func mapSeque(_ coder: NSCoder) -> UIViewController? {

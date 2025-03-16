@@ -125,6 +125,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        title = "QR code"
         LocationsDataService.fetchLocs()
         self.navigationController?.isNavigationBarHidden = true
         view.addSubview(ravenPoints)

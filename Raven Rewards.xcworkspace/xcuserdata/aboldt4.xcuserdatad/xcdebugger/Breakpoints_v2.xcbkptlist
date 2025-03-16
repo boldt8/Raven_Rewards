@@ -200,7 +200,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "856E1D06-A344-4E3D-829F-1F57DB9C6E30"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Raven Rewards/TheMap/SwiftfulThinking SwiftfUI-Map-App-MVVM 90e1888cb0ba0c12df31c42ef4eb4bd3b9b69595 SwiftfulMapApp/Views/LocationPreviewView.swift"
@@ -216,7 +216,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C3CB7049-B09E-48E8-9AB2-1F8E5DB2D8C1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Raven Rewards/TheMap/SwiftfulThinking SwiftfUI-Map-App-MVVM 90e1888cb0ba0c12df31c42ef4eb4bd3b9b69595 SwiftfulMapApp/Views/LocationPreviewView.swift"

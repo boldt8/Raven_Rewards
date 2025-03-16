@@ -86,7 +86,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let createAccountButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.label, for: .normal)
-        button.setTitle("New User? Create and Account", for: .normal)
+        button.setTitle("New User? Create an Account", for: .normal)
         return button
     }()
     

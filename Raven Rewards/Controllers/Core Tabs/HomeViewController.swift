@@ -21,6 +21,36 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
 
     /// All post models
     private var allPosts: [(post: Post, owner: String)] = []
+    
+//    private func UPDATEALLUSERS() {
+//        guard let username = UserDefaults.standard.string(forKey: "username") else {
+//            return
+//        }
+//        let userGroup = DispatchGroup()
+//        userGroup.enter()
+//
+//        DatabaseManager.shared.otherUsers(for: username) { usernames in
+//            defer {
+//                userGroup.leave()
+//            }
+//            let users = usernames
+//            //            print(users)
+//            for current in users {
+//                userGroup.enter()
+//                DatabaseManager.shared.UPDATEALLUSERS(username: current, completion:  { result in
+//                    DispatchQueue.main.async {
+//                        defer {
+//                            userGroup.leave()
+//                        }
+//                        print(result)
+//                    }
+//                })
+//            }
+//        }
+//        userGroup.notify(queue: .main) {
+//            print("update complete")
+//        }
+//    }
 
     // MARK: - Lifecycle
     
@@ -62,6 +92,8 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
     }
+    
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +101,6 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
         view.backgroundColor = .systemBackground
         configureCollectionView()
         fetchPosts()
-
         observer = NotificationCenter.default.addObserver(
             forName: .didPostNotification,
             object: nil,

@@ -42,7 +42,14 @@ class LocationsViewModel: ObservableObject {
     }
     
     // All loaded locations
-    @Published var locations: [Location]
+    @Published public var locations: [Location] {
+        didSet {
+            self.mapLocation = locations.first!
+            
+            self.updateMapRegion(location: locations.first!)
+        }
+    }
+    
     
     // Current event location on map
     @Published var mapLocation: Location {
@@ -69,9 +76,23 @@ class LocationsViewModel: ObservableObject {
     init() {
         let locations = LocationsDataService.locations
         self.locations = locations
-        self.mapLocation = locations.first!
+//        if(!LocationsDataService.locations.isEmpty){
+//
+//        } else {
+        if(LocationsDataService.locations.isEmpty){
+            let tempLoc = Location(id: "0", name: "Loading ...", coordinates: GeoPoint(latitude: 32.957799, longitude: -117.189537), description: "Loading...", points: 0, time: Timestamp(), radius: 10)
+            self.mapLocation = tempLoc
+            
+            self.updateMapRegion(location: tempLoc)
+        }
+        else {
+            self.mapLocation = locations.first!
+            
+            self.updateMapRegion(location: locations.first!)
+        }
         
-        self.updateMapRegion(location: locations.first!)
+            
+        
     }
     
     private func updateMapRegion(location: Location) {

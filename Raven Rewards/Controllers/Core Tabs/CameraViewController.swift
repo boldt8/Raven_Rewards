@@ -25,8 +25,6 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         return body
     }()
     
-    
-    
     let helpButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
     
     private func makeQR(username: String) -> UIImageView {
@@ -56,6 +54,8 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     
     let scanButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
     
+    let leaderBoardButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 50))
+    
     let logo: UIImageView = {
         let image = UIImageView(image: UIImage(named: "Logo 2"))
         return image
@@ -84,6 +84,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         }
             DatabaseManager.shared.findUser(username: username) { [weak self] user in
                 if let user = user {
+                    
                     DatabaseManager.shared.incrVersion(username: username, version: userVersion)
                     DatabaseManager.shared.getCurrentVersion { [weak self] currVer in
                         guard let currentVersion = currVer else {
@@ -129,6 +130,7 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         view.addSubview(ravenPoints)
         // Check to see if admin user
         view.addSubview(scanButton)
+        view.addSubview(leaderBoardButton)
         view.addSubview(helpButton)
         view.addSubview(logo)
         view.addSubview(bubble)
@@ -195,6 +197,10 @@ class CameraViewController: UIViewController, UITextViewDelegate {
         scanButton.setTitle("Scan QR code", for: .normal)
         scanButton.backgroundColor = .systemPink
         scanButton.addTarget(self, action: #selector(didTapScanButton), for: .touchUpInside)
+        leaderBoardButton.center = CGPoint(x: view.width/2, y: view.height*3/4 + 75)
+        leaderBoardButton.setTitle("Check Leaderboard", for: .normal)
+        leaderBoardButton.backgroundColor = .systemGreen
+        leaderBoardButton.addTarget(self, action: #selector(didTapLeaderBoardButton), for: .touchUpInside)
         helpButton.center = CGPoint(x: view.width*13/16, y: view.height*3/32)
         helpButton.setTitle("Help", for: .normal)
         helpButton.backgroundColor = .systemOrange
@@ -220,6 +226,32 @@ class CameraViewController: UIViewController, UITextViewDelegate {
     @objc func didTapScanButton() {
         let vc = UIHostingController(rootView: QRScanner())
         present(vc, animated: true)
+    }
+    
+    private func sortItemsByPoints(_ items: [RealUser]) -> [RealUser] {
+            items.sorted { itemA, itemB in
+                itemA.points > itemB.points
+        }
+    }
+    
+    @objc func didTapLeaderBoardButton() {
+        let username = AuthManager.shared.currUserID ?? "Anonymous"
+        DatabaseManager.shared.findUsers(with: username, completion: { users in
+            let sortedUsers = self.sortItemsByPoints(users ?? [])
+            
+            var pointCollection: [Int] = []
+            var nameCollection: [String] = []
+            for u in sortedUsers {
+                nameCollection.append(u.username)
+                pointCollection.append(u.points)
+            }
+            let vc = ListViewController(type: .points(usernames: nameCollection, pointCollection: pointCollection))
+            vc.title = "Leaderboard"
+                
+            self.present(UINavigationController(rootViewController: vc), animated:true)
+            return
+        })
+        
     }
 }
 

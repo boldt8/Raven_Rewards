@@ -51,7 +51,7 @@ final class ProfileViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         let username = AuthManager.shared.currUserID
         let email = AuthManager.shared.currUserEmail
-        self.user = RealUser(username: username, email: email, points: 0, isAdmin: false, currentVersion: 0)
+        self.user = RealUser(username: username, email: email, points: 0, isAdmin: false, currentVersion: 0, grade: 0)
         super.init(coder: aDecoder)
     }
     

@@ -9,11 +9,13 @@ import Foundation
 import MapKit
 
 class LocationsDataService {
-    public static func fetchLocs() {
+    public static func fetchLocs(
+        
+    ) {
         DatabaseManager.shared.getCurrPins(completion: { result in
             switch result {
             case .success(let pinSnapshot):
-                self.locations.append(contentsOf: pinSnapshot.compactMap({
+                locations.append(contentsOf: pinSnapshot.compactMap({
                     ($0)
                 }))
                 

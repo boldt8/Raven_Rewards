@@ -9,6 +9,18 @@ import UIKit
 
 final class ListViewController: UIViewController {
 
+    @objc func didTapClose() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    private func setUpNavBar() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(didTapClose)
+        )
+    }
+    
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(ListUserTableViewCell.self,
@@ -20,6 +32,7 @@ final class ListViewController: UIViewController {
         case followers(user: RealUser)
         case following(user: RealUser)
         case likers(usernames: [String])
+        case points(usernames: [String], pointCollection: [Int])
 
         var title: String {
             switch self {
@@ -29,7 +42,10 @@ final class ListViewController: UIViewController {
                 return "Following"
             case .likers:
                 return "Liked By"
+            case .points:
+                return "Leaderboard"
             }
+        
         }
     }
 
@@ -54,6 +70,7 @@ final class ListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
+        
         title = type.title
         tableView.delegate = self
         tableView.dataSource = self
@@ -63,6 +80,9 @@ final class ListViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+        if(type.title == "Leaderboard"){
+            setUpNavBar()
+        }
     }
 
     private func configureViewModels() {
@@ -90,8 +110,23 @@ final class ListViewController: UIViewController {
                     self?.tableView.reloadData()
                 }
             }
+        case .points(let usernames, let points):
+            var userpoints: [UserAndPointAndPosition] = []
+            for i in 0...(usernames.count-1)  {
+                userpoints.append(UserAndPointAndPosition(username: usernames[i], points: points[i], position: i+1))
+            }
+            viewModels = userpoints.compactMap({ thing in
+                ListUserTableViewCellViewModel(imageUrl: nil, username: thing.username, points: thing.points, leaderBoardnumber: thing.position)
+            })
+            tableView.reloadData()
         }
     }
+}
+
+struct UserAndPointAndPosition {
+    let username: String
+    let points: Int
+    let position: Int
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {

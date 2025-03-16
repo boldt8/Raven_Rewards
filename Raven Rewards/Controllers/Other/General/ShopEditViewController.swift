@@ -45,6 +45,8 @@ class ShopEditViewController: UIViewController, UICollectionViewDelegate, UIColl
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()

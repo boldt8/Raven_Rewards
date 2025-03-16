@@ -17,7 +17,6 @@ struct LocationDetailView: View {
         ScrollView {
             VStack {
                 imageSection
-                    .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 10)
                 
                 VStack(alignment: .leading, spacing: 16) {
                     titleSection
@@ -55,8 +54,7 @@ extension LocationDetailView {
 //                    .clipped()
 //            }
         }
-        .frame(height: 500)
-        .tabViewStyle(PageTabViewStyle())
+        .frame(height: 75)
     }
     
     private var titleSection: some View {

@@ -60,6 +60,18 @@ final class DatabaseManager {
          }
     }
     
+//    public func UPDATEALLUSERS(
+//        "THIS IS DIABLED"
+//        username: String,
+//        completion: @escaping (Bool) -> Void
+//    ) {
+//        let ref = database.collection("users")
+//            .document(username)
+//        ref.updateData(["grade": 10]) { error in
+//            completion(error == nil)
+//        }
+//    }
+    
     public func checkLocEvents(
         username: String,
         locID: String,
@@ -72,18 +84,19 @@ final class DatabaseManager {
                 guard let docIDz = snapshot?.documents,
                       error == nil else {
                     completion(false)
+                    print(error)
                     return
                 }
                 for docID in docIDz {
                     let id = docID.data()["id"] ?? "tspmo"
                     if((id as! String) == locID){
                         completion(true)
-                        return
-                    } else {
-                        completion(false)
+                        print("Check in with true")
                         return
                     }
                 }
+                completion(false)
+                return
                 
             }
     }
@@ -144,11 +157,8 @@ final class DatabaseManager {
                 completion([])
                 return
             }
-            let subset = users.filter({
-                $0.username.lowercased().hasPrefix(usernamePrefix.lowercased())
-            })
 
-            completion(subset)
+            completion(users)
         }
     }
 

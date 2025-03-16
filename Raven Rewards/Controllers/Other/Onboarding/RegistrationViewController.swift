@@ -13,6 +13,32 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         static let cornerRadius: CGFloat = 8.0
     }
     
+    private var gradeSelection: String = "Click to select grade level"
+    
+    private let gradeButton = UIButton(primaryAction: nil)
+    private func configureGradeSelector() {
+        let dataSource = ["Click to select grade level", "9", "10", "11", "12"]
+       
+        gradeButton.backgroundColor = .secondarySystemBackground
+        gradeButton.layer.cornerRadius = Constants.cornerRadius
+        
+        let actionClosure = { (action: UIAction) in
+            self.gradeSelection = action.title
+        }
+
+        var menuChildren: [UIMenuElement] = []
+        for fruit in dataSource {
+            menuChildren.append(UIAction(title: fruit, handler: actionClosure))
+        }
+        
+        gradeButton.menu = UIMenu(options: .displayInline, children: menuChildren)
+        
+        gradeButton.showsMenuAsPrimaryAction = true
+        gradeButton.changesSelectionAsPrimaryAction = true
+        
+       
+    }
+    
     private let usernameField: UITextField = {
         let field = UITextField()
         field.placeholder = "Username..."
@@ -84,6 +110,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureGradeSelector()
         registerButton.addTarget(self,
                                  action: #selector(didTapRegister),
                                  for: .touchUpInside)
@@ -95,6 +122,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(passwordField)
         view.addSubview(registerButton)
         view.addSubview(loadingButton)
+        view.addSubview(gradeButton)
         loadingButton.isHidden = true
         
         view.backgroundColor = .systemBackground
@@ -106,13 +134,21 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         usernameField.frame = CGRect(x: 20, y: view.safeAreaInsets.top + 100, width: view.width - 40, height: 52)
         emailField.frame = CGRect(x: 20, y: usernameField.bottom + 10, width: view.width - 40, height: 52)
         passwordField.frame = CGRect(x: 20, y: emailField.bottom + 10, width: view.width - 40, height: 52)
-        registerButton.frame = CGRect(x: 20, y: passwordField.bottom + 10, width: view.width - 40, height: 52)
-        loadingButton.frame = CGRect(x: 20, y: passwordField.bottom + 10, width: view.width - 40, height: 52)
+        gradeButton.frame = CGRect(x: 20, y: passwordField.bottom + 10, width: view.width - 40, height: 52)
+        registerButton.frame = CGRect(x: 20, y: passwordField.bottom + 72, width: view.width - 40, height: 52)
+        loadingButton.frame = CGRect(x: 20, y: passwordField.bottom + 72, width: view.width - 40, height: 52)
 
     }
     
     private func presentError() {
-        let alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password longer than 6 characters and don't use special characters.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Woops", message: "Please make sure to fill all fields and have a password longer than 6 characters and don't use spaces of special characters.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+        loadingButton.isHidden = true
+    }
+    
+    private func presentSelectionError() {
+        let alert = UIAlertController(title: "Woops", message: "Please select a grade level", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
         loadingButton.isHidden = true
@@ -126,11 +162,16 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func didTapRegister() {
+        
         loadingButton.isHidden = false
         emailField.resignFirstResponder()
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
         
+        if (gradeSelection == "Click to select grade level") {
+            presentSelectionError()
+            return
+        }
         guard let username = usernameField.text,
               let email = emailField.text,
               let password = passwordField.text,
@@ -151,7 +192,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             }
         
         
-            AuthManager.shared.signUp(email: email, username: username, password: password, isAdmin: false, currentVersion: currentVersion) { [weak self] registered in
+            AuthManager.shared.signUp(email: email, username: username, password: password, isAdmin: false, currentVersion: currentVersion, grade:
+                                        Int(self?.gradeSelection ?? "1") ?? 1) { [weak self] registered in
                 DispatchQueue.main.async{
                     switch registered {
                     case .success(let user):

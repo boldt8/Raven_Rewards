@@ -74,13 +74,13 @@ extension LocationPreviewView {
         let c1 = CLLocation(latitude: location.coordinates.latitude, longitude: location.coordinates.latitude)
         let c2 = CLLocation(latitude: userCoords.latitude, longitude: userCoords.latitude)
         let distance = c1.distance(from: c2)
-        DatabaseManager.shared.checkLocEvents(username: name, locID: location.id, completion: { result in
+        DatabaseManager.shared.checkLocEvents(username: name, locID: location.name, completion: { result in
             
             if(distance > location.radius){
                 self.showAlert = true
                 self.alertNum = 1
             }
-            else if (location.time.dateValue() > Date().convertToTimeZone(initTimeZone: TimeZone(abbreviation: "UTC") ?? TimeZone.current, timeZone: TimeZone(abbreviation: "GMT-8") ?? TimeZone.current)){
+            else if (location.time.dateValue() > Date()){
                 self.showAlert = true
                 self.alertNum = 2
             }
@@ -92,7 +92,7 @@ extension LocationPreviewView {
                 self.showAlert = true
                 self.alertNum = 0
                 
-                DatabaseManager.shared.incrPoints(locID: location.id, isLocEvent: true, username: name, points: location.points)
+                DatabaseManager.shared.incrPoints(locID: location.name, isLocEvent: true, username: name, points: location.points)
                 
             }
             

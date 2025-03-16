@@ -31,7 +31,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     private let bioLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "iOS Academy\nThis is my profile bio!"
+        label.text = "Loading..."
         label.font = .systemFont(ofSize: 18)
         return label
     }()

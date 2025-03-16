@@ -21,10 +21,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="D9P-Ba-ig3" kind="relationship" relationship="viewControllers" id="oLn-GZ-5tF"/>
+                        <segue destination="zry-nS-Tta" kind="relationship" relationship="viewControllers" id="3HZ-U1-AZK"/>
                         <segue destination="h6J-cR-aSH" kind="relationship" relationship="viewControllers" id="0pT-nO-w9q"/>
                         <segue destination="qSs-h3-Pcp" kind="relationship" relationship="viewControllers" id="rYu-Ab-CNz"/>
                         <segue destination="8zh-70-Odk" kind="relationship" relationship="viewControllers" id="m63-pB-x1b"/>
-                        <segue destination="zry-nS-Tta" kind="relationship" relationship="viewControllers" id="3HZ-U1-AZK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCF-vO-SQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

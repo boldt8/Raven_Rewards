@@ -14,6 +14,7 @@ struct RealUser: Codable {
     let points: Int
     let isAdmin: Bool
     let currentVersion: Double
+    let grade: Int
 }
 
 struct UserInfo: Codable {

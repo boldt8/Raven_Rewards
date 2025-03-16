@@ -81,7 +81,7 @@ class InfoTableViewCell: UITableViewCell {
             tempButton.setImage(logo, for: .normal)
         case 2:
             nameLbl.text = "2"
-            infoLbl.text = "Go to an ASB event and ask an ASB member to scan your code to receive raven points. Refresh the app to update your points"
+            infoLbl.text = "Go to an ASB event or Sports game and check in with the Map to receive raven points"
             badgeImg.image = UIImage(systemName: "qrcode", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
             tempButton.setImage(logo, for: .normal)
         case 3:

@@ -10,4 +10,6 @@ import Foundation
 struct ListUserTableViewCellViewModel {
     let imageUrl: URL?
     let username: String
+    var points: Int = -1
+    var leaderBoardnumber: Int = -1
 }

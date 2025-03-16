@@ -24,6 +24,13 @@ class ListUserTableViewCell: UITableViewCell {
         label.font = .systemFont(ofSize: 18)
         return label
     }()
+    
+    private let pointsLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 11)
+        return label
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style,
@@ -31,6 +38,7 @@ class ListUserTableViewCell: UITableViewCell {
         clipsToBounds = true
         contentView.addSubview(profilePictureImageView)
         contentView.addSubview(usernameLabel)
+        contentView.addSubview(pointsLabel)
         accessoryType = .disclosureIndicator
     }
 
@@ -41,6 +49,7 @@ class ListUserTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         usernameLabel.sizeToFit()
+        pointsLabel.sizeToFit()
         let size: CGFloat = contentView.height/1.3
         profilePictureImageView.frame = CGRect(x: 5, y: (contentView.height-size)/2, width: size, height: size)
         profilePictureImageView.layer.cornerRadius = size/2
@@ -48,6 +57,11 @@ class ListUserTableViewCell: UITableViewCell {
             x: profilePictureImageView.right+10,
             y: 0,
             width: usernameLabel.width,
+            height: contentView.height)
+        pointsLabel.frame = CGRect(
+            x: usernameLabel.right+10,
+            y: 0,
+            width: pointsLabel.width,
             height: contentView.height)
     }
 
@@ -59,10 +73,14 @@ class ListUserTableViewCell: UITableViewCell {
 
     func configure(with viewModel: ListUserTableViewCellViewModel) {
         usernameLabel.text = viewModel.username
+        if(viewModel.points != -1){
+            pointsLabel.text = "#\(viewModel.leaderBoardnumber)) \(viewModel.points) points "
+        }
         StorageManager.shared.profilePictureURL(for: viewModel.username) { [weak self] url in
             DispatchQueue.main.async {
                 self?.profilePictureImageView.sd_setImage(with: url, completed: nil)
             }
         }
+        
     }
 }

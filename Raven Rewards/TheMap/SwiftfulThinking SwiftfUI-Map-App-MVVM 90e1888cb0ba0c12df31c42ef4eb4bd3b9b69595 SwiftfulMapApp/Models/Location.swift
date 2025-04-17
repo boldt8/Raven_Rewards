@@ -17,7 +17,8 @@ struct Location: Identifiable, Equatable {
     let coordinates: GeoPoint
     let description: String
     let points: Int
-    let time: Timestamp
+    let starttime: Timestamp
+    let endtime: Timestamp
     let radius: Double
     
     // Identifiable

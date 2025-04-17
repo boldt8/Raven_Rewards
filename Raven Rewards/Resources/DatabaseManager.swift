@@ -372,8 +372,9 @@ final class DatabaseManager {
                 for document in snapshot!.documents {
                         let point = document.get("coordinates") as! GeoPoint
                     
-                        let time = document.get("time") as! Timestamp
-                    let pin = Location(id: document.get("id") as! String, name: document.get("name") as! String, coordinates: point, description: document.get("description") as! String, points: document.get("points") as! Int, time: time, radius: document.get("radius") as! Double)
+                        let stime = document.get("starttime") as! Timestamp
+                        let etime = document.get("endtime") as! Timestamp
+                    let pin = Location(id: document.get("id") as! String, name: document.get("name") as! String, coordinates: point, description: document.get("description") as! String, points: document.get("points") as! Int, starttime: stime, endtime: etime, radius: document.get("radius") as! Double)
                     pins.append(pin)
 //                        print("\(document.documentID) => \(pin)")
                 }
@@ -395,7 +396,8 @@ final class DatabaseManager {
             "description" : location.description,
             "points" : location.points,
             "radius" : location.radius,
-            "time" : location.time
+            "starttime" : location.starttime,
+            "endtime" : location.endtime
             
         ]) {    error in
             completion(error == nil)

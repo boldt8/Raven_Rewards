@@ -22,7 +22,8 @@ class LocationsViewModel: ObservableObject {
                 coord,
             description: "5 points",
             points: 2,
-            time: Timestamp(date: Date.now),
+            starttime: Timestamp(date: Date.now),
+            endtime: Timestamp(date: Date.now),
             radius: 50)
         
         DatabaseManager.shared.storePin(location: newPin, completion: { result in
@@ -80,7 +81,7 @@ class LocationsViewModel: ObservableObject {
 //
 //        } else {
         if(LocationsDataService.locations.isEmpty){
-            let tempLoc = Location(id: "0", name: "Loading ...", coordinates: GeoPoint(latitude: 32.957799, longitude: -117.189537), description: "Loading...", points: 0, time: Timestamp(), radius: 10)
+            let tempLoc = Location(id: "0", name: "Loading ...", coordinates: GeoPoint(latitude: 32.957799, longitude: -117.189537), description: "Loading...", points: 0, starttime: Timestamp(), endtime: Timestamp(), radius: 10)
             self.mapLocation = tempLoc
             
             self.updateMapRegion(location: tempLoc)

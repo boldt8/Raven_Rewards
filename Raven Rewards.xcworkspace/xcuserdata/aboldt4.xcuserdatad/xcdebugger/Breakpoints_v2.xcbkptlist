@@ -206,8 +206,8 @@
             filePath = "Raven Rewards/TheMap/SwiftfulThinking SwiftfUI-Map-App-MVVM 90e1888cb0ba0c12df31c42ef4eb4bd3b9b69595 SwiftfulMapApp/Views/LocationPreviewView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "startClock()"
             landmarkType = "7">
          </BreakpointContent>

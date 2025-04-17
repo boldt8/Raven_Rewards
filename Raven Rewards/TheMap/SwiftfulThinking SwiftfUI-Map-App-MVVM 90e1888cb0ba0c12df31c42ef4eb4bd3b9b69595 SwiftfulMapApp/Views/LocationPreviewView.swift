@@ -80,13 +80,17 @@ extension LocationPreviewView {
                 self.showAlert = true
                 self.alertNum = 1
             }
-            else if (location.time.dateValue() > Date()){
+            else if (location.endtime.dateValue() < Date()){
                 self.showAlert = true
                 self.alertNum = 2
             }
-            else if (result){
+            else if (location.starttime.dateValue() > Date()){
                 self.showAlert = true
                 self.alertNum = 3
+            }
+            else if (result){
+                self.showAlert = true
+                self.alertNum = 4
             }
             else {
                 self.showAlert = true
@@ -120,15 +124,18 @@ extension LocationPreviewView {
             formatter.dateStyle = .medium
             formatter.timeStyle = .short
             
-            let locDate = location.time.dateValue()
+            let locDate = location.starttime.dateValue()
             let currDate = Date().convertToTimeZone(initTimeZone: TimeZone(abbreviation: "UTC") ?? TimeZone.current, timeZone: TimeZone(abbreviation: "GMT-8") ?? TimeZone.current)
             if(self.alertNum == 1){
                 return Alert(title: Text("Out of bounds"), message: Text("you are \(distance) meters away from this event, you should be within \(location.radius.truncate(places: 1)) meters"))
             }
             else if(self.alertNum == 2){
-                return Alert(title: Text("Please wait"), message: Text("You may recieve points later, please wait until \(formatter.string(from: locDate))"))
+                return Alert(title: Text("This event has already ended"), message: Text("You can no longer recieve points for this event, it ended at \(formatter.string(from: locDate))"))
             }
             else if(self.alertNum == 3){
+                return Alert(title: Text("Please wait"), message: Text("You may recieve points later, please wait until \(formatter.string(from: locDate))"))
+            }
+            else if(self.alertNum == 4){
                 return Alert(title: Text("Nope"), message: Text("You have already gotten points for this event"))
             }
             else {
